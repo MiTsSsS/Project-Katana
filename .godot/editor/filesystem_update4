@@ -5,3 +5,5 @@ res://Scenes/Characters/Dash.tscn
 res://Scenes/Characters/Enemy.tscn
 res://Scenes/Characters/Character.tscn
 res://Scenes/Items/Weapons/Gun.tscn
+res://Scenes/Items/Weapons/Katana.tscn
+res://Scripts/Items/Weapons/Katana.gd

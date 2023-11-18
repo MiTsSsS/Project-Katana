@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfqn2oultoebp"]
+[gd_scene load_steps=7 format=3 uid="uid://bfqn2oultoebp"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterController.gd" id="1_rklxv"]
 [ext_resource type="Texture2D" uid="uid://cwh75kco5ltva" path="res://icon.svg" id="2_onrqd"]
 [ext_resource type="PackedScene" uid="uid://bjs7m4djnqfah" path="res://Scenes/Characters/Dash.tscn" id="3_u8yht"]
 [ext_resource type="PackedScene" uid="uid://4ku04kd1tfuv" path="res://Scenes/Items/Weapons/Gun.tscn" id="5_p6eap"]
+[ext_resource type="PackedScene" uid="uid://c2pfr12wupe8g" path="res://Scenes/Items/Weapons/Katana.tscn" id="5_rfvp5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6aa"]
 size = Vector2(115, 115)
@@ -28,3 +29,6 @@ one_shot = true
 
 [node name="Gun" parent="." instance=ExtResource("5_p6eap")]
 position = Vector2(-60, 0)
+
+[node name="Katana" parent="." instance=ExtResource("5_rfvp5")]
+position = Vector2(34.5, 9.5)

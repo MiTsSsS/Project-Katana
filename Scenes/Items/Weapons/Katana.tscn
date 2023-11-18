@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2pfr12wupe8g"]
+
+[ext_resource type="Script" path="res://Scripts/Items/Weapons/Katana.gd" id="1_3jpsi"]
+[ext_resource type="Texture2D" uid="uid://cwh75kco5ltva" path="res://icon.svg" id="1_itao1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohato"]
+size = Vector2(6, 121)
+
+[node name="Katana" type="Area2D"]
+script = ExtResource("1_3jpsi")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-2.98023e-08, -2.84217e-14)
+scale = Vector2(0.0527344, 0.984375)
+texture = ExtResource("1_itao1")
+
+[node name="Icon" type="Sprite2D" parent="Icon"]
+position = Vector2(0, 62.9841)
+scale = Vector2(4.01319, 0.0556796)
+texture = ExtResource("1_itao1")
+
+[node name="Icon" type="Sprite2D" parent="Icon/Icon"]
+position = Vector2(0, 200.695)
+scale = Vector2(0.234661, 2.52909)
+texture = ExtResource("1_itao1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_ohato")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
