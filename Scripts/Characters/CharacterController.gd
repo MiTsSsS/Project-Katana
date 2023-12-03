@@ -2,13 +2,14 @@ extends CharacterBody2D
 
 const BULLET = preload("res://Scenes/Items/Bullet.tscn")
 
-const baseSpeed = 400
-@export var speed = 400
+const baseSpeed = 500
+@export var speed = 500
 @export var dashSpeedScalar = 1.2
 @export var dashDuration = 0.2
 
 @onready var attackTimer = $AttackCooldown
 @onready var dash = $Dash
+@onready var katana = $Sprite2D/Katana
 
 func _ready():
 	var durationTimer = dash.get_node("DurationTimer")
@@ -18,9 +19,17 @@ func get_input():
 	$Gun.look_at(get_global_mouse_position())
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
-	
+	if Input.is_action_just_pressed("left"):
+		$Sprite2D.rotation = deg_to_rad(-90)
+	elif Input.is_action_just_pressed("right"):
+		$Sprite2D.rotation = deg_to_rad(90)
+	elif Input.is_action_just_pressed("down"):
+		$Sprite2D.rotation = deg_to_rad(180)
+	elif Input.is_action_just_pressed("up"):
+		$Sprite2D.rotation = 0
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		shoot()
+		#shoot()
+		katana.swing()
 		
 	if Input.is_action_just_pressed("dash"):
 		dash.startDash(dashDuration)

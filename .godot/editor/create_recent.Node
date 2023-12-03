@@ -1,7 +1,11 @@
+Node2D
 Area2D
+AnimatedSprite2D
+CPUParticles2D
+AnimationTree
+AnimationPlayer
 CollisionShape2D
 Sprite2D
-Node2D
 Timer
 CharacterBody2D
 Marker2D
