@@ -6,4 +6,5 @@
 script = ExtResource("1_pesm8")
 
 [node name="DurationTimer" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
