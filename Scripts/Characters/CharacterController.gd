@@ -11,12 +11,23 @@ const baseSpeed = 500
 @onready var dash = $Dash
 @onready var katana = $Sprite2D/Katana
 
+var canPerformNextAttack = true
+
 func _ready():
 	var durationTimer = dash.get_node("DurationTimer")
 	durationTimer.timeout.connect(_on_timer_timeout)
+	
+# Called every frame. 'delta' is the elapsed time since the previous fram
+func _physics_process(delta):
+	get_input()
+	move_and_slide()
 
 func get_input():
-	$Gun.look_at(get_global_mouse_position())
+	if Input.is_action_just_pressed("attack"):
+		if canPerformNextAttack:
+			canPerformNextAttack = false
+			katana.swing()
+
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
 	if Input.is_action_just_pressed("left"):
@@ -27,23 +38,15 @@ func get_input():
 		$Sprite2D.rotation = deg_to_rad(180)
 	elif Input.is_action_just_pressed("up"):
 		$Sprite2D.rotation = 0
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		#shoot()
-		katana.swing()
 		
 	if Input.is_action_just_pressed("dash"):
 		dash.startDash(dashDuration)
 	
 	if dash.isDashing():
 		speed = speed * dashSpeedScalar
-
-# Called every frame. 'delta' is the elapsed time since the previous fram
-func _physics_process(delta):
-	get_input()
-	move_and_slide()
-	
-func shoot():
-	get_node("Gun").shoot(attackTimer)
 		
 func _on_timer_timeout():
 	speed = baseSpeed
+
+func _on_katana_completed_current_attack_animation():
+	canPerformNextAttack  = true

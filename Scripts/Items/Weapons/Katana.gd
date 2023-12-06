@@ -1,5 +1,11 @@
 extends Node
 
+signal completedCurrentAttackAnimation
+
+@onready var comboAttackAnimationSequence = ["swing", "swing1", "swing2"]
+@onready var comboAttackIndex = 0
+@onready var slashVfx = $SlashVFX
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -13,9 +19,26 @@ func _on_blade_body_entered(body):
 		body.queue_free()
 
 func swing():
-	$SlashVFX.show()
-	$Blade/Swing.play("swing")
-	$SlashVFX.play()
+	slashVfx.show()
+	print(comboAttackAnimationSequence[comboAttackIndex])
+	$Blade/Swing.play(comboAttackAnimationSequence[comboAttackIndex])
+	
+	if comboAttackIndex == 1:
+		slashVfx.flip_v	
+	
+	slashVfx.play()
 
 func _on_slash_vfx_animation_finished():
-	$SlashVFX.hide()
+	slashVfx.hide()
+
+func onCurrentAttackCompleted():
+	incrementArrayIndex()
+	completedCurrentAttackAnimation.emit()
+	
+func incrementArrayIndex():
+	comboAttackIndex = comboAttackIndex + 1
+	if comboAttackIndex == comboAttackAnimationSequence.size():
+		comboAttackIndex = 0
+
+func resetCombo():
+	comboAttackIndex = 0
