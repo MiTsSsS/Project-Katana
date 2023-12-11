@@ -2,7 +2,7 @@ extends Node
 
 class_name Fire
 
-@export var target:Enemy
+var target:Enemy
 
 @onready var burnTickTimer := Timer.new()
 @onready var burnTimer := Timer.new()
@@ -11,31 +11,30 @@ func _init(enemy:Enemy = null):
 	target = enemy
 	
 func _process(delta):
-	print(burnTickTimer.time_left)
-	if burnTickTimer.time_left == 0:
-		target.takeDamage(1)
+	#print(burnTimer.time_left)
+	pass
 
 func _ready():
 	add_child(burnTimer)
 	add_child(burnTickTimer)
 	
-	burnTimer.wait_time = 1.0
+	burnTimer.wait_time = 1.01
 	burnTickTimer.wait_time = 0.1
 	
 	burnTimer.one_shot = true
 	burnTickTimer.one_shot = false
 	
 	burnTimer.timeout.connect(_on_burnTimer_timeout)
-	#burnTimer.timeout.connect(_on_burnTickTimer_timeout)
+	burnTickTimer.timeout.connect(_on_burnTickTimer_timeout)
 	
 	burn()
 	
 func burn():
-	burnTimer.start()
 	burnTickTimer.start()
+	burnTimer.start()
 	
 func _on_burnTimer_timeout():
-	pass
+	queue_free()
 
-#func _on_burnTickTimer_timeout():
-	
+func _on_burnTickTimer_timeout():
+	target.takeDamage(1)
