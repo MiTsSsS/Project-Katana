@@ -1,9 +1,10 @@
-res://Scenes/TestScene.tscn
+res://Scenes/Items/Weapons/Katana.tscn
 res://Scripts/Characters/CharacterController.gd
+res://Scripts/Abilities/Fire.gd
+res://Scripts/Characters/Enemy.gd
+res://Scripts/Items/Weapons/Katana.gd
+res://Scenes/TestScene.tscn
 res://Scenes/Characters/Dash.tscn
 res://Scenes/Characters/Enemy.tscn
 res://Scenes/Characters/Character.tscn
-res://Scenes/Items/Weapons/Katana.tscn
-res://Scripts/Items/Weapons/Katana.gd
-res://Scripts/Abilities/Fire.gd
-res://Scripts/Characters/Enemy.gd
+res://Scenes/Items/Weapons/Gun.tscn

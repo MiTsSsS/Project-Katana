@@ -12,7 +12,7 @@ enum AppliedSkill {
 @onready var comboAttackAnimationSequence = ["swing", "swing1", "swing2"]
 @onready var comboAttackIndex = 0
 @onready var slashVfx = $SlashVFX
-@onready var appliedSkill = AppliedSkill.NONE
+@onready var appliedSkill = AppliedSkill.FIRE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,11 +24,12 @@ func _process(delta):
 
 func _on_blade_body_entered(body):
 	if body.is_in_group("mobs"):
+		var hitObj := body as Enemy
 		match appliedSkill:
 			AppliedSkill.NONE:
-				body.queue_free()
-			#AppliedSkill.FIRE:
-				#Apply fire on enemy
+				hitObj.takeDamage(15)
+			AppliedSkill.FIRE:
+				Fire.new(hitObj)
 			#AppliedSkill.WIND:
 				#Launch wind from Katana
 			#AppliedSkill.BOOMERANG:
