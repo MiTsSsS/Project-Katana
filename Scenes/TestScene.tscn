@@ -6,6 +6,7 @@
 [node name="TestScene" type="Node2D"]
 
 [node name="Character" parent="." instance=ExtResource("1_ys7vr")]
+position = Vector2(183, 221)
 
 [node name="Enemy" parent="." instance=ExtResource("2_m2rjn")]
 position = Vector2(185, 115)

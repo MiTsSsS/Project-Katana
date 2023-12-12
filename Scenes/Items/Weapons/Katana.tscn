@@ -240,7 +240,6 @@ texture = ExtResource("1_itao1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blade"]
 position = Vector2(0, -76.5)
 shape = SubResource("RectangleShape2D_ohato")
-disabled = true
 
 [node name="Swing" type="AnimationPlayer" parent="Blade"]
 root_node = NodePath("../..")
@@ -257,6 +256,10 @@ sprite_frames = SubResource("SpriteFrames_3pkgk")
 animation = &"slash"
 frame = 5
 frame_progress = 1.0
+
+[node name="WindSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(0.5, -130.5)
+rotation = -1.5708
 
 [connection signal="body_entered" from="Blade" to="." method="_on_blade_body_entered"]
 [connection signal="animation_finished" from="SlashVFX" to="." method="_on_slash_vfx_animation_finished"]

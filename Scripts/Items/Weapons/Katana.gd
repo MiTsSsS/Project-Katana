@@ -9,11 +9,15 @@ enum AppliedSkill {
 	BOOMERANG,
 }
 
+#Attack related
 @onready var comboAttackAnimationSequence = ["swing", "swing1", "swing2"]
 @onready var comboAttackIndex = 0
 @onready var slashVfx = $SlashVFX
-@onready var appliedSkill = AppliedSkill.FIRE
-var fireSkill = preload("res://Scripts/Abilities/Fire.gd")
+
+#Skill related
+@onready var appliedSkill = AppliedSkill.WIND
+const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
+const WINDSKILL = preload("res://Scenes/Abilities/Wind.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,16 +34,19 @@ func _on_blade_body_entered(body):
 			AppliedSkill.NONE:
 				hitObj.takeDamage(15)
 			AppliedSkill.FIRE:
-				var fs = fireSkill.new(hitObj)
+				var fs = FIRESKILL.new(hitObj)
 				hitObj.add_child(fs)
-			#AppliedSkill.WIND:
-				#Launch wind from Katana
-			#AppliedSkill.BOOMERANG:
-				#Throw Katana like boomerang
+		
+	#AppliedSkill.BOOMERANG:
+		#Throw Katana like boomerang
 
 func swing():
 	slashVfx.show()
 	$Blade/Swing.play(comboAttackAnimationSequence[comboAttackIndex])
+	if(appliedSkill == AppliedSkill.WIND):
+		var ws = WINDSKILL.instantiate()
+		get_parent().get_parent().get_parent().add_child(ws)
+		ws.transform = $WindSpawnPoint.global_transform
 	
 	if comboAttackIndex == 1:
 		slashVfx.flip_h	
