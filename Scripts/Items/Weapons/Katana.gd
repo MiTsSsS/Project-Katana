@@ -13,11 +13,12 @@ enum AppliedSkill {
 @onready var comboAttackIndex = 0
 @onready var slashVfx = $SlashVFX
 @onready var appliedSkill = AppliedSkill.FIRE
+var fireSkill = preload("res://Scripts/Abilities/Fire.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	pass
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -29,7 +30,8 @@ func _on_blade_body_entered(body):
 			AppliedSkill.NONE:
 				hitObj.takeDamage(15)
 			AppliedSkill.FIRE:
-				Fire.new(hitObj)
+				var fs = fireSkill.new(hitObj)
+				hitObj.add_child(fs)
 			#AppliedSkill.WIND:
 				#Launch wind from Katana
 			#AppliedSkill.BOOMERANG:
