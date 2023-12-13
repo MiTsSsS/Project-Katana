@@ -33,23 +33,27 @@ func _on_blade_body_entered(body):
 		match appliedSkill:
 			AppliedSkill.NONE:
 				hitObj.takeDamage(15)
+			AppliedSkill.WIND:
+				hitObj.takeDamage(15)
 			AppliedSkill.FIRE:
 				var fs = FIRESKILL.new(hitObj)
 				hitObj.add_child(fs)
-		
-	#AppliedSkill.BOOMERANG:
-		#Throw Katana like boomerang
+				hitObj.setIsOnFire(true)
 
 func swing():
 	slashVfx.show()
 	$Blade/Swing.play(comboAttackAnimationSequence[comboAttackIndex])
-	if(appliedSkill == AppliedSkill.WIND):
-		var ws = WINDSKILL.instantiate()
-		get_parent().get_parent().get_parent().add_child(ws)
-		ws.transform = $WindSpawnPoint.global_transform
+	match appliedSkill:
+		AppliedSkill.WIND:
+			var ws = WINDSKILL.instantiate()
+			get_parent().get_parent().get_parent().add_child(ws)
+			ws.transform = $WindSpawnPoint.global_transform
+		
+		#AppliedSkill.BOOMERANG:
+			#Throw Katana like boomerang
 	
 	if comboAttackIndex == 1:
-		slashVfx.flip_h	
+		slashVfx.flip_h
 	
 	slashVfx.play()
 

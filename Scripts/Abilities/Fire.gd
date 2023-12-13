@@ -34,6 +34,7 @@ func burn():
 	burnTimer.start()
 	
 func _on_burnTimer_timeout():
+	target.setIsOnFire(false)
 	queue_free()
 
 func _on_burnTickTimer_timeout():

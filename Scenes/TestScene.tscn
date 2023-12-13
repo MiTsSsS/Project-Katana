@@ -9,6 +9,12 @@
 position = Vector2(183, 221)
 
 [node name="Enemy" parent="." instance=ExtResource("2_m2rjn")]
-position = Vector2(185, 115)
+position = Vector2(321, 415)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_m2rjn")]
+position = Vector2(618, 358)
+
+[node name="Enemy3" parent="." instance=ExtResource("2_m2rjn")]
+position = Vector2(538, 407)
 
 [editable path="Character"]
