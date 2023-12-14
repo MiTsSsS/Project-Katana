@@ -9,12 +9,15 @@
 position = Vector2(183, 221)
 
 [node name="Enemy" parent="." instance=ExtResource("2_m2rjn")]
-position = Vector2(321, 415)
+position = Vector2(339, 407)
+testName = "Massis"
 
 [node name="Enemy2" parent="." instance=ExtResource("2_m2rjn")]
 position = Vector2(618, 358)
+testName = "2youra"
 
 [node name="Enemy3" parent="." instance=ExtResource("2_m2rjn")]
 position = Vector2(538, 407)
+testName = "Mtable"
 
 [editable path="Character"]

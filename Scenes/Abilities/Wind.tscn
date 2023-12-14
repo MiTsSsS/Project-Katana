@@ -40,8 +40,9 @@ animation = &"wind"
 autoplay = "wind"
 frame_progress = 0.830534
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PushBackCollision" type="CollisionShape2D" parent="."]
 position = Vector2(63, 2)
+scale = Vector2(0.993267, 1)
 shape = SubResource("RectangleShape2D_bnmre")
 
 [node name="WindDuration" type="Timer" parent="."]
