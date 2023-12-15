@@ -8,6 +8,8 @@ class_name Enemy
 
 @export var testName:String
 
+var fireNode:Fire
+
 const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
 
 func _physics_process(delta):
@@ -29,16 +31,12 @@ func spreadFire():
 	for hitObj in fireSpreadRadius.collision_result:
 		var enemy = hitObj.collider
 		if enemy.is_in_group("mobs"):
-			print("HIIITTTTTTTT")
 			if isOnFire and enemy.isOnFire:
-				#var fireNode = 
-				#fireNode.resetBurnDuration()
-				print("FIRE TIMER RESET")
+				fireNode.resetBurnDuration()
 			elif isOnFire and not enemy.isOnFire:
 				var fs = FIRESKILL.new(enemy)
 				enemy.add_child(fs)
 				enemy.setIsOnFire(true)
-				print("FIRE SPREAD")
 			else:
 				print("Not one condition is satisfied")
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2pfr12wupe8g"]
+[gd_scene load_steps=16 format=3 uid="uid://c2pfr12wupe8g"]
 
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/Katana.gd" id="1_3jpsi"]
 [ext_resource type="Texture2D" uid="uid://cwh75kco5ltva" path="res://icon.svg" id="1_itao1"]
@@ -216,6 +216,12 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="Curve2D" id="Curve2D_wtvrg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 125.5, 42.5, 0, 0, 0, 0, 309.5, 19.5, 0, 0, 0, 0, 492.5, 3.5, 0, 0, 0, 0, 634.5, -15.5, 0, 0, 0, 0, 692.5, -24.5, 0, 0, 0, 0, 652.5, -96.5, 0, 0, 0, 0, 253.5, -115.5, 0, 0, 0, 0, -1.5, -107.5)
+}
+point_count = 9
+
 [node name="Katana" type="Node2D"]
 position = Vector2(34.5, 9.5)
 script = ExtResource("1_3jpsi")
@@ -262,6 +268,13 @@ frame_progress = 1.0
 [node name="WindSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(0.5, -130.5)
 rotation = -1.5708
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_wtvrg")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotation = 0.326524
+loop = false
 
 [connection signal="body_entered" from="Blade" to="." method="_on_blade_body_entered"]
 [connection signal="animation_finished" from="SlashVFX" to="." method="_on_slash_vfx_animation_finished"]

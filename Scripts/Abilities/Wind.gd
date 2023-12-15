@@ -17,10 +17,8 @@ func _on_body_entered(body):
 		var hit := body as Enemy
 		hit.position += transform.x * speed * 0.1
 		if not hasSpreadFire:	
-			print(hit.testName)
 			hit.spreadFire()
 			hasSpreadFire = true
 
-		
 func _on_wind_duration_timeout():
 	queue_free()

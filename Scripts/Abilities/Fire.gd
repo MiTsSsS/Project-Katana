@@ -30,7 +30,6 @@ func burn():
 	burnTimer.start()
 	
 func resetBurnDuration():
-	print("Duration Reset")
 	burnTickTimer.start()
 	burnTimer.start()
 	
@@ -40,4 +39,3 @@ func _on_burnTimer_timeout():
 
 func _on_burnTickTimer_timeout():
 	target.takeDamage(1)
-	

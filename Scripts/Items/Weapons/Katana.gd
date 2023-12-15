@@ -25,23 +25,24 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("select_normal_melee"):
+		appliedSkill = AppliedSkill.NONE
 	if Input.is_action_just_pressed("select_fire_skill"):
 		appliedSkill = AppliedSkill.FIRE
 	if Input.is_action_just_pressed("select_wind_skill"):
 		appliedSkill = AppliedSkill.WIND
+	if Input.is_action_just_pressed("select_boomerang_skill"):
+		appliedSkill = AppliedSkill.BOOMERANG
 
 func _on_blade_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		match appliedSkill:
-			AppliedSkill.NONE:
-				hitObj.takeDamage(15)
-			AppliedSkill.WIND:
-				hitObj.takeDamage(15)
-			AppliedSkill.FIRE:
-				var fs = FIRESKILL.new(hitObj)
-				hitObj.add_child(fs)
-				hitObj.setIsOnFire(true)
+		hitObj.takeDamage(15)
+		if appliedSkill == AppliedSkill.FIRE:
+			var fs = FIRESKILL.new(hitObj)
+			hitObj.add_child(fs)
+			hitObj.fireNode = fs
+			hitObj.setIsOnFire(true)
 
 func swing():
 	slashVfx.show()
@@ -52,8 +53,8 @@ func swing():
 			get_parent().get_parent().get_parent().add_child(ws)
 			ws.transform = $WindSpawnPoint.global_transform
 		
-		#AppliedSkill.BOOMERANG:
-			#Throw Katana like boomerang
+		AppliedSkill.BOOMERANG:
+			pass
 	
 	if comboAttackIndex == 1:
 		slashVfx.flip_h

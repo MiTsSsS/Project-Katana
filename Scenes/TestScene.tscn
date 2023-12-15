@@ -10,6 +10,7 @@ position = Vector2(183, 221)
 
 [node name="Enemy" parent="." instance=ExtResource("2_m2rjn")]
 position = Vector2(339, 407)
+scale = Vector2(1.00172, 1)
 testName = "Massis"
 
 [node name="Enemy2" parent="." instance=ExtResource("2_m2rjn")]
