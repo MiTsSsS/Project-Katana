@@ -15,6 +15,8 @@ enum AppliedSkill {
 @onready var slashVfx = $SlashVFX
 
 #Skill related
+@onready var speed = 800
+@onready var boomerang = false
 @onready var appliedSkill = AppliedSkill.WIND
 const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
 const WINDSKILL = preload("res://Scenes/Abilities/Wind.tscn")
@@ -33,6 +35,10 @@ func _process(delta):
 		appliedSkill = AppliedSkill.WIND
 	if Input.is_action_just_pressed("select_boomerang_skill"):
 		appliedSkill = AppliedSkill.BOOMERANG
+		
+func _physics_process(delta):
+	if boomerang:
+		$Blade.position += $Blade.transform.x * speed * delta
 
 func _on_blade_body_entered(body):
 	if body.is_in_group("mobs"):
@@ -54,7 +60,7 @@ func swing():
 			ws.transform = $WindSpawnPoint.global_transform
 		
 		AppliedSkill.BOOMERANG:
-			pass
+			boomerang = true
 	
 	if comboAttackIndex == 1:
 		slashVfx.flip_h

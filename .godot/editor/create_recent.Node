@@ -1,3 +1,5 @@
+Node2D
+Area2D
 PathFollow2D
 Path2D
 ShapeCast2D
@@ -5,11 +7,8 @@ RayCast2D
 CollisionShape2D
 Timer
 RigidBody2D
-Area2D
 Marker2D
 AnimatedSprite2D
 Fire
-Node2D
 CPUParticles2D
 AnimationTree
-AnimationPlayer
