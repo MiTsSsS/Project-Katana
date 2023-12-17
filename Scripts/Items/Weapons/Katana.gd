@@ -16,10 +16,15 @@ enum AppliedSkill {
 
 #Skill related
 @onready var speed = 800
-@onready var boomerang = false
+
 @onready var appliedSkill = AppliedSkill.WIND
 const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
 const WINDSKILL = preload("res://Scenes/Abilities/Wind.tscn")
+
+#Boomerang Skill
+@onready var boomerang = false
+@onready var shouldBoomerangReturn = false
+#@onready var travelTime = 800
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,16 +34,27 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("select_normal_melee"):
 		appliedSkill = AppliedSkill.NONE
+		boomerang = false
 	if Input.is_action_just_pressed("select_fire_skill"):
 		appliedSkill = AppliedSkill.FIRE
+		boomerang = false
 	if Input.is_action_just_pressed("select_wind_skill"):
 		appliedSkill = AppliedSkill.WIND
+		boomerang = false
 	if Input.is_action_just_pressed("select_boomerang_skill"):
 		appliedSkill = AppliedSkill.BOOMERANG
 		
 func _physics_process(delta):
 	if boomerang:
-		$Blade.position += $Blade.transform.x * speed * delta
+		if not shouldBoomerangReturn:
+			$Blade.position += $Blade.transform.x * speed * delta
+		else:
+			var destination = get_parent().get_parent().position - $Blade.position
+			$Blade.position += destination * speed * delta
+			
+			if destination < get_parent().get_parent().position:
+				boomerang = false
+				shouldBoomerangReturn = false
 
 func _on_blade_body_entered(body):
 	if body.is_in_group("mobs"):
@@ -60,6 +76,7 @@ func swing():
 			ws.transform = $WindSpawnPoint.global_transform
 		
 		AppliedSkill.BOOMERANG:
+			$BoomerangTravelTime.start()
 			boomerang = true
 	
 	if comboAttackIndex == 1:
@@ -81,3 +98,7 @@ func incrementArrayIndex():
 
 func resetCombo():
 	comboAttackIndex = 0
+
+
+func _on_boomerang_travel_time_timeout():
+	shouldBoomerangReturn = true
