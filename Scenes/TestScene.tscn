@@ -20,5 +20,3 @@ testName = "2youra"
 [node name="Enemy3" parent="." instance=ExtResource("2_m2rjn")]
 position = Vector2(538, 407)
 testName = "Mtable"
-
-[editable path="Character"]

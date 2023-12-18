@@ -49,12 +49,13 @@ func _physics_process(delta):
 		if not shouldBoomerangReturn:
 			$Blade.position += $Blade.transform.x * speed * delta
 		else:
-			var destination = get_parent().get_parent().position - $Blade.position
-			$Blade.position += destination * speed * delta
+			var destination:Vector2 = get_parent().get_parent().position - $Blade.position
+			$Blade.position += destination.normalized() * speed * delta
 			
-			if destination < get_parent().get_parent().position:
+			if destination < get_parent().get_parent().position + Vector2(50, 50):
 				boomerang = false
 				shouldBoomerangReturn = false
+				$Blade/CollisionShape2D.disabled = true
 
 func _on_blade_body_entered(body):
 	if body.is_in_group("mobs"):
@@ -78,6 +79,7 @@ func swing():
 		AppliedSkill.BOOMERANG:
 			$BoomerangTravelTime.start()
 			boomerang = true
+			$Blade/CollisionShape2D.disabled = false
 	
 	if comboAttackIndex == 1:
 		slashVfx.flip_h
@@ -98,7 +100,6 @@ func incrementArrayIndex():
 
 func resetCombo():
 	comboAttackIndex = 0
-
 
 func _on_boomerang_travel_time_timeout():
 	shouldBoomerangReturn = true
