@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 signal completedCurrentAttackAnimation
 
@@ -8,6 +8,9 @@ enum AppliedSkill {
 	WIND,
 	BOOMERANG,
 }
+
+#General
+@onready var player:Player = get_parent().get_parent()
 
 #Attack related
 @onready var comboAttackAnimationSequence = ["swing", "swing1", "swing2"]
@@ -34,28 +37,32 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("select_normal_melee"):
 		appliedSkill = AppliedSkill.NONE
-		boomerang = false
 	if Input.is_action_just_pressed("select_fire_skill"):
 		appliedSkill = AppliedSkill.FIRE
-		boomerang = false
 	if Input.is_action_just_pressed("select_wind_skill"):
 		appliedSkill = AppliedSkill.WIND
-		boomerang = false
 	if Input.is_action_just_pressed("select_boomerang_skill"):
 		appliedSkill = AppliedSkill.BOOMERANG
 		
 func _physics_process(delta):
 	if boomerang:
+		var marker:Marker2D = player.get_node("Marker2D")
 		if not shouldBoomerangReturn:
-			$Blade.position += $Blade.transform.x * speed * delta
+			$Blade/CollisionShape2D.disabled = false
+			global_position += global_transform.x * speed * delta
+
 		else:
-			var destination:Vector2 = get_parent().get_parent().position - $Blade.position
-			$Blade.position += destination.normalized() * speed * delta
+			global_position += global_position.direction_to(player.global_position) * speed * delta
 			
-			if destination < get_parent().get_parent().position + Vector2(50, 50):
+			if global_position.distance_to(marker.global_position) < 100:
 				boomerang = false
 				shouldBoomerangReturn = false
 				$Blade/CollisionShape2D.disabled = true
+				position = player.get_node("Marker2D").position
+				global_position = player.get_node("Marker2D").global_position
+				player.canPerformNextAttack = true
+				rotation = player.
+				reparent(player.get_node("Sprite2D"), true)
 
 func _on_blade_body_entered(body):
 	if body.is_in_group("mobs"):
@@ -68,24 +75,33 @@ func _on_blade_body_entered(body):
 			hitObj.setIsOnFire(true)
 
 func swing():
-	slashVfx.show()
-	$Blade/Swing.play(comboAttackAnimationSequence[comboAttackIndex])
 	match appliedSkill:
+		AppliedSkill.NONE:
+			meleeAttack()
+			
+		AppliedSkill.FIRE:
+			meleeAttack()
+			
 		AppliedSkill.WIND:
 			var ws = WINDSKILL.instantiate()
 			get_parent().get_parent().get_parent().add_child(ws)
 			ws.transform = $WindSpawnPoint.global_transform
-		
+			meleeAttack()
+			
 		AppliedSkill.BOOMERANG:
+			reparent(get_parent().get_parent().get_parent(), true)
 			$BoomerangTravelTime.start()
-			boomerang = true
 			$Blade/CollisionShape2D.disabled = false
-	
+			boomerang = true
+			
 	if comboAttackIndex == 1:
 		slashVfx.flip_h
 	
+func meleeAttack():
+	slashVfx.show()
+	$Blade/Swing.play(comboAttackAnimationSequence[comboAttackIndex])
 	slashVfx.play()
-
+	
 func _on_slash_vfx_animation_finished():
 	slashVfx.hide()
 

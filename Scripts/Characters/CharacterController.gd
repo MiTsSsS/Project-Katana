@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 const BULLET = preload("res://Scenes/Items/Bullet.tscn")
 
 const baseSpeed = 500
