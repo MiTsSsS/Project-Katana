@@ -20,6 +20,10 @@ texture = ExtResource("2_onrqd")
 position = Vector2(-90, 0)
 scale = Vector2(2.0085, 1.98003)
 
+[node name="KatanaSlot" type="Marker2D" parent="Sprite2D"]
+position = Vector2(-90, 0)
+scale = Vector2(2, 2)
+
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
@@ -35,8 +39,5 @@ position = Vector2(-60, 0)
 position = Vector2(-0.75, -0.25)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_gl6aa")
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-45, 0)
 
 [connection signal="completedCurrentAttackAnimation" from="Sprite2D/Katana" to="." method="_on_katana_completed_current_attack_animation"]

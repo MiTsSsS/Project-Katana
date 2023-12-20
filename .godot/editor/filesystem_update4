@@ -1,8 +1,9 @@
 res://Scenes/Items/Weapons/Katana.tscn
 res://Scripts/Characters/CharacterController.gd
-res://Scripts/Items/Weapons/Katana.gd
 res://Scenes/TestScene.tscn
 res://Scenes/Characters/Dash.tscn
 res://Scenes/Characters/Enemy.tscn
-res://Scenes/Characters/Character.tscn
 res://Scenes/Abilities/Wind.tscn
+res://Scenes/Characters/Character.tscn
+res://Scripts/Items/Weapons/Katana.gd
+res://Scenes/Items/Bullet.tscn
