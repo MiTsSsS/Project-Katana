@@ -9,10 +9,6 @@ var target:Enemy
 
 func _init(enemy:Enemy = null):
 	target = enemy
-	
-func _process(delta):
-	#print(burnTimer.time_left)
-	pass
 
 func _ready():
 	add_child(burnTimer)
@@ -33,7 +29,12 @@ func burn():
 	burnTickTimer.start()
 	burnTimer.start()
 	
+func resetBurnDuration():
+	burnTickTimer.start()
+	burnTimer.start()
+	
 func _on_burnTimer_timeout():
+	target.setIsOnFire(false)
 	queue_free()
 
 func _on_burnTickTimer_timeout():

@@ -9,11 +9,22 @@ enum AppliedSkill {
 	BOOMERANG,
 }
 
+#Attack related
 @onready var comboAttackAnimationSequence = ["swing", "swing1", "swing2"]
 @onready var comboAttackIndex = 0
 @onready var slashVfx = $SlashVFX
-@onready var appliedSkill = AppliedSkill.FIRE
-var fireSkill = preload("res://Scripts/Abilities/Fire.gd")
+
+#Skill related
+@onready var speed = 800
+
+@onready var appliedSkill = AppliedSkill.WIND
+const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
+const WINDSKILL = preload("res://Scenes/Abilities/Wind.tscn")
+
+#Boomerang Skill
+@onready var boomerang = false
+@onready var shouldBoomerangReturn = false
+#@onready var travelTime = 800
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,28 +32,57 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("select_normal_melee"):
+		appliedSkill = AppliedSkill.NONE
+		boomerang = false
+	if Input.is_action_just_pressed("select_fire_skill"):
+		appliedSkill = AppliedSkill.FIRE
+		boomerang = false
+	if Input.is_action_just_pressed("select_wind_skill"):
+		appliedSkill = AppliedSkill.WIND
+		boomerang = false
+	if Input.is_action_just_pressed("select_boomerang_skill"):
+		appliedSkill = AppliedSkill.BOOMERANG
+		
+func _physics_process(delta):
+	if boomerang:
+		if not shouldBoomerangReturn:
+			$Blade.position += $Blade.transform.x * speed * delta
+		else:
+			var destination:Vector2 = get_parent().get_parent().position - $Blade.position
+			$Blade.position += destination.normalized() * speed * delta
+			
+			if destination < get_parent().get_parent().position + Vector2(50, 50):
+				boomerang = false
+				shouldBoomerangReturn = false
+				$Blade/CollisionShape2D.disabled = true
 
 func _on_blade_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		match appliedSkill:
-			AppliedSkill.NONE:
-				hitObj.takeDamage(15)
-			AppliedSkill.FIRE:
-				var fs = fireSkill.new(hitObj)
-				hitObj.add_child(fs)
-			#AppliedSkill.WIND:
-				#Launch wind from Katana
-			#AppliedSkill.BOOMERANG:
-				#Throw Katana like boomerang
+		hitObj.takeDamage(15)
+		if appliedSkill == AppliedSkill.FIRE:
+			var fs = FIRESKILL.new(hitObj)
+			hitObj.add_child(fs)
+			hitObj.fireNode = fs
+			hitObj.setIsOnFire(true)
 
 func swing():
 	slashVfx.show()
 	$Blade/Swing.play(comboAttackAnimationSequence[comboAttackIndex])
+	match appliedSkill:
+		AppliedSkill.WIND:
+			var ws = WINDSKILL.instantiate()
+			get_parent().get_parent().get_parent().add_child(ws)
+			ws.transform = $WindSpawnPoint.global_transform
+		
+		AppliedSkill.BOOMERANG:
+			$BoomerangTravelTime.start()
+			boomerang = true
+			$Blade/CollisionShape2D.disabled = false
 	
 	if comboAttackIndex == 1:
-		slashVfx.flip_h	
+		slashVfx.flip_h
 	
 	slashVfx.play()
 
@@ -60,3 +100,6 @@ func incrementArrayIndex():
 
 func resetCombo():
 	comboAttackIndex = 0
+
+func _on_boomerang_travel_time_timeout():
+	shouldBoomerangReturn = true

@@ -21,6 +21,7 @@ func _ready():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
+	#look_at(get_global_mouse_position())
 
 func get_input():
 	if Input.is_action_just_pressed("attack"):
