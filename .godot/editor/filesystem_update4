@@ -7,3 +7,4 @@ res://Scenes/Abilities/Wind.tscn
 res://Scenes/Characters/Character.tscn
 res://Scripts/Items/Weapons/Katana.gd
 res://Scenes/Items/Bullet.tscn
+res://Scripts/Characters/Enemy.gd

@@ -24,9 +24,9 @@ enum AppliedSkill {
 const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
 const WINDSKILL = preload("res://Scenes/Abilities/Wind.tscn")
 
-#Boomerang Skill
 @onready var boomerang = false
 @onready var shouldBoomerangReturn = false
+@onready var boomerangSwirl = $BoomerangSwirl
 #@onready var travelTime = 800
 
 # Called when the node enters the scene tree for the first time.
@@ -63,6 +63,7 @@ func _physics_process(delta):
 				player.canPerformNextAttack = true
 				rotation = player.get_node("Sprite2D").rotation
 				reparent(player.get_node("Sprite2D"), true)
+				boomerangSwirl.stop()
 
 func _on_blade_body_entered(body):
 	if body.is_in_group("mobs"):
@@ -93,6 +94,7 @@ func swing():
 			$BoomerangTravelTime.start()
 			$Blade/CollisionShape2D.disabled = false
 			boomerang = true
+			boomerangSwirl.play("swirl")
 			
 	if comboAttackIndex == 1:
 		slashVfx.flip_h
