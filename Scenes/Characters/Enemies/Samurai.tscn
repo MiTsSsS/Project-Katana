@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://c7pwnsmyq5gl4"]
+[gd_scene load_steps=3 format=3 uid="uid://bf4t0mc00wqqr"]
 
-[node name="Samurai" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="1_xp76c"]
+[ext_resource type="Script" path="res://Scripts/Characters/Samurai.gd" id="2_yeyem"]
+
+[node name="Enemy" instance=ExtResource("1_xp76c")]
+script = ExtResource("2_yeyem")
