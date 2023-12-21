@@ -24,9 +24,7 @@ func takeDamage(damage):
 		
 func setIsOnFire(hasFire):
 	isOnFire = hasFire
-	
-#TODO Store currently active fire node inside enemy class
-# and then reset its timer when spreading fire
+
 func spreadFire():
 	for hitObj in fireSpreadRadius.collision_result:
 		var enemy = hitObj.collider
