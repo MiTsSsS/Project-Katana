@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmkjgrji3jlhm"]
+
+[ext_resource type="PackedScene" uid="uid://bfqn2oultoebp" path="res://Scenes/Characters/Character.tscn" id="1_it1y6"]
+[ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="2_i54qd"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Character" parent="." instance=ExtResource("1_it1y6")]
+position = Vector2(183, 221)
+
+[node name="Enemy" parent="." instance=ExtResource("2_i54qd")]
+position = Vector2(339, 407)
+scale = Vector2(1.00172, 1)
+testName = "Massis"
+
+[node name="Enemy2" parent="." instance=ExtResource("2_i54qd")]
+position = Vector2(618, 358)
+testName = "2youra"
+
+[node name="Enemy3" parent="." instance=ExtResource("2_i54qd")]
+position = Vector2(509, 420)
+testName = "Mtable"

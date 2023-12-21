@@ -1,12 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4e0h5muoqwtx"]
+[gd_scene format=3 uid="uid://cyc6ocamiaieu"]
 
-[ext_resource type="Script" path="res://Scripts/Characters/Samurai.gd" id="2_mavxn"]
-
-[node name="Enemy"]
-script = ExtResource("2_mavxn")
-
-[node name="CollisionShape2D" parent="." index="1"]
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
-
-[node name="FireSpreadShapeCast2D" parent="." index="3"]
-visible = false
+[node name="Samurai" type="Node2D"]
