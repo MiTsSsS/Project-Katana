@@ -12,6 +12,7 @@ const baseSpeed = 500
 @onready var attackTimer = $AttackCooldown
 @onready var dash = $Dash
 @onready var katana = $Sprite2D/Katana
+@onready var hp = 100
 
 var canPerformNextAttack = true
 
@@ -54,3 +55,10 @@ func _on_timer_timeout():
 
 func _on_katana_completed_current_attack_animation():
 	canPerformNextAttack  = true
+	
+func takeDamage(value):
+	hp -= value
+	print(hp)
+	
+	if(hp <= 0):
+		queue_free()

@@ -264,6 +264,7 @@ texture = ExtResource("1_itao1")
 position = Vector2(0, -76.5)
 scale = Vector2(1.03028, 1.00973)
 shape = SubResource("RectangleShape2D_ohato")
+disabled = true
 
 [node name="Swing" type="AnimationPlayer" parent="Blade"]
 root_node = NodePath("../..")

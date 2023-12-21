@@ -2,10 +2,18 @@ extends CharacterBody2D
 
 class_name Enemy
 
-@onready var hp = 100
+enum State {
+	IDLE,
+	CHASING,
+	ATTACKING,
+}
+
 @onready var isOnFire = false
 @onready var fireSpreadRadius = $FireSpreadShapeCast2D
+@onready var targetDistanceToPlayer = 0
+@onready var state = State.CHASING
 
+@export var hp:int = 100
 @export var testName:String
 
 var fireNode:Fire
@@ -13,7 +21,8 @@ var fireNode:Fire
 const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
 
 func _physics_process(delta):
-	look_at(get_node("/root/TestScene/Character").get_position())
+	pass
+	#look_at(get_node("/root/TestScene/Character").get_position())
 
 func takeDamage(damage):
 	hp -= damage
@@ -37,4 +46,3 @@ func spreadFire():
 				enemy.setIsOnFire(true)
 			else:
 				print("Not one condition is satisfied")
-	
