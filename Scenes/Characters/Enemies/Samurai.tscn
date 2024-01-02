@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://c7pwnsmyq5gl4"]
+[gd_scene load_steps=2 format=3 uid="uid://dspxogw1evlal"]
 
-[node name="Samurai" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="1_drbhh"]
+
+[node name="Enemy" instance=ExtResource("1_drbhh")]
+
+[node name="AttackCooldown" parent="." index="4"]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
