@@ -7,4 +7,5 @@ res://Scenes/Characters/Character.tscn
 res://Scenes/Items/Bullet.tscn
 res://Scenes/Characters/Enemies/Samurai.tscn
 res://Scenes/TestScene.tscn
-res://Scenes/Characters/Samurai.tscn
+res://Scripts/Characters/Samurai.gd
+res://Scripts/Characters/Enemy.gd

@@ -46,3 +46,4 @@ func spreadFire():
 				enemy.setIsOnFire(true)
 			else:
 				print("Not one condition is satisfied")
+

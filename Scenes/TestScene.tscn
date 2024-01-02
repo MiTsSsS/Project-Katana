@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmkjgrji3jlhm"]
+[gd_scene load_steps=5 format=3 uid="uid://cmkjgrji3jlhm"]
 
 [ext_resource type="PackedScene" uid="uid://bfqn2oultoebp" path="res://Scenes/Characters/Character.tscn" id="1_ys7vr"]
 [ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="2_m2rjn"]
-[ext_resource type="PackedScene" uid="uid://bf4t0mc00wqqr" path="res://Scenes/Characters/Enemies/Samurai.tscn" id="3_mx37f"]
+[ext_resource type="PackedScene" uid="uid://dspxogw1evlal" path="res://Scenes/Characters/Enemies/Samurai.tscn" id="3_mx37f"]
+[ext_resource type="Script" path="res://Scripts/Characters/Samurai.gd" id="4_wh38y"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -24,3 +25,4 @@ testName = "Mtable"
 
 [node name="Enemy4" parent="." instance=ExtResource("3_mx37f")]
 position = Vector2(444, 131)
+script = ExtResource("4_wh38y")
