@@ -13,5 +13,10 @@ position = Vector2(31, 0)
 [node name="AttackCooldown" parent="." index="4"]
 one_shot = true
 
-[node name="Gun" parent="." index="5" instance=ExtResource("3_04xem")]
+[node name="SpecialAttackCooldown" parent="." index="5"]
+one_shot = true
+
+[node name="Gun" parent="." index="6" instance=ExtResource("3_04xem")]
 position = Vector2(-50, 0)
+
+[connection signal="timeout" from="SpecialAttackCooldown" to="." method="_on_special_attack_cooldown_timeout"]

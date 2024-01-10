@@ -1,10 +1,10 @@
-res://Scripts/Characters/CharacterController.gd
-res://Scenes/Characters/Enemies/Musketeer.tscn
 res://Scenes/TestScene.tscn
-res://Scenes/Items/Weapons/Gun.tscn
-res://Scripts/Characters/Musketeer.gd
+res://Scripts/Characters/CharacterController.gd
 res://Scenes/Characters/Dash.tscn
 res://Scenes/Characters/Enemy.tscn
 res://Scenes/Characters/Character.tscn
 res://Scenes/Items/Weapons/Katana.tscn
-res://Scripts/Items/Weapons/Bullet.gd
+res://Scenes/Items/Weapons/Gun.tscn
+res://Scenes/Characters/Enemies/Musketeer.tscn
+res://Scripts/Characters/Musketeer.gd
+res://Scripts/Items/Weapons/Gun.gd

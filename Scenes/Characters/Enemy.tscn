@@ -30,3 +30,6 @@ target_position = Vector2(0, 0)
 max_results = 2
 
 [node name="AttackCooldown" type="Timer" parent="."]
+
+[node name="SpecialAttackCooldown" type="Timer" parent="."]
+wait_time = 5.0

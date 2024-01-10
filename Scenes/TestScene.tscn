@@ -1,32 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmkjgrji3jlhm"]
+[gd_scene load_steps=3 format=3 uid="uid://cmkjgrji3jlhm"]
 
 [ext_resource type="PackedScene" uid="uid://bfqn2oultoebp" path="res://Scenes/Characters/Character.tscn" id="1_ys7vr"]
-[ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="2_m2rjn"]
-[ext_resource type="PackedScene" uid="uid://dspxogw1evlal" path="res://Scenes/Characters/Enemies/Samurai.tscn" id="3_mx37f"]
-[ext_resource type="Script" path="res://Scripts/Characters/Samurai.gd" id="4_wh38y"]
 [ext_resource type="PackedScene" uid="uid://c75i24vr2giyw" path="res://Scenes/Characters/Enemies/Musketeer.tscn" id="5_2d1r4"]
 
 [node name="TestScene" type="Node2D"]
 
 [node name="Character" parent="." instance=ExtResource("1_ys7vr")]
 position = Vector2(183, 221)
-
-[node name="Enemy" parent="." instance=ExtResource("2_m2rjn")]
-position = Vector2(339, 407)
-scale = Vector2(1.00172, 1)
-testName = "Massis"
-
-[node name="Enemy2" parent="." instance=ExtResource("2_m2rjn")]
-position = Vector2(618, 358)
-testName = "2youra"
-
-[node name="Enemy3" parent="." instance=ExtResource("2_m2rjn")]
-position = Vector2(509, 420)
-testName = "Mtable"
-
-[node name="Samurai" parent="." instance=ExtResource("3_mx37f")]
-position = Vector2(444, 131)
-script = ExtResource("4_wh38y")
 
 [node name="Musketeer" parent="." instance=ExtResource("5_2d1r4")]
 position = Vector2(727, 156)

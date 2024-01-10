@@ -1,7 +1,9 @@
 extends Enemy
 
 @onready var attackCooldownTimer = $AttackCooldown
+@onready var specialAttackCooldownTimer = $SpecialAttackCooldown
 @onready var attackCooldown = 1
+@onready var specialAttackCooldown = 5
 @onready var musket = $Gun
 
 var speed = 200
@@ -13,7 +15,10 @@ func _ready():
 	
 func _process(delta):
 	if state == State.ATTACKING:
-		attack()
+		if not player == null and specialAttackCooldownTimer.is_stopped():
+			specialAttack()
+		else:
+			attack()
 
 func _physics_process(delta):
 	if not player == null:
@@ -31,6 +36,12 @@ func _physics_process(delta):
 func attack():
 	if not player == null and attackCooldownTimer.is_stopped():
 		musket.shoot(attackCooldownTimer)
+
+func specialAttack():
+		musket.specialAttack(specialAttackCooldownTimer)
 	
 func _on_attack_cooldown_timeout():
 	attackCooldownTimer.wait_time = attackCooldown
+
+func _on_special_attack_cooldown_timeout():
+	specialAttackCooldownTimer.wait_time = specialAttackCooldown
