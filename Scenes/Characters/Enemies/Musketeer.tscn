@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c75i24vr2giyw"]
+
+[ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="1_xmg01"]
+[ext_resource type="Script" path="res://Scripts/Characters/Musketeer.gd" id="2_xn46e"]
+[ext_resource type="PackedScene" uid="uid://4ku04kd1tfuv" path="res://Scenes/Items/Weapons/Gun.tscn" id="3_04xem"]
+
+[node name="Enemy" instance=ExtResource("1_xmg01")]
+script = ExtResource("2_xn46e")
+
+[node name="Muzzle" parent="." index="2"]
+position = Vector2(31, 0)
+
+[node name="AttackCooldown" parent="." index="4"]
+one_shot = true
+
+[node name="SpecialAttackCooldown" parent="." index="5"]
+one_shot = true
+
+[node name="Gun" parent="." index="6" instance=ExtResource("3_04xem")]
+position = Vector2(-50, 0)
+
+[connection signal="timeout" from="SpecialAttackCooldown" to="." method="_on_special_attack_cooldown_timeout"]

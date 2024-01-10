@@ -10,3 +10,14 @@ func shoot(attackTimer):
 		attackTimer.start()
 	else:
 		pass
+
+func specialAttack(specialAttackTimer):
+	if specialAttackTimer.is_stopped():
+		specialAttackTimer.start()
+		for n in range(4):
+			var bullet = BULLET.instantiate()
+			get_parent().get_parent().add_child(bullet)
+			bullet.transform = $Muzzle.global_transform
+			await get_tree().create_timer(0.2).timeout
+	else:
+		pass
