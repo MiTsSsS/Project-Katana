@@ -26,6 +26,8 @@ func _physics_process(delta):
 
 func takeDamage(damage):
 	hp -= damage
+	print(testName)
+	print(" ")
 	print(hp)
 	
 	if(hp <= 0):

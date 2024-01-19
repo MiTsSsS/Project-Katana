@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dspxogw1evlal"]
+[gd_scene load_steps=3 format=3 uid="uid://dspxogw1evlal"]
 
 [ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="1_drbhh"]
+[ext_resource type="Script" path="res://Scripts/Characters/Samurai.gd" id="2_60oex"]
 
 [node name="Enemy" instance=ExtResource("1_drbhh")]
+script = ExtResource("2_60oex")
 
 [node name="AttackCooldown" parent="." index="4"]
 wait_time = 0.2
