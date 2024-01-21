@@ -35,7 +35,7 @@ func teleport():
 	teleportTimer.start()
 	var newRandPos = position + Vector2(randi_range(-teleportRadius, teleportRadius), randi_range(-teleportRadius, teleportRadius))
 
-	if newRandPos.x > Globals.WORLD_X or newRandPos.y > Globals.WORLD_Y:
+	if newRandPos.x > Globals.WORLD_X or newRandPos.x < Globals.WORLD_X or newRandPos.y > Globals.WORLD_Y or newRandPos.y < Globals.WORLD_Y:
 		teleportTimer.wait_time = teleportTimerCooldown
 		return
 		
