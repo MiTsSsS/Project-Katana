@@ -10,6 +10,7 @@ enum State {
 
 @onready var isOnFire = false
 @onready var fireSpreadRadius = $FireSpreadShapeCast2D
+@onready var sprite = $Sprite2D
 @onready var targetDistanceToPlayer = 0
 @onready var state = State.CHASING
 
@@ -23,6 +24,12 @@ const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
 func _physics_process(delta):
 	pass
 	#look_at(get_node("/root/TestScene/Character").get_position())
+	
+func setHp(value):
+	hp = value
+	
+	if hp == 0:
+		queue_free()
 
 func takeDamage(damage):
 	hp -= damage
@@ -30,7 +37,7 @@ func takeDamage(damage):
 	print(" ")
 	print(hp)
 	
-	if(hp <= 0):
+	if hp <= 0:
 		queue_free()
 		
 func setIsOnFire(hasFire):

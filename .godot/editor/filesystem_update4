@@ -11,3 +11,4 @@ res://Scenes/Characters/Enemies/Samurai.tscn
 res://Scenes/Items/Bullet.tscn
 res://Scripts/Items/Weapons/Bullet.gd
 res://Scripts/Characters/Hanzo.gd
+res://Scripts/Characters/Enemy.gd
