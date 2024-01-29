@@ -9,9 +9,10 @@ const baseSpeed = 500
 @export var dashSpeedScalar = 1.2
 @export var dashDuration = 0.2
 
+@onready var animations = $AnimatedSprite2D
 @onready var attackTimer = $AttackCooldown
 @onready var dash = $Dash
-@onready var katana = $Sprite2D/Katana
+@onready var katana = $AnimatedSprite2D/Katana
 @onready var hp = 100
 
 var canPerformNextAttack = true
@@ -36,13 +37,9 @@ func get_input():
 	velocity = direction * speed
 	if not dash.isDashing():
 		if Input.is_action_just_pressed("left"):
-			$Sprite2D.rotation = deg_to_rad(-90)
+			$AnimatedSprite2D.scale.x = -1
 		elif Input.is_action_just_pressed("right"):
-			$Sprite2D.rotation = deg_to_rad(90)
-		elif Input.is_action_just_pressed("down"):
-			$Sprite2D.rotation = deg_to_rad(180)
-		elif Input.is_action_just_pressed("up"):
-			$Sprite2D.rotation = 0
+			$AnimatedSprite2D.scale.x = 1
 
 	if Input.is_action_just_pressed("dash"):
 		dash.startDash(dashDuration)

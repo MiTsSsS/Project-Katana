@@ -1,8 +1,10 @@
+AnimationPlayer
+Sprite2D
+AnimatedSprite2D
 Timer
 Marker2D
 Camera2D
 RigidBody2D
-AnimationPlayer
 Node2D
 Area2D
 PathFollow2D
@@ -10,5 +12,3 @@ Path2D
 ShapeCast2D
 RayCast2D
 CollisionShape2D
-AnimatedSprite2D
-Fire

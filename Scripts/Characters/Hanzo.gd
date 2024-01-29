@@ -86,7 +86,7 @@ func _on_special_attack_cooldown_timeout():
 #Create Clones
 func createClones():
 	if not isClone:
-		state = State.ATTACKING
+		state = State.ATTACKING 
 		
 		clonesTimer.start()
 		
