@@ -1,5 +1,6 @@
-AnimationPlayer
+AnimationTree
 Sprite2D
+AnimationPlayer
 AnimatedSprite2D
 Timer
 Marker2D

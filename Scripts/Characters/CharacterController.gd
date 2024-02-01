@@ -9,10 +9,11 @@ const baseSpeed = 500
 @export var dashSpeedScalar = 1.2
 @export var dashDuration = 0.2
 
-@onready var animations = $AnimatedSprite2D
+@onready var animations = $AnimationPlayer
 @onready var attackTimer = $AttackCooldown
+@onready var animStateMachine = $AnimationTree["parameters/playback"]
 @onready var dash = $Dash
-@onready var katana = $AnimatedSprite2D/Katana
+@onready var katana = $AnimationPlayer/Katana
 @onready var hp = 100
 
 var canPerformNextAttack = true
@@ -25,11 +26,12 @@ func _ready():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
-	#look_at(get_global_mouse_position())
 
 func get_input():
 	if Input.is_action_just_pressed("attack"):
 		if canPerformNextAttack:
+			animations.stop()
+			animations.play("attack_1")
 			canPerformNextAttack = false
 			katana.swing()
 
@@ -37,10 +39,15 @@ func get_input():
 	velocity = direction * speed
 	if not dash.isDashing():
 		if Input.is_action_just_pressed("left"):
-			$AnimatedSprite2D.scale.x = -1
+			$Sprite2D.flip_h = true
 		elif Input.is_action_just_pressed("right"):
-			$AnimatedSprite2D.scale.x = 1
-
+			$Sprite2D.flip_h = false
+	
+	if velocity == Vector2.ZERO:
+		animStateMachine.travel("idle")
+	elif velocity != Vector2.ZERO:
+		animStateMachine.travel("run")
+		
 	if Input.is_action_just_pressed("dash"):
 		dash.startDash(dashDuration)
 	

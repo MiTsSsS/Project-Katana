@@ -46,7 +46,7 @@ func _process(delta):
 		
 func _physics_process(delta):
 	if boomerang:
-		var marker:Marker2D = player.get_node("AnimatedSprite2D").get_node("KatanaSlot")
+		var marker:Marker2D = player.animations.get_node("KatanaSlot")
 		if not shouldBoomerangReturn:
 			$Blade/CollisionShape2D.disabled = false
 			global_position += global_transform.x * speed * delta
@@ -61,8 +61,8 @@ func _physics_process(delta):
 				position = marker.position
 				global_position = marker.global_position
 				player.canPerformNextAttack = true
-				rotation = player.get_node("AnimatedSprite2D").rotation
-				reparent(player.get_node("AnimatedSprite2D"), true)
+				rotation = player.animations.rotation
+				reparent(player.animations, true)
 				boomerangSwirl.stop()
 
 func _on_blade_body_entered(body):
