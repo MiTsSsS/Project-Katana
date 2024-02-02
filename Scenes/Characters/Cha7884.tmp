@@ -27,7 +27,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_6megc"]
 resource_name = "attack-1"
 length = 0.4
-step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -35,7 +34,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [14, 15, 16, 17]
@@ -47,7 +46,7 @@ tracks/1/path = NodePath("FirstStrikeArea/CollisionPolygon2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.15),
+"times": PackedFloat32Array(0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -223,10 +222,13 @@ states/idle/position = Vector2(194, 100)
 states/run/node = SubResource("AnimationNodeAnimation_ijn7u")
 states/run/position = Vector2(194, 1)
 transitions = ["idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_hu7d4"), "death", "End", SubResource("AnimationNodeStateMachineTransition_pkln7"), "idle", "get_hit", SubResource("AnimationNodeStateMachineTransition_1shwu"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_cwx6u"), "attack_1", "attack_2", SubResource("AnimationNodeStateMachineTransition_ool7s"), "attack_2", "idle", SubResource("AnimationNodeStateMachineTransition_xfwci"), "get_hit", "idle", SubResource("AnimationNodeStateMachineTransition_tscw3"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_s7dr0"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_p7wuh"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_km5we"), "run", "attack_1", SubResource("AnimationNodeStateMachineTransition_t8tp2")]
-graph_offset = Vector2(-445, -18)
+graph_offset = Vector2(-266, 72)
 
 [node name="Character" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_rklxv")
+speed = null
+dashSpeedScalar = null
+dashDuration = null
 
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 0.3

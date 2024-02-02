@@ -11,7 +11,7 @@ const baseSpeed = 500
 
 @onready var animations = $AnimationPlayer
 @onready var attackTimer = $AttackCooldown
-@onready var animStateMachine = $AnimationTree["parameters/playback"]
+@onready var animStateMachine = $AnimationTree.get("parameters/playback")
 @onready var dash = $Dash
 @onready var katana = $AnimationPlayer/Katana
 @onready var hp = 100
@@ -30,10 +30,10 @@ func _physics_process(delta):
 func get_input():
 	if Input.is_action_just_pressed("attack"):
 		if canPerformNextAttack:
-			animations.stop()
-			animations.play("attack_1")
+			animStateMachine.travel("attack_1")
 			canPerformNextAttack = false
 			katana.swing()
+			return
 
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
@@ -62,7 +62,16 @@ func _on_katana_completed_current_attack_animation():
 	
 func takeDamage(value):
 	hp -= value
-	print(hp)
 	
 	if(hp <= 0):
 		queue_free()
+
+func _on_first_strike_area_body_entered(body):
+		if body.is_in_group("mobs"):
+			var hitObj := body as Enemy
+			hitObj.takeDamage(15)
+
+func _on_second_strike_area_body_entered(body):
+		if body.is_in_group("mobs"):
+			var hitObj := body as Enemy
+			hitObj.takeDamage(15)

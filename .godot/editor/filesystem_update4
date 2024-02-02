@@ -10,4 +10,3 @@ res://Scenes/Characters/Enemies/Hanzo.tscn
 res://Scenes/Characters/Enemies/Samurai.tscn
 res://Scenes/Items/Bullet.tscn
 res://Scenes/Abilities/Wind.tscn
-res://Scripts/Items/Weapons/Katana.gd
