@@ -1,9 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://bfqn2oultoebp"]
+[gd_scene load_steps=32 format=3 uid="uid://bfqn2oultoebp"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterController.gd" id="1_rklxv"]
 [ext_resource type="PackedScene" uid="uid://bjs7m4djnqfah" path="res://Scenes/Characters/Dash.tscn" id="3_u8yht"]
 [ext_resource type="PackedScene" uid="uid://4ku04kd1tfuv" path="res://Scenes/Items/Weapons/Gun.tscn" id="5_p6eap"]
-[ext_resource type="PackedScene" uid="uid://c2pfr12wupe8g" path="res://Scenes/Items/Weapons/Katana.tscn" id="5_rfvp5"]
 [ext_resource type="Texture2D" uid="uid://oonch1a3umqc" path="res://Art/Characters/Player/spritesheet.png" id="11_ngfvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6aa"]
@@ -223,7 +222,7 @@ states/idle/position = Vector2(194, 100)
 states/run/node = SubResource("AnimationNodeAnimation_ijn7u")
 states/run/position = Vector2(194, 1)
 transitions = ["idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_hu7d4"), "death", "End", SubResource("AnimationNodeStateMachineTransition_pkln7"), "idle", "get_hit", SubResource("AnimationNodeStateMachineTransition_1shwu"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_cwx6u"), "attack_1", "attack_2", SubResource("AnimationNodeStateMachineTransition_ool7s"), "attack_2", "idle", SubResource("AnimationNodeStateMachineTransition_xfwci"), "get_hit", "idle", SubResource("AnimationNodeStateMachineTransition_tscw3"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_s7dr0"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_p7wuh"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_km5we"), "run", "attack_1", SubResource("AnimationNodeStateMachineTransition_t8tp2")]
-graph_offset = Vector2(-445, -18)
+graph_offset = Vector2(-422, 39)
 
 [node name="Character" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_rklxv")
@@ -257,14 +256,6 @@ libraries = {
 "": SubResource("AnimationLibrary_fao5y")
 }
 
-[node name="Katana" parent="AnimationPlayer" instance=ExtResource("5_rfvp5")]
-visible = false
-position = Vector2(-45, 0)
-scale = Vector2(1.00425, 0.990015)
-
-[node name="KatanaSlot" type="Marker2D" parent="AnimationPlayer"]
-position = Vector2(-45, 0)
-
 [node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_fao5y")
@@ -284,6 +275,11 @@ polygon = PackedVector2Array(-22, -20, -48, -19, -61, -36, -32, -44, 1, -37, 13,
 position = Vector2(63, -20)
 polygon = PackedVector2Array(-74, -16, -47, -34, -8, -32, 15, -14, 21, 13, 15, 32, 3, 46, -29, 33, -20, 8, -25, -14, -47, -23)
 
-[connection signal="completedCurrentAttackAnimation" from="AnimationPlayer/Katana" to="." method="_on_katana_completed_current_attack_animation"]
+[node name="KatanaSlot" type="Marker2D" parent="."]
+position = Vector2(-45, 0)
+
+[node name="WindSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(93, 0)
+
 [connection signal="body_entered" from="FirstStrikeArea" to="." method="_on_first_strike_area_body_entered"]
 [connection signal="body_entered" from="SecondStrikeArea" to="." method="_on_second_strike_area_body_entered"]

@@ -243,6 +243,7 @@ position = Vector2(34.5, 9.5)
 script = ExtResource("1_3jpsi")
 
 [node name="Blade" type="Area2D" parent="."]
+rotation = -1.0472
 
 [node name="Icon" type="Sprite2D" parent="Blade"]
 position = Vector2(0, -74)
@@ -263,7 +264,6 @@ texture = ExtResource("1_itao1")
 position = Vector2(0, -76.5)
 scale = Vector2(1.03028, 1.00973)
 shape = SubResource("RectangleShape2D_ohato")
-disabled = true
 
 [node name="Swing" type="AnimationPlayer" parent="Blade"]
 root_node = NodePath("../..")
