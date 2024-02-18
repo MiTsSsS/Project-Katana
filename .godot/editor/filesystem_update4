@@ -6,5 +6,9 @@ res://Scenes/Characters/Character.tscn
 res://Scenes/Items/Weapons/Katana.tscn
 res://Scenes/Items/Weapons/Gun.tscn
 res://Scenes/Characters/Enemies/Musketeer.tscn
-res://Scripts/Characters/Musketeer.gd
-res://Scripts/Items/Weapons/Gun.gd
+res://Scenes/Characters/Enemies/Hanzo.tscn
+res://Scenes/Characters/Enemies/Samurai.tscn
+res://Scenes/Items/Bullet.tscn
+res://Scripts/Items/Weapons/Bullet.gd
+res://Scripts/Characters/Hanzo.gd
+res://Scripts/Characters/Enemy.gd

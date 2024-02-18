@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjgpjcifjpir6"]
+
+[ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="1_ivv2j"]
+[ext_resource type="Script" path="res://Scripts/Characters/Hanzo.gd" id="2_pbc4f"]
+
+[node name="Enemy" instance=ExtResource("1_ivv2j")]
+script = ExtResource("2_pbc4f")
+
+[node name="Muzzle" parent="." index="2"]
+position = Vector2(30, 0)
+
+[node name="AttackCooldown" parent="." index="4"]
+wait_time = 0.2
+one_shot = true
+
+[node name="SpecialAttackCooldown" parent="." index="5"]
+one_shot = true
+
+[node name="TeleportCooldown" type="Timer" parent="." index="6"]
+wait_time = 15.0
+one_shot = true
+
+[node name="ClonesCooldown" type="Timer" parent="." index="7"]
+wait_time = 30.0
+one_shot = true
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="SpecialAttackCooldown" to="." method="_on_special_attack_cooldown_timeout"]
+[connection signal="timeout" from="TeleportCooldown" to="." method="_on_teleport_timeout"]
+[connection signal="timeout" from="ClonesCooldown" to="." method="_on_clones_cooldown_timeout"]
