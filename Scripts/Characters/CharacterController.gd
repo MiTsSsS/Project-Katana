@@ -37,12 +37,11 @@ func _ready():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
-	print($SecondStrikeArea/CollisionPolygon2D.disabled)
 
 func get_input():
 	if not isKatanaFlying:
 		if Input.is_action_just_pressed("attack"):
-			if katanaObj.appliedSkill == katanaObj.AppliedSkill.NONE:
+			if katanaObj.appliedSkill == katanaObj.AppliedSkill.NONE or katanaObj.appliedSkill == katanaObj.AppliedSkill.FIRE:
 				animStateMachine.travel("attack_1")
 				
 			#TODO: Move following code to a function in Katana script
