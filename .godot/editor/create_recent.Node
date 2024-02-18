@@ -1,12 +1,12 @@
-Marker2D
-Sprite2D
-CollisionPolygon2D
-CollisionShape2D
+Timer
 Area2D
+CollisionShape2D
+Sprite2D
+Marker2D
+CollisionPolygon2D
 AnimationTree
 AnimationPlayer
 AnimatedSprite2D
-Timer
 Camera2D
 RigidBody2D
 Node2D

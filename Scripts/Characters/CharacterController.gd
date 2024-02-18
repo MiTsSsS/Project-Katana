@@ -4,7 +4,7 @@ class_name Player
 
 const BULLET = preload("res://Scenes/Items/Bullet.tscn")
 const KATANA = preload("res://Scripts/Items/Weapons/Katana.gd")
-const KATANABOOMERANG = preload("res://Art/VFX/Items/Katana/KatanaBoomerang.png")
+const KATANABOOMERANG = preload("res://Scenes/Items/Weapons/BoomerangKatana.tscn")
 
 const baseSpeed = 500
 @export var speed = 500
@@ -14,11 +14,19 @@ const baseSpeed = 500
 @onready var animations = $AnimationPlayer
 @onready var attackTimer = $AttackCooldown
 @onready var animStateMachine = $AnimationTree.get("parameters/playback")
+
 @onready var dash = $Dash
+@onready var projectileSpawnPoint = $ProjectileSpawnPoint
+
 @onready var hp = 100
 var katanaObj:Katana
-
 var canPerformNextAttack = true
+
+signal positionChanged(newPos)
+signal fireSkillActivated(isActive)
+signal windSkillActivated(isActive)
+
+var isKatanaFlying = false
 
 func _ready():
 	var durationTimer = dash.get_node("DurationTimer")
@@ -31,36 +39,55 @@ func _physics_process(delta):
 	move_and_slide()
 
 func get_input():
-	if Input.is_action_just_pressed("attack"):
-		animStateMachine.travel("attack_1")
-		#TODO: Move following code to a function in Katana script
-		if katanaObj.appliedSkill == katanaObj.AppliedSkill.WIND:
-			var ws = katanaObj.WINDSKILL.instantiate()
-			get_parent().get_parent().add_child(ws)
-			ws.transform = $WindSpawnPoint.global_transform
-		return
+	if not isKatanaFlying:
+		if Input.is_action_just_pressed("attack"):
+			#TODO: Move following code to a function in Katana script
+			if katanaObj.appliedSkill == katanaObj.AppliedSkill.WIND:
+				animStateMachine.travel("attack_1")
+				var ws = katanaObj.WINDSKILL.instantiate()
+				get_parent().get_parent().add_child(ws)
+				ws.transform = projectileSpawnPoint.global_transform
+			
+			#TODO: Move following code to a function in Katana script
+			if katanaObj.appliedSkill == katanaObj.AppliedSkill.BOOMERANG:
+				var bk = KATANABOOMERANG.instantiate()
+				bk.global_transform = projectileSpawnPoint.global_transform
+				positionChanged.connect(bk.updatePlayerPosition)
+				fireSkillActivated.connect(bk.setApplyFire)
+				windSkillActivated.connect(bk.setCreateWind)
+				bk.signalArrival.connect(setKatanaArrived)
+				isKatanaFlying = true
+				get_parent().get_parent().add_child(bk)
+			
+			return
 
 	#TODO: Move following code to a function in Katana script 
 	if Input.is_action_just_pressed("select_normal_melee"):
 		katanaObj.appliedSkill = katanaObj.AppliedSkill.NONE
+		emitSkillActivationSignals(false, false)
 	if Input.is_action_just_pressed("select_fire_skill"):
 		katanaObj.appliedSkill = katanaObj.AppliedSkill.FIRE
+		emitSkillActivationSignals(false, true)
 	if Input.is_action_just_pressed("select_wind_skill"):
 		katanaObj.appliedSkill = katanaObj.AppliedSkill.WIND
+		emitSkillActivationSignals(true, false)
 	if Input.is_action_just_pressed("select_boomerang_skill"):
 		katanaObj.appliedSkill = katanaObj.AppliedSkill.BOOMERANG
+		emitSkillActivationSignals(false, false)
 
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
 	if not dash.isDashing():
 		if Input.is_action_just_pressed("left"):
 			$Sprite2D.flip_h = true
-			$WindSpawnPoint.position = Vector2(-35, 0)
-			$WindSpawnPoint.scale.x = -1
+			projectileSpawnPoint.position = Vector2(-35, 0)
+			projectileSpawnPoint.scale.x = -1
 		elif Input.is_action_just_pressed("right"):
-			$WindSpawnPoint.position = Vector2(35, 0)
-			$WindSpawnPoint.scale.x = 1
+			projectileSpawnPoint.position = Vector2(35, 0)
+			projectileSpawnPoint.scale.x = 1
 			$Sprite2D.flip_h = false
+	
+	positionChanged.emit(global_position)
 	
 	if velocity == Vector2.ZERO:
 		animStateMachine.travel("idle")
@@ -97,3 +124,10 @@ func _on_second_strike_area_body_entered(body):
 		if body.is_in_group("mobs"):
 			var hitObj := body as Enemy
 			hitObj.takeDamage(15)
+			
+func setKatanaArrived():
+	isKatanaFlying = false
+	
+func emitSkillActivationSignals(isWindActive, isFireActive):
+	windSkillActivated.emit(isWindActive)
+	fireSkillActivated.emit(isFireActive)

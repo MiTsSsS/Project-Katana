@@ -243,7 +243,6 @@ position = Vector2(34.5, 9.5)
 script = ExtResource("1_3jpsi")
 
 [node name="Blade" type="Area2D" parent="."]
-rotation = -1.0472
 
 [node name="Icon" type="Sprite2D" parent="Blade"]
 position = Vector2(0, -74)

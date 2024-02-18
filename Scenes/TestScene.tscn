@@ -8,5 +8,5 @@
 [node name="Character" parent="." instance=ExtResource("1_ys7vr")]
 position = Vector2(183, 221)
 
-[node name="Enemy" parent="." instance=ExtResource("2_0nmyl")]
-position = Vector2(315, 236)
+[node name="Enemy2" parent="." instance=ExtResource("2_0nmyl")]
+position = Vector2(41, 317)
