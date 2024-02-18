@@ -2,8 +2,10 @@ extends Area2D
 
 const speed = 800
 const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
+const WINDSKILL = preload("res://Scenes/Abilities/Wind.tscn")
 
 @onready var travelTime = $BoomerangTravelTime
+@onready var windCooldown = $WindCooldown
 @onready var shouldBoomerangReturn = false
 
 signal signalArrival
@@ -14,6 +16,7 @@ var playerPosition
 
 func _ready():
 	travelTime.start()
+	windCooldown.start()
 
 func  _physics_process(delta):
 	if not shouldBoomerangReturn:
@@ -42,11 +45,18 @@ func _on_body_entered(body):
 			hit.fireNode = fs
 			hit.setIsOnFire(true)
 			
-		elif createWind:
-			pass
-			
 func setApplyFire(isActive:bool):
 	applyFire = isActive
 
 func setCreateWind(isActive:bool):
 	createWind = isActive
+
+func _on_wind_cooldown_timeout():
+	windCooldown.wait_time = 1.5
+	
+	if createWind:
+		var ws = WINDSKILL.instantiate()
+		get_parent().add_child(ws)
+		ws.transform = global_transform
+	
+	windCooldown.start()

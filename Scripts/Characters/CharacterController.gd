@@ -37,16 +37,20 @@ func _ready():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
+	print($SecondStrikeArea/CollisionPolygon2D.disabled)
 
 func get_input():
 	if not isKatanaFlying:
 		if Input.is_action_just_pressed("attack"):
+			if katanaObj.appliedSkill == katanaObj.AppliedSkill.NONE:
+				animStateMachine.travel("attack_1")
+				
 			#TODO: Move following code to a function in Katana script
 			if katanaObj.appliedSkill == katanaObj.AppliedSkill.WIND:
 				animStateMachine.travel("attack_1")
 				var ws = katanaObj.WINDSKILL.instantiate()
-				get_parent().get_parent().add_child(ws)
 				ws.transform = projectileSpawnPoint.global_transform
+				get_parent().get_parent().add_child(ws)
 			
 			#TODO: Move following code to a function in Katana script
 			if katanaObj.appliedSkill == katanaObj.AppliedSkill.BOOMERANG:

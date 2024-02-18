@@ -18,5 +18,10 @@ shape = SubResource("RectangleShape2D_xtq2o")
 [node name="BoomerangTravelTime" type="Timer" parent="."]
 one_shot = true
 
+[node name="WindCooldown" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="BoomerangTravelTime" to="." method="_on_boomerang_travel_time_timeout"]
+[connection signal="timeout" from="WindCooldown" to="." method="_on_wind_cooldown_timeout"]
