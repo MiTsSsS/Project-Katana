@@ -1,12 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmkjgrji3jlhm"]
 
 [ext_resource type="PackedScene" uid="uid://bfqn2oultoebp" path="res://Scenes/Characters/Character.tscn" id="1_ys7vr"]
-[ext_resource type="PackedScene" uid="uid://bjgpjcifjpir6" path="res://Scenes/Characters/Enemies/Hanzo.tscn" id="2_0nmyl"]
+[ext_resource type="PackedScene" uid="uid://dspxogw1evlal" path="res://Scenes/Characters/Enemies/Samurai.tscn" id="2_3jquq"]
 
 [node name="TestScene" type="Node2D"]
 
 [node name="Character" parent="." instance=ExtResource("1_ys7vr")]
 position = Vector2(183, 221)
 
-[node name="Enemy2" parent="." instance=ExtResource("2_0nmyl")]
-position = Vector2(41, 317)
+[node name="Enemy" parent="." instance=ExtResource("2_3jquq")]

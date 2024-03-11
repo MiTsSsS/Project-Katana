@@ -1,11 +1,11 @@
+AnimationPlayer
+AnimationTree
 Timer
 Area2D
 CollisionShape2D
 Sprite2D
 Marker2D
 CollisionPolygon2D
-AnimationTree
-AnimationPlayer
 AnimatedSprite2D
 Camera2D
 RigidBody2D
