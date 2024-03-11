@@ -100,6 +100,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [28, 29, 30, 31, 32, 33]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"destroySamurai"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_gnmpy"]
 resource_name = "get_hit"
@@ -202,12 +216,6 @@ scale = Vector2(1, 1)
 texture = ExtResource("3_2ehet")
 hframes = 38
 frame = 1
-
-[node name="CollisionShape2D" parent="." index="1"]
-visible = false
-
-[node name="FireSpreadShapeCast2D" parent="." index="3"]
-visible = false
 
 [node name="AttackCooldown" parent="." index="4"]
 wait_time = 0.2
