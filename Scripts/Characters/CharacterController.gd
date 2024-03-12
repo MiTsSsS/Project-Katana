@@ -108,26 +108,29 @@ func _on_timer_timeout():
 
 func takeDamage(value):
 	hp -= value
+	animStateMachine.travel("get_hit")
+	print("Player HP: ")
+	print(hp)
 	
 	if(hp <= 0):
 		queue_free()
 
 func _on_first_strike_area_body_entered(body):
-		if body.is_in_group("mobs"):
-			var hitObj := body as Enemy
-			hitObj.takeDamage(15)
-			#TODO: Move following code to a function in Katana script
-			if katanaObj.appliedSkill == katanaObj.AppliedSkill.FIRE:
-				var fs = katanaObj.FIRESKILL.new(hitObj)
-				hitObj.add_child(fs)
-				hitObj.fireNode = fs
-				hitObj.setIsOnFire(true)
+	if body.is_in_group("mobs"):
+		var hitObj := body as Enemy
+		hitObj.takeDamage(15)
+		#TODO: Move following code to a function in Katana script
+		if katanaObj.appliedSkill == katanaObj.AppliedSkill.FIRE:
+			var fs = katanaObj.FIRESKILL.new(hitObj)
+			hitObj.add_child(fs)
+			hitObj.fireNode = fs
+			hitObj.setIsOnFire(true)
 
 func _on_second_strike_area_body_entered(body):
-		if body.is_in_group("mobs"):
-			var hitObj := body as Enemy
-			hitObj.takeDamage(15)
-			
+	if body.is_in_group("mobs"):
+		var hitObj := body as Enemy
+		hitObj.takeDamage(15)
+		
 func setKatanaArrived():
 	isKatanaFlying = false
 	
