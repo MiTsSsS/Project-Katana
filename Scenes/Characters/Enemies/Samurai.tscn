@@ -38,7 +38,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FirstAttack/CollisionPolygon2D:disabled")
+tracks/1/path = NodePath("FlipMarker/FirstAttack/CollisionPolygon2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -67,7 +67,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SecondAttack/CollisionPolygon2D:disabled")
+tracks/1/path = NodePath("FlipMarker/SecondAttack/CollisionPolygon2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -279,7 +279,7 @@ states/idle/position = Vector2(482, 100)
 states/run/node = SubResource("AnimationNodeAnimation_gp0by")
 states/run/position = Vector2(498, -31)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_5elhg"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_r6snv"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_gym0k"), "attack_1", "attack_2", SubResource("AnimationNodeStateMachineTransition_oklbi"), "idle", "get_hit", SubResource("AnimationNodeStateMachineTransition_ib5xa"), "get_hit", "idle", SubResource("AnimationNodeStateMachineTransition_l303p"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_50yr7"), "die", "End", SubResource("AnimationNodeStateMachineTransition_u2c8a"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_pwirk"), "run", "attack_1", SubResource("AnimationNodeStateMachineTransition_cxop4"), "attack_2", "run", SubResource("AnimationNodeStateMachineTransition_ci2ff"), "Start", "run", SubResource("AnimationNodeStateMachineTransition_erujj"), "get_hit", "die", SubResource("AnimationNodeStateMachineTransition_dgsu3"), "run", "die", SubResource("AnimationNodeStateMachineTransition_dq3dk"), "attack_1", "die", SubResource("AnimationNodeStateMachineTransition_jj65n"), "attack_2", "die", SubResource("AnimationNodeStateMachineTransition_qu7ks")]
-graph_offset = Vector2(-111, -31)
+graph_offset = Vector2(-63, 50)
 
 [node name="Enemy" instance=ExtResource("1_drbhh")]
 script = ExtResource("2_60oex")
@@ -301,7 +301,24 @@ visible = false
 wait_time = 0.2
 one_shot = true
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="6"]
+[node name="FlipMarker" type="Marker2D" parent="." index="6"]
+
+[node name="FirstAttack" type="Area2D" parent="FlipMarker" index="0"]
+position = Vector2(68, -18)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FlipMarker/FirstAttack" index="0"]
+polygon = PackedVector2Array(-69, -10, -36, -9, -12, 5, -11, 19, -36, 34, -6, 28, 17, 15, 17, -7, -29, -28, -85, -25)
+disabled = true
+
+[node name="SecondAttack" type="Area2D" parent="FlipMarker" index="1"]
+position = Vector2(136, -36)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FlipMarker/SecondAttack" index="0"]
+position = Vector2(-44, 19)
+polygon = PackedVector2Array(-106, 14, -96, 23, -74, 31, -44, 33, -15, 27, 1, 14, -2, -1, -23, -12, -16, 0, -20, 12, -43, 18, -103, 0)
+disabled = true
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="7"]
 libraries = {
 "": SubResource("AnimationLibrary_a61vt")
 }
@@ -313,26 +330,11 @@ parameters/conditions/get_hit = false
 parameters/conditions/idle = false
 parameters/conditions/running = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 libraries = {
 "": SubResource("AnimationLibrary_a61vt")
 }
 
-[node name="FirstAttack" type="Area2D" parent="." index="8"]
-position = Vector2(68, -18)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FirstAttack" index="0"]
-polygon = PackedVector2Array(-69, -10, -36, -9, -12, 5, -11, 19, -36, 34, -6, 28, 17, 15, 17, -7, -29, -28, -85, -25)
-disabled = true
-
-[node name="SecondAttack" type="Area2D" parent="." index="9"]
-position = Vector2(136, -36)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecondAttack" index="0"]
-position = Vector2(-44, 19)
-polygon = PackedVector2Array(-106, 14, -96, 23, -74, 31, -44, 33, -15, 27, 1, 14, -2, -1, -23, -12, -16, 0, -20, 12, -43, 18, -103, 0)
-disabled = true
-
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
-[connection signal="body_entered" from="FirstAttack" to="." method="_on_first_attack_body_entered"]
-[connection signal="body_entered" from="SecondAttack" to="." method="_on_second_attack_body_entered"]
+[connection signal="body_entered" from="FlipMarker/FirstAttack" to="." method="_on_first_attack_body_entered"]
+[connection signal="body_entered" from="FlipMarker/SecondAttack" to="." method="_on_second_attack_body_entered"]

@@ -16,7 +16,8 @@ const baseSpeed = 500
 @onready var animStateMachine = $AnimationTree.get("parameters/playback")
 
 @onready var dash = $Dash
-@onready var projectileSpawnPoint = $ProjectileSpawnPoint
+@onready var FlipMarker:Marker2D = $FlipMarker
+@onready var projectileSpawnPoint = $FlipMarker/ProjectileSpawnPoint
 
 @onready var hp = 100
 var katanaObj:Katana
@@ -82,13 +83,9 @@ func get_input():
 	velocity = direction * speed
 	if not dash.isDashing():
 		if Input.is_action_just_pressed("left"):
-			$Sprite2D.flip_h = true
-			projectileSpawnPoint.position = Vector2(-35, 0)
-			projectileSpawnPoint.scale.x = -1
+			FlipMarker.scale = Vector2(-1, 1)
 		elif Input.is_action_just_pressed("right"):
-			projectileSpawnPoint.position = Vector2(35, 0)
-			projectileSpawnPoint.scale.x = 1
-			$Sprite2D.flip_h = false
+			FlipMarker.scale = Vector2(1, 1)
 	
 	positionChanged.emit(global_position)
 	
