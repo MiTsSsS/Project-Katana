@@ -23,7 +23,6 @@ func _physics_process(delta):
 	if not player == null and state == State.CHASING and not dead:
 		animStateMachine["parameters/conditions/running"] = true
 		var dir = (player.global_position - global_position).normalized()
-		print(dir) 
 		if dir.x < 0:
 			flipMarker.scale = Vector2(-1, 1)
 			sprite.flip_h = true
