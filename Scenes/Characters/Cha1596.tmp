@@ -4,12 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://bjs7m4djnqfah" path="res://Scenes/Characters/Dash.tscn" id="3_u8yht"]
 [ext_resource type="Texture2D" uid="uid://oonch1a3umqc" path="res://Art/Characters/Player/spritesheet.png" id="11_ngfvv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6aa"]
+size = Vector2(48, 102)
+
 [sub_resource type="Animation" id="Animation_3k6ev"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipMarker/Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +29,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipMarker/Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,7 +41,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FlipMarker/FirstStrikeArea/CollisionPolygon2D:disabled")
+tracks/1/path = NodePath("FirstStrikeArea/CollisionPolygon2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -54,7 +57,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipMarker/Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -66,7 +69,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FlipMarker/SecondStrikeArea/CollisionPolygon2D:disabled")
+tracks/1/path = NodePath("SecondStrikeArea/CollisionPolygon2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -82,7 +85,7 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipMarker/Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -98,7 +101,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipMarker/Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -115,7 +118,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipMarker/Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -132,7 +135,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlipMarker/Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -218,41 +221,10 @@ states/idle/position = Vector2(194, 100)
 states/run/node = SubResource("AnimationNodeAnimation_ijn7u")
 states/run/position = Vector2(194, 1)
 transitions = ["idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_hu7d4"), "death", "End", SubResource("AnimationNodeStateMachineTransition_pkln7"), "idle", "get_hit", SubResource("AnimationNodeStateMachineTransition_1shwu"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_cwx6u"), "attack_1", "attack_2", SubResource("AnimationNodeStateMachineTransition_ool7s"), "attack_2", "idle", SubResource("AnimationNodeStateMachineTransition_xfwci"), "get_hit", "idle", SubResource("AnimationNodeStateMachineTransition_tscw3"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_s7dr0"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_p7wuh"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_km5we"), "run", "attack_1", SubResource("AnimationNodeStateMachineTransition_t8tp2")]
-graph_offset = Vector2(-365, 37)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6aa"]
-size = Vector2(48, 102)
+graph_offset = Vector2(-435, 9)
 
 [node name="Character" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_rklxv")
-
-[node name="FlipMarker" type="Marker2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="FlipMarker"]
-texture = ExtResource("11_ngfvv")
-hframes = 32
-
-[node name="ProjectileSpawnPoint" type="Marker2D" parent="FlipMarker"]
-position = Vector2(93, 0)
-
-[node name="KatanaSlot" type="Marker2D" parent="FlipMarker/ProjectileSpawnPoint"]
-position = Vector2(-138, 0)
-
-[node name="FirstStrikeArea" type="Area2D" parent="FlipMarker"]
-position = Vector2(1, 0)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FlipMarker/FirstStrikeArea"]
-position = Vector2(61, 11)
-polygon = PackedVector2Array(-22, -20, -48, -19, -61, -36, -32, -44, 1, -37, 13, -30, 21, -19, 20, -6, 15, 4, -25, 16, -63, 9, -22, 9, -9, -1, -7, -11)
-disabled = true
-
-[node name="SecondStrikeArea" type="Area2D" parent="FlipMarker"]
-position = Vector2(1, 0)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FlipMarker/SecondStrikeArea"]
-position = Vector2(63, -20)
-polygon = PackedVector2Array(-74, -16, -47, -34, -8, -32, 15, -14, 21, 13, 15, 32, 3, 46, -29, 33, -20, 8, -25, -14, -47, -23)
-disabled = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 0.3
@@ -261,8 +233,18 @@ one_shot = true
 [node name="Dash" parent="." instance=ExtResource("3_u8yht")]
 scale = Vector2(0.986112, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_gl6aa")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.3, 1.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+texture = ExtResource("11_ngfvv")
+hframes = 32
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -276,10 +258,25 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_cduqp")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0.5)
-scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_gl6aa")
+[node name="FirstStrikeArea" type="Area2D" parent="."]
 
-[connection signal="body_entered" from="FlipMarker/FirstStrikeArea" to="." method="_on_first_strike_area_body_entered"]
-[connection signal="body_entered" from="FlipMarker/SecondStrikeArea" to="." method="_on_second_strike_area_body_entered"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FirstStrikeArea"]
+position = Vector2(61, 11)
+polygon = PackedVector2Array(-22, -20, -48, -19, -61, -36, -32, -44, 1, -37, 13, -30, 21, -19, 20, -6, 15, 4, -25, 16, -63, 9, -22, 9, -9, -1, -7, -11)
+disabled = true
+
+[node name="SecondStrikeArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecondStrikeArea"]
+position = Vector2(63, -20)
+polygon = PackedVector2Array(-74, -16, -47, -34, -8, -32, 15, -14, 21, 13, 15, 32, 3, 46, -29, 33, -20, 8, -25, -14, -47, -23)
+disabled = true
+
+[node name="ProjectileSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(93, 0)
+
+[node name="KatanaSlot" type="Marker2D" parent="ProjectileSpawnPoint"]
+position = Vector2(-138, 0)
+
+[connection signal="body_entered" from="FirstStrikeArea" to="." method="_on_first_strike_area_body_entered"]
+[connection signal="body_entered" from="SecondStrikeArea" to="." method="_on_second_strike_area_body_entered"]
