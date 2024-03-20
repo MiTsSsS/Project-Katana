@@ -8,8 +8,6 @@ func shoot(attackTimer):
 		get_parent().get_parent().add_child(bullet)
 		bullet.transform = $Muzzle.global_transform
 		attackTimer.start()
-	else:
-		pass
 
 func specialAttack(specialAttackTimer):
 	if specialAttackTimer.is_stopped():

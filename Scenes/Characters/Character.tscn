@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bfqn2oultoebp"]
+[gd_scene load_steps=32 format=3 uid="uid://bfqn2oultoebp"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterController.gd" id="1_rklxv"]
 [ext_resource type="PackedScene" uid="uid://bjs7m4djnqfah" path="res://Scenes/Characters/Dash.tscn" id="3_u8yht"]
@@ -95,6 +95,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_fcm1i"]
 resource_name = "get_hit"
 length = 0.2
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -202,6 +203,8 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t8tp2"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_igast"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cduqp"]
 states/End/position = Vector2(577, 100)
 states/Start/position = Vector2(-13, 100)
@@ -212,13 +215,13 @@ states/attack_2/position = Vector2(194, 271)
 states/death/node = SubResource("AnimationNodeAnimation_do076")
 states/death/position = Vector2(407, 100)
 states/get_hit/node = SubResource("AnimationNodeAnimation_o27l3")
-states/get_hit/position = Vector2(407, 210)
+states/get_hit/position = Vector2(439, 187)
 states/idle/node = SubResource("AnimationNodeAnimation_dlhfp")
 states/idle/position = Vector2(194, 100)
 states/run/node = SubResource("AnimationNodeAnimation_ijn7u")
 states/run/position = Vector2(194, 1)
-transitions = ["idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_hu7d4"), "death", "End", SubResource("AnimationNodeStateMachineTransition_pkln7"), "idle", "get_hit", SubResource("AnimationNodeStateMachineTransition_1shwu"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_cwx6u"), "attack_1", "attack_2", SubResource("AnimationNodeStateMachineTransition_ool7s"), "attack_2", "idle", SubResource("AnimationNodeStateMachineTransition_xfwci"), "get_hit", "idle", SubResource("AnimationNodeStateMachineTransition_tscw3"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_s7dr0"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_p7wuh"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_km5we"), "run", "attack_1", SubResource("AnimationNodeStateMachineTransition_t8tp2")]
-graph_offset = Vector2(-365, 37)
+transitions = ["idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_hu7d4"), "death", "End", SubResource("AnimationNodeStateMachineTransition_pkln7"), "idle", "get_hit", SubResource("AnimationNodeStateMachineTransition_1shwu"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_cwx6u"), "attack_1", "attack_2", SubResource("AnimationNodeStateMachineTransition_ool7s"), "attack_2", "idle", SubResource("AnimationNodeStateMachineTransition_xfwci"), "get_hit", "idle", SubResource("AnimationNodeStateMachineTransition_tscw3"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_s7dr0"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_p7wuh"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_km5we"), "run", "attack_1", SubResource("AnimationNodeStateMachineTransition_t8tp2"), "run", "get_hit", SubResource("AnimationNodeStateMachineTransition_igast")]
+graph_offset = Vector2(-344, -40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6aa"]
 size = Vector2(48, 102)
