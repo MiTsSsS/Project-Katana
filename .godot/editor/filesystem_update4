@@ -1,7 +1,7 @@
-res://Scenes/Characters/Character.tscn
-res://Scripts/Characters/CharacterController.gd
 res://Scenes/TestScene.tscn
+res://Scripts/Characters/CharacterController.gd
 res://Scenes/Characters/Dash.tscn
+res://Scenes/Characters/Character.tscn
 res://Scenes/Items/Weapons/Katana.tscn
 res://Scenes/Items/Weapons/Gun.tscn
 res://Scenes/Characters/Enemies/Musketeer.tscn
@@ -12,3 +12,5 @@ res://Scenes/Abilities/Wind.tscn
 res://Scenes/Items/Weapons/BoomerangKatana.tscn
 res://Scenes/Characters/Enemy.tscn
 res://Scripts/Characters/Musketeer.gd
+res://Scripts/Items/Weapons/Gun.gd
+res://Scripts/Characters/Samurai.gd
