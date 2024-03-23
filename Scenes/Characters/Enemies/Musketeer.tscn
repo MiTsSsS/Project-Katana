@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c75i24vr2giyw"]
+[gd_scene load_steps=34 format=3 uid="uid://c75i24vr2giyw"]
 
 [ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="1_xmg01"]
 [ext_resource type="Script" path="res://Scripts/Characters/Musketeer.gd" id="2_xn46e"]
@@ -43,9 +43,12 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.006),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.405, 1.006),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"launchProjectile"
+}, {
 "args": [],
 "method": &"attackAnimationEnded"
 }]
@@ -218,6 +221,10 @@ advance_condition = &"running"
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2lsfc"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ip6u8"]
 states/Start/position = Vector2(244, 2)
 states/attack_1/node = SubResource("AnimationNodeAnimation_1dg4c")
@@ -230,8 +237,8 @@ states/idle/node = SubResource("AnimationNodeAnimation_pdkjr")
 states/idle/position = Vector2(426, 2)
 states/run/node = SubResource("AnimationNodeAnimation_li2l1")
 states/run/position = Vector2(624, 2)
-transitions = ["die", "End", SubResource("AnimationNodeStateMachineTransition_t2r3u"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_lijls"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_82srw"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_a86k0"), "idle", "get_hit", SubResource("AnimationNodeStateMachineTransition_yia7j"), "run", "get_hit", SubResource("AnimationNodeStateMachineTransition_wki1h"), "attack_1", "get_hit", SubResource("AnimationNodeStateMachineTransition_ano0b"), "run", "die", SubResource("AnimationNodeStateMachineTransition_pemo0"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_2jjf5"), "get_hit", "die", SubResource("AnimationNodeStateMachineTransition_6bdkl"), "attack_1", "die", SubResource("AnimationNodeStateMachineTransition_fajvu"), "run", "attack_1", SubResource("AnimationNodeStateMachineTransition_8iokq"), "get_hit", "run", SubResource("AnimationNodeStateMachineTransition_e3nt4"), "attack_1", "run", SubResource("AnimationNodeStateMachineTransition_fjbib")]
-graph_offset = Vector2(-56, -4)
+transitions = ["die", "End", SubResource("AnimationNodeStateMachineTransition_t2r3u"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_lijls"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_82srw"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_a86k0"), "idle", "get_hit", SubResource("AnimationNodeStateMachineTransition_yia7j"), "run", "get_hit", SubResource("AnimationNodeStateMachineTransition_wki1h"), "attack_1", "get_hit", SubResource("AnimationNodeStateMachineTransition_ano0b"), "run", "die", SubResource("AnimationNodeStateMachineTransition_pemo0"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_2jjf5"), "get_hit", "die", SubResource("AnimationNodeStateMachineTransition_6bdkl"), "attack_1", "die", SubResource("AnimationNodeStateMachineTransition_fajvu"), "run", "attack_1", SubResource("AnimationNodeStateMachineTransition_8iokq"), "get_hit", "run", SubResource("AnimationNodeStateMachineTransition_e3nt4"), "attack_1", "run", SubResource("AnimationNodeStateMachineTransition_fjbib"), "attack_1", "idle", SubResource("AnimationNodeStateMachineTransition_2lsfc")]
+graph_offset = Vector2(-98, -20)
 
 [node name="Enemy" instance=ExtResource("1_xmg01")]
 script = ExtResource("2_xn46e")
@@ -260,7 +267,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="Gun" parent="." index="6" instance=ExtResource("3_04xem")]
-position = Vector2(-50, 0)
+position = Vector2(38, 10)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 libraries = {

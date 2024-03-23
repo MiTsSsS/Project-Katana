@@ -44,10 +44,12 @@ func _physics_process(delta):
 func attack():
 	if not player == null and not dead and attackCooldownTimer.is_stopped():
 		canAttack = false
-		musket.shoot(attackCooldownTimer)
 		animStateMachine["parameters/playback"].travel("attack_1")
 	else:
-		animStateMachine["parameters/conditions/running"] = true
+		animStateMachine["parameters/conditions/idle"] = true
+		
+func launchProjectile():
+	musket.shoot(attackCooldownTimer)
 		
 func takeDamage(damage):
 	animStateMachine["parameters/conditions/get_hit"] = true
