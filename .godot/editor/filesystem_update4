@@ -1,7 +1,7 @@
-res://Scenes/Characters/Character.tscn
-res://Scripts/Characters/CharacterController.gd
 res://Scenes/TestScene.tscn
+res://Scripts/Characters/CharacterController.gd
 res://Scenes/Characters/Dash.tscn
+res://Scenes/Characters/Character.tscn
 res://Scenes/Items/Weapons/Katana.tscn
 res://Scenes/Items/Weapons/Gun.tscn
 res://Scenes/Characters/Enemies/Musketeer.tscn

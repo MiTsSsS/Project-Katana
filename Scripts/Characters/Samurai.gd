@@ -46,6 +46,7 @@ func attack():
 func takeDamage(damage):
 	animStateMachine["parameters/conditions/running"] = false
 	animStateMachine["parameters/conditions/attack_1"] = false
+	
 	hp -= damage
 	print("Samurai HP: ")
 	print(hp)
