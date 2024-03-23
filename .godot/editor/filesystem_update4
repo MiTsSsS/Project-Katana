@@ -12,5 +12,3 @@ res://Scenes/Abilities/Wind.tscn
 res://Scenes/Items/Weapons/BoomerangKatana.tscn
 res://Scenes/Characters/Enemy.tscn
 res://Scripts/Characters/Musketeer.gd
-res://Scripts/Items/Weapons/Gun.gd
-res://Scripts/Characters/Samurai.gd
