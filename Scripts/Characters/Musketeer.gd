@@ -27,9 +27,14 @@ func _process(delta):
 func _physics_process(delta):
 	if player == null:
 		return
-	
+		
+	var dir = (player.global_position - global_position).normalized()
+	if(dir.x < 0):
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
+		
 	if state == State.CHASING:
-		var dir = (player.global_position - global_position).normalized()
 		move_and_collide(dir * speed * delta)
 		animStateMachine["parameters/conditions/running"] = true
 		
