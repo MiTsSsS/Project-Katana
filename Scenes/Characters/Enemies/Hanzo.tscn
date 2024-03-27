@@ -1,13 +1,152 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjgpjcifjpir6"]
+[gd_scene load_steps=13 format=3 uid="uid://bjgpjcifjpir6"]
 
 [ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="1_ivv2j"]
 [ext_resource type="Script" path="res://Scripts/Characters/Hanzo.gd" id="2_pbc4f"]
+[ext_resource type="Texture2D" uid="uid://boqxd42bh1moj" path="res://Art/Characters/Hanzo/spritesheet.png" id="3_i2v6s"]
+
+[sub_resource type="Animation" id="Animation_ehvka"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_2ns7f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wng2b"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_1f0sq"]
+resource_name = "attack_1"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_6do7h"]
+resource_name = "attack_2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_6dbwk"]
+resource_name = "get_hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_0xecr"]
+resource_name = "die"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c8rvm"]
+_data = {
+"RESET": SubResource("Animation_2ns7f"),
+"attack_1": SubResource("Animation_1f0sq"),
+"attack_2": SubResource("Animation_6do7h"),
+"die": SubResource("Animation_0xecr"),
+"get_hit": SubResource("Animation_6dbwk"),
+"idle": SubResource("Animation_ehvka"),
+"run": SubResource("Animation_wng2b")
+}
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_88t0r"]
 
 [node name="Enemy" instance=ExtResource("1_ivv2j")]
 script = ExtResource("2_pbc4f")
 
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(1, 1, 1, 1)
+scale = Vector2(1, 1)
+texture = ExtResource("3_i2v6s")
+hframes = 43
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
 [node name="Muzzle" parent="." index="2"]
 position = Vector2(30, 0)
+
+[node name="FireSpreadShapeCast2D" parent="." index="3"]
+visible = false
 
 [node name="AttackCooldown" parent="." index="4"]
 wait_time = 0.2
@@ -23,6 +162,18 @@ one_shot = true
 [node name="ClonesCooldown" type="Timer" parent="." index="7"]
 wait_time = 30.0
 one_shot = true
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="8"]
+libraries = {
+"": SubResource("AnimationLibrary_c8rvm")
+}
+tree_root = SubResource("AnimationNodeStateMachine_88t0r")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+libraries = {
+"": SubResource("AnimationLibrary_c8rvm")
+}
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="SpecialAttackCooldown" to="." method="_on_special_attack_cooldown_timeout"]
