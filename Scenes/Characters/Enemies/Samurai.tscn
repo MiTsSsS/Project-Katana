@@ -333,7 +333,6 @@ parameters/conditions/idle = false
 parameters/conditions/running = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
-active = false
 libraries = {
 "": SubResource("AnimationLibrary_a61vt")
 }

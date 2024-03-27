@@ -30,8 +30,10 @@ func _physics_process(delta):
 		
 	var dir = (player.global_position - global_position).normalized()
 	if(dir.x < 0):
+		musket.position = Vector2(-28, 12)
 		sprite.flip_h = true
 	else:
+		musket.position = Vector2(28, 12)
 		sprite.flip_h = false
 		
 	if state == State.CHASING:
