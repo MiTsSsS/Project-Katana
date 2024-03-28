@@ -14,20 +14,20 @@ const teleportTimerCooldown = 15
 #Shuriken Throw Properties
 @onready var shurikenSpawnPoint = $Muzzle
 @onready var shurikenThrowTimer = $SpecialAttackCooldown
-const shurikenThrowCooldown = 1
+const shurikenThrowCooldown = 10
 const SHURIKEN = preload("res://Scenes/Items/Bullet.tscn")
 
 #Clones Ability Properties
 @onready var clonesTimer = $ClonesCooldown
 const clonesCooldown = 30
 
+#Animations
+@onready var animStateMachine:AnimationTree = $AnimationTree
+
 func _ready():
 	speed = 200
 	player = get_parent().get_node("Character")
 	targetDistanceToPlayer = 80
-	if isClone:
-		print("hello this clone ready")
-		print(player == null)
 	
 func _process(delta):
 	if teleportTimer.is_stopped():
@@ -39,7 +39,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	if not player == null and state == State.CHASING:
-		look_at(player.global_position)
+		animStateMachine["parameters/conditions/running"] = true
 		var dir = (player.global_position - global_position).normalized()
 		move_and_collide(dir * speed * delta)
 
@@ -60,9 +60,16 @@ func _on_teleport_timeout():
 #Shuriken
 func throwShuriken():
 	shurikenThrowTimer.start()
+	print("throwing")
 	
+	animStateMachine["parameters/playback"].travel("shuriken_toss")
+
 	state = State.ATTACKING
-	
+
+	await get_tree().create_timer(0.2).timeout
+	state = State.CHASING
+
+func launchProjectiles():
 	var shuriken1 = SHURIKEN.instantiate()
 	var shuriken2 = SHURIKEN.instantiate()
 	var shuriken3 = SHURIKEN.instantiate()
@@ -77,8 +84,7 @@ func throwShuriken():
 	shuriken3.transform = shurikenSpawnPoint.global_transform
 	shuriken3.global_rotation_degrees = shurikenSpawnPoint.global_rotation_degrees - 30
 	
-	await get_tree().create_timer(0.2).timeout
-	state = State.CHASING
+	animStateMachine["parameters/conditions/running"] = true
 
 func _on_special_attack_cooldown_timeout():
 	shurikenThrowTimer.wait_time = shurikenThrowCooldown

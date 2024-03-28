@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1711571468
+::res://::1711659840
 icon.svg::CompressedTexture2D::6333443618286758030::1691865836::1691865852::1::::<><>::
 README.md::TextFile::-1::1700344551::0::1::::<><>::
 ::res://addons/::1711204163
@@ -19,7 +19,7 @@ marks.gd::GDScript::-1::1711204163::0::1::::<>RefCounted<>::
 ::res://Art/::1706567845
 ::res://Art/Animations/::1706567866
 ::res://Art/Characters/::1711571747
-::res://Art/Characters/Hanzo/::1711571752
+::res://Art/Characters/Hanzo/::1711571754
 spritesheet.png::CompressedTexture2D::3403497951848553653::1711571728::1711571754::1::::<><>::
 ::res://Art/Characters/Musketeer/::1711569128
 spritesheet.png::CompressedTexture2D::7968935940378897454::1711569079::1711569128::1::::<><>::
@@ -56,10 +56,10 @@ Wind.tscn::PackedScene::8620742941455762111::1711571075::0::1::::<><>::uid://bkd
 Character.tscn::PackedScene::2771233250038340929::1711571074::0::1::::<><>::res://Scripts/Characters/CharacterController.gd<>uid://bjs7m4djnqfah::::res://Scenes/Characters/Dash.tscn<>uid://oonch1a3umqc::::res://Art/Characters/Player/spritesheet.png
 Dash.tscn::PackedScene::3057244977542347339::1711571074::0::1::::<><>::res://Scripts/Mechanics/Dash.gd
 Enemy.tscn::PackedScene::9082945336285649770::1711571075::0::1::::<><>::uid://cwh75kco5ltva::::res://icon.svg<>res://Scripts/Characters/Enemy.gd
-::res://Scenes/Characters/Enemies/::1711571454
-Hanzo.tscn::PackedScene::3031433487641331369::1711571454::0::1::::<><>::uid://d2n31u0ok34hi::::res://Scenes/Characters/Enemy.tscn<>res://Scripts/Characters/Hanzo.gd
-Musketeer.tscn::PackedScene::7081351205229371686::1711571074::0::1::::<><>::uid://d2n31u0ok34hi::::res://Scenes/Characters/Enemy.tscn<>res://Scripts/Characters/Musketeer.gd<>uid://4ku04kd1tfuv::::res://Scenes/Items/Weapons/Gun.tscn<>uid://dlshhfr4ebvqs::::res://Art/Characters/Musketeer/spritesheet.png
-Samurai.tscn::PackedScene::8455048745136382431::1711571242::0::1::::<><>::uid://d2n31u0ok34hi::::res://Scenes/Characters/Enemy.tscn<>res://Scripts/Characters/Samurai.gd<>uid://c7r48nvnwma8k::::res://Art/Characters/Samurai/spritesheet.png
+::res://Scenes/Characters/Enemies/::1711572653
+Hanzo.tscn::PackedScene::3031433487641331369::1711572653::0::1::::<><>::uid://d2n31u0ok34hi::::res://Scenes/Characters/Enemy.tscn<>res://Scripts/Characters/Hanzo.gd<>uid://boqxd42bh1moj::::res://Art/Characters/Hanzo/spritesheet.png
+Musketeer.tscn::PackedScene::7081351205229371686::1711572153::0::1::::<><>::uid://d2n31u0ok34hi::::res://Scenes/Characters/Enemy.tscn<>res://Scripts/Characters/Musketeer.gd<>uid://4ku04kd1tfuv::::res://Scenes/Items/Weapons/Gun.tscn<>uid://dlshhfr4ebvqs::::res://Art/Characters/Musketeer/spritesheet.png
+Samurai.tscn::PackedScene::8455048745136382431::1711572232::0::1::::<><>::uid://d2n31u0ok34hi::::res://Scenes/Characters/Enemy.tscn<>res://Scripts/Characters/Samurai.gd<>uid://c7r48nvnwma8k::::res://Art/Characters/Samurai/spritesheet.png
 ::res://Scenes/Items/::1711571074
 Bullet.tscn::PackedScene::2294927886126410750::1711571074::0::1::::<><>::res://Scripts/Items/Weapons/Bullet.gd<>uid://dxeswv1uhysgj::::res://Art/VFX/Items/Archer/Arrow.png
 ::res://Scenes/Items/Weapons/::1711571075
@@ -71,8 +71,8 @@ Globals.gd::GDScript::-1::1709158212::0::1::::<>Node<>::
 ::res://Scripts/Abilities/::1704234060
 Fire.gd::GDScript::-1::1704234060::0::1::::Fire<>Node<>::
 Wind.gd::GDScript::-1::1704234060::0::1::::<>Area2D<>::
-::res://Scripts/Characters/::1711571074
-CharacterController.gd::GDScript::-1::1711571074::0::1::::Player<>CharacterBody2D<>::
+::res://Scripts/Characters/::1711571765
+CharacterController.gd::GDScript::-1::1711571765::0::1::::Player<>CharacterBody2D<>::
 Enemy.gd::GDScript::-1::1710710402::0::1::::Enemy<>CharacterBody2D<>::
 EnemyController.gd::GDScript::-1::1704234060::0::1::::<>Node<>::
 Hanzo.gd::GDScript::-1::1709158212::0::1::::Hanzo<>Enemy<>::

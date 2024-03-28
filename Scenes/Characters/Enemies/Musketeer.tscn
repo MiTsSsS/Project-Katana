@@ -235,7 +235,7 @@ states/idle/position = Vector2(426, 2)
 states/run/node = SubResource("AnimationNodeAnimation_li2l1")
 states/run/position = Vector2(624, 2)
 transitions = ["die", "End", SubResource("AnimationNodeStateMachineTransition_t2r3u"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_lijls"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_82srw"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_a86k0"), "idle", "get_hit", SubResource("AnimationNodeStateMachineTransition_yia7j"), "run", "get_hit", SubResource("AnimationNodeStateMachineTransition_wki1h"), "attack_1", "get_hit", SubResource("AnimationNodeStateMachineTransition_ano0b"), "run", "die", SubResource("AnimationNodeStateMachineTransition_pemo0"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_2jjf5"), "get_hit", "die", SubResource("AnimationNodeStateMachineTransition_6bdkl"), "attack_1", "die", SubResource("AnimationNodeStateMachineTransition_fajvu"), "run", "attack_1", SubResource("AnimationNodeStateMachineTransition_8iokq"), "get_hit", "run", SubResource("AnimationNodeStateMachineTransition_e3nt4"), "attack_1", "run", SubResource("AnimationNodeStateMachineTransition_fjbib"), "attack_1", "idle", SubResource("AnimationNodeStateMachineTransition_2lsfc")]
-graph_offset = Vector2(-98, -20)
+graph_offset = Vector2(-93, -21)
 
 [node name="Enemy" instance=ExtResource("1_xmg01")]
 script = ExtResource("2_xn46e")
