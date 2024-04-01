@@ -17,3 +17,5 @@ position = Vector2(-7, 95)
 
 [node name="Enemy3" parent="." instance=ExtResource("4_2x6x2")]
 position = Vector2(49.75, -16.5)
+hp = null
+testName = null

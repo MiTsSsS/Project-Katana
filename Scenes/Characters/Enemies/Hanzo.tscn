@@ -246,10 +246,12 @@ states/run/position = Vector2(510, 100)
 states/shuriken_toss/node = SubResource("AnimationNodeAnimation_0uqqg")
 states/shuriken_toss/position = Vector2(774, 155)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_1mxcg"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_ppfwe"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_4nat7"), "run", "die", SubResource("AnimationNodeStateMachineTransition_wb27w"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_hvear"), "die", "End", SubResource("AnimationNodeStateMachineTransition_hsurr"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_3kn5j"), "attack_1", "attack_2", SubResource("AnimationNodeStateMachineTransition_mpj30"), "attack_2", "idle", SubResource("AnimationNodeStateMachineTransition_vqabh"), "attack_2", "run", SubResource("AnimationNodeStateMachineTransition_nftyg"), "attack_1", "die", SubResource("AnimationNodeStateMachineTransition_uo780"), "attack_2", "die", SubResource("AnimationNodeStateMachineTransition_ghidk"), "run", "shuriken_toss", SubResource("AnimationNodeStateMachineTransition_s5mr0"), "shuriken_toss", "run", SubResource("AnimationNodeStateMachineTransition_h7npr"), "shuriken_toss", "die", SubResource("AnimationNodeStateMachineTransition_1geyp")]
-graph_offset = Vector2(-26, 6)
+graph_offset = Vector2(-44, -60)
 
 [node name="Enemy" instance=ExtResource("1_ivv2j")]
 script = ExtResource("2_pbc4f")
+hp = null
+testName = null
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 1, 1, 1)
@@ -261,7 +263,7 @@ hframes = 43
 visible = false
 
 [node name="Muzzle" parent="." index="2"]
-position = Vector2(30, 0)
+position = Vector2(9, 23)
 
 [node name="FireSpreadShapeCast2D" parent="." index="3"]
 visible = false

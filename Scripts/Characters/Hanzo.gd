@@ -6,6 +6,10 @@ var speed = 200
 var player
 var isClone = false
 
+#On Flip
+#@onready var sprite:Sprite2D = $Sprite2D
+@onready var muzzle:Marker2D = $Muzzle
+
 #Teleport Properties
 @onready var teleportTimer = $TeleportCooldown
 const teleportRadius = 80
@@ -28,7 +32,7 @@ func _ready():
 	speed = 200
 	player = get_parent().get_node("Character")
 	targetDistanceToPlayer = 80
-	
+
 func _process(delta):
 	if teleportTimer.is_stopped():
 		teleport()
@@ -41,6 +45,12 @@ func _physics_process(delta):
 	if not player == null and state == State.CHASING:
 		animStateMachine["parameters/conditions/running"] = true
 		var dir = (player.global_position - global_position).normalized()
+		if dir.x < 0:
+			muzzle.position = Vector2(-9, 23)
+			sprite.flip_h = true
+		else:
+			muzzle.position = Vector2(9, 23)
+			sprite.flip_h = false
 		move_and_collide(dir * speed * delta)
 
 #Teleport
@@ -60,7 +70,6 @@ func _on_teleport_timeout():
 #Shuriken
 func throwShuriken():
 	shurikenThrowTimer.start()
-	print("throwing")
 	
 	animStateMachine["parameters/playback"].travel("shuriken_toss")
 
