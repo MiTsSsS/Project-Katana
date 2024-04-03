@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bjgpjcifjpir6"]
+[gd_scene load_steps=36 format=3 uid="uid://bjgpjcifjpir6"]
 
 [ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="1_ivv2j"]
 [ext_resource type="Script" path="res://Scripts/Characters/Hanzo.gd" id="2_pbc4f"]
@@ -22,6 +22,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_1f0sq"]
 resource_name = "attack_1"
 length = 0.6
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -34,10 +35,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [12, 13, 14, 15, 16, 17]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipMarker/FirstAttack/CollisionPolygon2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_6do7h"]
 resource_name = "attack_2"
 length = 0.4
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -49,6 +63,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [18, 19, 20, 21]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipMarker/SecondAttack/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.16, 0.36),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_0xecr"]
@@ -234,7 +260,7 @@ advance_condition = &"dead"
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_88t0r"]
 states/End/position = Vector2(723, 3)
 states/attack_1/node = SubResource("AnimationNodeAnimation_x8e21")
-states/attack_1/position = Vector2(330, 186)
+states/attack_1/position = Vector2(330, 187)
 states/attack_2/node = SubResource("AnimationNodeAnimation_3x6k0")
 states/attack_2/position = Vector2(581, 269)
 states/die/node = SubResource("AnimationNodeAnimation_b4m7v")
@@ -246,7 +272,10 @@ states/run/position = Vector2(510, 100)
 states/shuriken_toss/node = SubResource("AnimationNodeAnimation_0uqqg")
 states/shuriken_toss/position = Vector2(774, 155)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_1mxcg"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_ppfwe"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_4nat7"), "run", "die", SubResource("AnimationNodeStateMachineTransition_wb27w"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_hvear"), "die", "End", SubResource("AnimationNodeStateMachineTransition_hsurr"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_3kn5j"), "attack_1", "attack_2", SubResource("AnimationNodeStateMachineTransition_mpj30"), "attack_2", "idle", SubResource("AnimationNodeStateMachineTransition_vqabh"), "attack_2", "run", SubResource("AnimationNodeStateMachineTransition_nftyg"), "attack_1", "die", SubResource("AnimationNodeStateMachineTransition_uo780"), "attack_2", "die", SubResource("AnimationNodeStateMachineTransition_ghidk"), "run", "shuriken_toss", SubResource("AnimationNodeStateMachineTransition_s5mr0"), "shuriken_toss", "run", SubResource("AnimationNodeStateMachineTransition_h7npr"), "shuriken_toss", "die", SubResource("AnimationNodeStateMachineTransition_1geyp")]
-graph_offset = Vector2(-44, -60)
+graph_offset = Vector2(-8, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gido"]
+size = Vector2(38.5, 13)
 
 [node name="Enemy" instance=ExtResource("1_ivv2j")]
 script = ExtResource("2_pbc4f")
@@ -259,14 +288,8 @@ scale = Vector2(1, 1)
 texture = ExtResource("3_i2v6s")
 hframes = 43
 
-[node name="CollisionShape2D" parent="." index="1"]
-visible = false
-
 [node name="Muzzle" parent="." index="2"]
 position = Vector2(9, 23)
-
-[node name="FireSpreadShapeCast2D" parent="." index="3"]
-visible = false
 
 [node name="AttackCooldown" parent="." index="4"]
 wait_time = 0.2
@@ -298,7 +321,24 @@ libraries = {
 "": SubResource("AnimationLibrary_c8rvm")
 }
 
+[node name="FlipMarker" type="Marker2D" parent="." index="10"]
+
+[node name="FirstAttack" type="Area2D" parent="FlipMarker" index="0"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FlipMarker/FirstAttack" index="0"]
+position = Vector2(4, -2)
+polygon = PackedVector2Array(39, 0, 23, 8, 11, 19, -11, 15, -10, 27, 17, 32, 36, 27, 51, 17)
+disabled = true
+
+[node name="SecondAttack" type="Area2D" parent="FlipMarker" index="1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipMarker/SecondAttack" index="0"]
+position = Vector2(33, 9)
+shape = SubResource("RectangleShape2D_3gido")
+disabled = true
+
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="SpecialAttackCooldown" to="." method="_on_special_attack_cooldown_timeout"]
 [connection signal="timeout" from="TeleportCooldown" to="." method="_on_teleport_timeout"]
 [connection signal="timeout" from="ClonesCooldown" to="." method="_on_clones_cooldown_timeout"]
+[connection signal="body_entered" from="FlipMarker/FirstAttack" to="." method="_on_first_attack_body_entered"]

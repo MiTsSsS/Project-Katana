@@ -6,8 +6,11 @@ var speed = 200
 var player
 var isClone = false
 
-#On Flip
-#@onready var sprite:Sprite2D = $Sprite2D
+#Attack
+@onready var attackCooldownTimer:Timer = $AttackCooldown
+@onready var attackCooldown:float = 1.1
+
+#Flip
 @onready var muzzle:Marker2D = $Muzzle
 
 #Teleport Properties
@@ -34,15 +37,19 @@ func _ready():
 	targetDistanceToPlayer = 80
 
 func _process(delta):
+	if(state == State.ATTACKING):
+		attack()
 	if teleportTimer.is_stopped():
 		teleport()
 	if shurikenThrowTimer.is_stopped():
 		throwShuriken()
 	if clonesTimer.is_stopped():
 		createClones()
-
+		
 func _physics_process(delta):
-	if not player == null and state == State.CHASING:
+	if player == null:
+		return 
+	if state == State.CHASING:
 		animStateMachine["parameters/conditions/running"] = true
 		var dir = (player.global_position - global_position).normalized()
 		if dir.x < 0:
@@ -52,6 +59,17 @@ func _physics_process(delta):
 			muzzle.position = Vector2(9, 23)
 			sprite.flip_h = false
 		move_and_collide(dir * speed * delta)
+	if global_position.distance_to(player.global_position) < targetDistanceToPlayer:
+		state = State.ATTACKING
+		animStateMachine["parameters/conditions/running"] = false
+	else:
+		state = State.CHASING
+
+#Attack
+func attack():
+	if not player == null and attackCooldownTimer.is_stopped():
+		animStateMachine["parameters/playback"].travel("attack_1")
+		attackCooldownTimer.start()
 
 #Teleport
 func teleport():
@@ -118,3 +136,17 @@ func createClones():
 
 func _on_clones_cooldown_timeout():
 	clonesTimer.wait_time = clonesCooldown
+
+func _on_attack_cooldown_timeout():
+	attackCooldownTimer.wait_time = attackCooldown
+	animStateMachine["parameters/conditions/running"] = true
+
+func _on_first_attack_body_entered(body):
+	if body.is_in_group("player"):
+		var hitObj := body as Player
+		hitObj.takeDamage(15)
+
+func _on_second_attack_body_entered(body):
+	if body.is_in_group("player"):
+		var hitObj := body as Player
+		hitObj.takeDamage(15)

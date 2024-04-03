@@ -247,14 +247,8 @@ scale = Vector2(1, 1)
 texture = ExtResource("3_e8521")
 hframes = 39
 
-[node name="CollisionShape2D" parent="." index="1"]
-visible = false
-
 [node name="Muzzle" parent="." index="2"]
 position = Vector2(14, 10)
-
-[node name="FireSpreadShapeCast2D" parent="." index="3"]
-visible = false
 
 [node name="AttackCooldown" parent="." index="4"]
 one_shot = true
