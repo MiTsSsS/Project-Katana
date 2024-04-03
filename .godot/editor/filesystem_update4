@@ -11,3 +11,4 @@ res://Scenes/Items/Bullet.tscn
 res://Scenes/Abilities/Wind.tscn
 res://Scenes/Items/Weapons/BoomerangKatana.tscn
 res://Scenes/Characters/Enemy.tscn
+res://Scripts/Characters/Hanzo.gd

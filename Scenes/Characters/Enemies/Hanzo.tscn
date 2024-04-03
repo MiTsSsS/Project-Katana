@@ -272,15 +272,13 @@ states/run/position = Vector2(510, 100)
 states/shuriken_toss/node = SubResource("AnimationNodeAnimation_0uqqg")
 states/shuriken_toss/position = Vector2(774, 155)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_1mxcg"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_ppfwe"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_4nat7"), "run", "die", SubResource("AnimationNodeStateMachineTransition_wb27w"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_hvear"), "die", "End", SubResource("AnimationNodeStateMachineTransition_hsurr"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_3kn5j"), "attack_1", "attack_2", SubResource("AnimationNodeStateMachineTransition_mpj30"), "attack_2", "idle", SubResource("AnimationNodeStateMachineTransition_vqabh"), "attack_2", "run", SubResource("AnimationNodeStateMachineTransition_nftyg"), "attack_1", "die", SubResource("AnimationNodeStateMachineTransition_uo780"), "attack_2", "die", SubResource("AnimationNodeStateMachineTransition_ghidk"), "run", "shuriken_toss", SubResource("AnimationNodeStateMachineTransition_s5mr0"), "shuriken_toss", "run", SubResource("AnimationNodeStateMachineTransition_h7npr"), "shuriken_toss", "die", SubResource("AnimationNodeStateMachineTransition_1geyp")]
-graph_offset = Vector2(-8, 32)
+graph_offset = Vector2(18, -42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gido"]
 size = Vector2(38.5, 13)
 
 [node name="Enemy" instance=ExtResource("1_ivv2j")]
 script = ExtResource("2_pbc4f")
-hp = null
-testName = null
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 1, 1, 1)
@@ -342,3 +340,4 @@ disabled = true
 [connection signal="timeout" from="TeleportCooldown" to="." method="_on_teleport_timeout"]
 [connection signal="timeout" from="ClonesCooldown" to="." method="_on_clones_cooldown_timeout"]
 [connection signal="body_entered" from="FlipMarker/FirstAttack" to="." method="_on_first_attack_body_entered"]
+[connection signal="body_entered" from="FlipMarker/SecondAttack" to="." method="_on_second_attack_body_entered"]

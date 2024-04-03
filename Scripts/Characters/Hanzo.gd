@@ -12,6 +12,7 @@ var isClone = false
 
 #Flip
 @onready var muzzle:Marker2D = $Muzzle
+@onready var flipMarker:Marker2D = $FlipMarker
 
 #Teleport Properties
 @onready var teleportTimer = $TeleportCooldown
@@ -25,7 +26,7 @@ const shurikenThrowCooldown = 10
 const SHURIKEN = preload("res://Scenes/Items/Bullet.tscn")
 
 #Clones Ability Properties
-@onready var clonesTimer = $ClonesCooldown
+@onready var clonesTimer:Timer = $ClonesCooldown
 const clonesCooldown = 30
 
 #Animations
@@ -37,14 +38,16 @@ func _ready():
 	targetDistanceToPlayer = 80
 
 func _process(delta):
-	if(state == State.ATTACKING):
-		attack()
 	if teleportTimer.is_stopped():
 		teleport()
 	if shurikenThrowTimer.is_stopped():
 		throwShuriken()
 	if clonesTimer.is_stopped():
 		createClones()
+	if(state == State.ATTACKING):
+		attack()
+
+	print(shurikenThrowTimer.time_left)
 		
 func _physics_process(delta):
 	if player == null:
@@ -53,9 +56,11 @@ func _physics_process(delta):
 		animStateMachine["parameters/conditions/running"] = true
 		var dir = (player.global_position - global_position).normalized()
 		if dir.x < 0:
+			flipMarker.scale = Vector2(-1, 1)
 			muzzle.position = Vector2(-9, 23)
 			sprite.flip_h = true
 		else:
+			flipMarker.scale = Vector2(1, 1)
 			muzzle.position = Vector2(9, 23)
 			sprite.flip_h = false
 		move_and_collide(dir * speed * delta)
@@ -88,13 +93,12 @@ func _on_teleport_timeout():
 #Shuriken
 func throwShuriken():
 	shurikenThrowTimer.start()
-	
-	animStateMachine["parameters/playback"].travel("shuriken_toss")
 
-	state = State.ATTACKING
+	animStateMachine["parameters/playback"].travel("shuriken_toss")
+	#TODO: Create new state for special attacks, using idle state temporarily to make this work
+	state = State.IDLE
 
 	await get_tree().create_timer(0.2).timeout
-	state = State.CHASING
 
 func launchProjectiles():
 	var shuriken1 = SHURIKEN.instantiate()
@@ -124,13 +128,11 @@ func createClones():
 		clonesTimer.start()
 		
 		var clone = duplicate(8)
-		print("created")
 		clone.isClone = true
 		clone.setHp(5)
 		clone.modulate.a = 0.5
 		
 		get_parent().add_child(clone)
-		clone.transform = $Muzzle.global_transform
 		
 		state = State.CHASING
 
