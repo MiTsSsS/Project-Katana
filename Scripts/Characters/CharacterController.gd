@@ -26,6 +26,7 @@ var canPerformNextAttack = true
 signal positionChanged(newPos)
 signal fireSkillActivated(isActive)
 signal windSkillActivated(isActive)
+signal healthChanged(oldHp, newHp)
 
 var isKatanaFlying = false
 
@@ -33,6 +34,8 @@ func _ready():
 	var durationTimer = dash.get_node("DurationTimer")
 	durationTimer.timeout.connect(_on_timer_timeout)
 	katanaObj = KATANA.new()
+	var hud:HUDManager = get_node("../Hud")
+	healthChanged.connect(hud.updateHpBar)
 	
 # Called every frame. 'delta' is the elapsed time since the previous fram
 func _physics_process(delta):
@@ -104,11 +107,11 @@ func _on_timer_timeout():
 	speed = baseSpeed
 
 func takeDamage(value):
+	var oldHp = hp
 	hp -= value
 	animStateMachine.travel("get_hit")
-	print("Player HP: ")
-	print(hp)
-	
+	healthChanged.emit(oldHp, hp)
+
 	if(hp <= 0):
 		queue_free()
 

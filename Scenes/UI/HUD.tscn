@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl6872cjh5s8t"]
+
+[ext_resource type="Script" path="res://Scripts/UI/HUDManager.gd" id="1_itgql"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuwsk"]
+bg_color = Color(1, 0.333333, 0.352941, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovne6"]
+bg_color = Color(0, 0.721569, 0.290196, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_itgql")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -60.0
+offset_right = 330.0
+offset_bottom = -30.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_tuwsk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ovne6")
+value = 50.0
+show_percentage = false

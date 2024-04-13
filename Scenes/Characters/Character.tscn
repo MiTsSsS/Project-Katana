@@ -245,6 +245,7 @@ position = Vector2(-138, 0)
 position = Vector2(1, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FlipMarker/FirstStrikeArea"]
+visible = false
 position = Vector2(61, 11)
 polygon = PackedVector2Array(-22, -20, -48, -19, -61, -36, -32, -44, 1, -37, 13, -30, 21, -19, 20, -6, 15, 4, -25, 16, -63, 9, -22, 9, -9, -1, -7, -11)
 disabled = true
@@ -265,6 +266,7 @@ one_shot = true
 scale = Vector2(0.986112, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.8, 1.8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
