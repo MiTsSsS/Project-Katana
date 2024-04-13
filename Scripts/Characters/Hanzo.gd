@@ -46,8 +46,6 @@ func _process(delta):
 		createClones()
 	if(state == State.ATTACKING):
 		attack()
-
-	print(shurikenThrowTimer.time_left)
 		
 func _physics_process(delta):
 	if player == null:

@@ -13,6 +13,7 @@ enum State {
 @onready var sprite = $Sprite2D
 @onready var targetDistanceToPlayer = 0
 @onready var state = State.CHASING
+@onready var fireMaterial:ShaderMaterial = $Sprite2D.material
 
 @export var hp:int = 100
 @export var testName:String

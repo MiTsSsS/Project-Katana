@@ -1,3 +1,7 @@
+ProgressBar
+TextureProgressBar
+CanvasLayer
+Control
 CollisionShape2D
 CollisionPolygon2D
 Area2D
@@ -8,7 +12,3 @@ Timer
 Sprite2D
 AnimatedSprite2D
 Camera2D
-RigidBody2D
-Node2D
-PathFollow2D
-Path2D
