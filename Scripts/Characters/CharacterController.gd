@@ -26,7 +26,8 @@ var canPerformNextAttack = true
 signal positionChanged(newPos)
 signal fireSkillActivated(isActive)
 signal windSkillActivated(isActive)
-signal healthChanged(oldHp, newHp)
+signal healthChanged(newHp)
+signal skillChanged(skill)
 
 var isKatanaFlying = false
 
@@ -36,6 +37,7 @@ func _ready():
 	katanaObj = KATANA.new()
 	var hud:HUDManager = get_node("../Hud")
 	healthChanged.connect(hud.updateHpBar)
+	skillChanged.connect(hud.updateSelectedSkill)
 	
 # Called every frame. 'delta' is the elapsed time since the previous fram
 func _physics_process(delta):
@@ -72,15 +74,19 @@ func get_input():
 	if Input.is_action_just_pressed("select_normal_melee"):
 		katanaObj.appliedSkill = katanaObj.AppliedSkill.NONE
 		emitSkillActivationSignals(false, false)
+		skillChanged.emit(0)
 	if Input.is_action_just_pressed("select_fire_skill"):
 		katanaObj.appliedSkill = katanaObj.AppliedSkill.FIRE
 		emitSkillActivationSignals(false, true)
+		skillChanged.emit(1)
 	if Input.is_action_just_pressed("select_wind_skill"):
 		katanaObj.appliedSkill = katanaObj.AppliedSkill.WIND
 		emitSkillActivationSignals(true, false)
+		skillChanged.emit(2)
 	if Input.is_action_just_pressed("select_boomerang_skill"):
 		katanaObj.appliedSkill = katanaObj.AppliedSkill.BOOMERANG
 		emitSkillActivationSignals(false, false)
+		skillChanged.emit(3)
 
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
@@ -107,10 +113,9 @@ func _on_timer_timeout():
 	speed = baseSpeed
 
 func takeDamage(value):
-	var oldHp = hp
 	hp -= value
 	animStateMachine.travel("get_hit")
-	healthChanged.emit(oldHp, hp)
+	healthChanged.emit(hp)
 
 	if(hp <= 0):
 		queue_free()

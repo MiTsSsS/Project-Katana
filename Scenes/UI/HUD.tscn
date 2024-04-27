@@ -27,7 +27,7 @@ script = ExtResource("1_itgql")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="CharacterHealthBar" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -40,3 +40,29 @@ theme_override_styles/background = SubResource("StyleBoxFlat_tuwsk")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ovne6")
 value = 50.0
 show_percentage = false
+
+[node name="SelectedSkills_HB" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -116.0
+offset_right = 320.0
+offset_bottom = -66.0
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+layout_mode = 2
+size_flags_horizontal = 3
