@@ -15,3 +15,15 @@ func updateSelectedSkill(skill:int):
 	abilityRect[lastSelectedSkill].set_color(Color(1.0, 1.0, 1.0))
 	abilityRect[skill].set_color(Color(0.5, 0.5, 0.5))
 	lastSelectedSkill = skill
+
+func showDashSkillCooldown(cooldown:float):
+	var timer := Timer.new()
+	add_child(timer)
+	timer.wait_time = cooldown
+	timer.one_shot = true
+	timer.start()
+	selectedSkillsBox.get_children()[4].visible = true
+	timer.timeout.connect(_on_timer_timeout)
+
+func _on_timer_timeout():
+	selectedSkillsBox.get_children()[4].visible = false

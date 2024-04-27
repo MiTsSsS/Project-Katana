@@ -45,24 +45,31 @@ show_percentage = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
+offset_left = 43.0
 offset_top = -116.0
-offset_right = 320.0
+offset_right = 397.0
 offset_bottom = -66.0
 grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="ColorRect4" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+
+[node name="ColorRect5" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+visible = false
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
