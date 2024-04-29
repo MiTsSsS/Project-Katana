@@ -14,6 +14,7 @@ enum State {
 @onready var targetDistanceToPlayer = 0
 @onready var state = State.CHASING
 @onready var fireMaterial:ShaderMaterial = $Sprite2D.material
+@onready var hpBar:ProgressBar = $CharacterHealthBar
 
 @export var hp:int = 100
 @export var testName:String
@@ -21,6 +22,9 @@ enum State {
 var fireNode:Fire
 
 const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
+
+func _ready():
+	hpBar.set_value_no_signal()
 
 func _physics_process(delta):
 	pass
@@ -34,6 +38,8 @@ func setHp(value):
 
 func takeDamage(damage):
 	hp -= damage
+	hpBar.set_value_no_signal(hp)
+
 	print(hp)
 	
 	if hp <= 0:

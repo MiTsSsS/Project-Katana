@@ -335,6 +335,10 @@ position = Vector2(33, 9)
 shape = SubResource("RectangleShape2D_3gido")
 disabled = true
 
+[node name="CharacterHealthBar" parent="." index="11"]
+offset_top = -29.0
+offset_bottom = -21.0
+
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="SpecialAttackCooldown" to="." method="_on_special_attack_cooldown_timeout"]
 [connection signal="timeout" from="TeleportCooldown" to="." method="_on_teleport_timeout"]

@@ -1,9 +1,9 @@
+ProgressBar
 ColorRect
 Panel
 TextureRect
 HBoxContainer
 VBoxContainer
-ProgressBar
 TextureProgressBar
 CanvasLayer
 Control
@@ -12,4 +12,3 @@ CollisionPolygon2D
 Area2D
 Marker2D
 AnimationPlayer
-AnimationTree

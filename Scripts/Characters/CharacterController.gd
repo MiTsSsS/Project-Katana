@@ -105,7 +105,7 @@ func get_input():
 	elif velocity != Vector2.ZERO:
 		animStateMachine.travel("run")
 		
-	if Input.is_action_just_presed("dash"):
+	if Input.is_action_just_pressed("dash"):
 		dash.startDash(dashDuration)
 		dashed.emit(dashDuration)
 	

@@ -331,6 +331,10 @@ libraries = {
 "": SubResource("AnimationLibrary_a61vt")
 }
 
+[node name="CharacterHealthBar" parent="." index="9"]
+offset_top = -19.0
+offset_bottom = -11.0
+
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="body_entered" from="FlipMarker/FirstAttack" to="." method="_on_first_attack_body_entered"]
 [connection signal="body_entered" from="FlipMarker/SecondAttack" to="." method="_on_second_attack_body_entered"]
