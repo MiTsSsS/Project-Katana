@@ -239,7 +239,8 @@ graph_offset = Vector2(-93, -21)
 
 [node name="Enemy" instance=ExtResource("1_xmg01")]
 script = ExtResource("2_xn46e")
-testName = "Animal"
+hp = 100
+testName = ""
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 1, 1, 1)

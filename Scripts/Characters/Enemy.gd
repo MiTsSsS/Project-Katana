@@ -24,7 +24,7 @@ var fireNode:Fire
 const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
 
 func _ready():
-	hpBar.set_value_no_signal()
+	hpBar.set_value_no_signal(hp)
 
 func _physics_process(delta):
 	pass

@@ -20,7 +20,6 @@ const teleportRadius = 80
 const teleportTimerCooldown = 15
 
 #Shuriken Throw Properties
-@onready var shurikenSpawnPoint = $Muzzle
 @onready var shurikenThrowTimer = $SpecialAttackCooldown
 const shurikenThrowCooldown = 10
 const SHURIKEN = preload("res://Scenes/Items/Bullet.tscn")
@@ -36,6 +35,7 @@ func _ready():
 	speed = 200
 	player = get_parent().get_node("Character")
 	targetDistanceToPlayer = 80
+	super()
 
 func _process(delta):
 	if teleportTimer.is_stopped():
@@ -55,12 +55,14 @@ func _physics_process(delta):
 		var dir = (player.global_position - global_position).normalized()
 		if dir.x < 0:
 			flipMarker.scale = Vector2(-1, 1)
-			muzzle.position = Vector2(-9, 23)
 			sprite.flip_h = true
+			muzzle.position = Vector2(-9, 23)
+			muzzle.rotation_degrees = 180
 		else:
 			flipMarker.scale = Vector2(1, 1)
-			muzzle.position = Vector2(9, 23)
 			sprite.flip_h = false
+			muzzle.position = Vector2(9, 23)
+			muzzle.rotation_degrees = 0
 		move_and_collide(dir * speed * delta)
 	if global_position.distance_to(player.global_position) < targetDistanceToPlayer:
 		state = State.ATTACKING
@@ -93,7 +95,7 @@ func throwShuriken():
 	shurikenThrowTimer.start()
 
 	animStateMachine["parameters/playback"].travel("shuriken_toss")
-	#TODO: Create new state for special attacks, using idle state temporarily to make this work
+	#WARN: Create new state for special attacks, using idle state temporarily to make this work
 	state = State.IDLE
 
 	await get_tree().create_timer(0.2).timeout
@@ -107,11 +109,11 @@ func launchProjectiles():
 	get_parent().get_parent().add_child(shuriken2)
 	get_parent().get_parent().add_child(shuriken3)
 	
-	shuriken1.transform = shurikenSpawnPoint.global_transform
-	shuriken2.transform = shurikenSpawnPoint.global_transform
-	shuriken2.global_rotation_degrees = shurikenSpawnPoint.global_rotation_degrees + 30
-	shuriken3.transform = shurikenSpawnPoint.global_transform
-	shuriken3.global_rotation_degrees = shurikenSpawnPoint.global_rotation_degrees - 30
+	shuriken1.transform = muzzle.global_transform
+	shuriken2.transform = muzzle.global_transform
+	shuriken2.global_rotation_degrees = muzzle.global_rotation_degrees + 30
+	shuriken3.transform = muzzle.global_transform
+	shuriken3.global_rotation_degrees = muzzle.global_rotation_degrees - 30
 	
 	animStateMachine["parameters/conditions/running"] = true
 

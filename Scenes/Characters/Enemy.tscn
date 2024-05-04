@@ -25,6 +25,8 @@ corner_radius_bottom_left = 12
 
 [node name="Enemy" type="CharacterBody2D" groups=["mobs"]]
 script = ExtResource("1_yk0ot")
+hp = null
+testName = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
