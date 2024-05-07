@@ -1,10 +1,7 @@
+res://Scripts/UI/HUDManager.gd
 res://Scripts/Characters/CharacterController.gd
 res://Scenes/TestScene.tscn
 res://Art/VFX/Shaders/Fire.gdshader
-res://Scripts/Characters/Hanzo.gd
-res://Scripts/UI/HUDManager.gd
-res://Scripts/Items/Weapons/Katana.gd
-res://Scenes/UI/HUD.tscn
 res://Scenes/Characters/Character.tscn
 res://Scenes/Items/Weapons/Katana.tscn
 res://Scenes/Items/Weapons/Gun.tscn
@@ -15,3 +12,11 @@ res://Scenes/Items/Bullet.tscn
 res://Scenes/Abilities/Wind.tscn
 res://Scenes/Items/Weapons/BoomerangKatana.tscn
 res://Scenes/Characters/Enemy.tscn
+res://Scenes/UI/HUD.tscn
+res://Scenes/Characters/Dash.tscn
+res://Scripts/Characters/Enemy.gd
+res://Scripts/Characters/Hanzo.gd
+res://Scripts/Characters/Musketeer.gd
+res://Scripts/Characters/Samurai.gd
+res://Scripts/Characters/EnemyController.gd
+res://Scripts/Items/Weapons/Gun.gd

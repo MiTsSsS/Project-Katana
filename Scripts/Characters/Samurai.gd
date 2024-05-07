@@ -14,6 +14,7 @@ var player
 func _ready():
 	player = get_parent().get_node("Character")
 	targetDistanceToPlayer = 80
+	super()
 	
 func _process(delta):
 	if state == State.ATTACKING:
@@ -48,6 +49,7 @@ func takeDamage(damage):
 	animStateMachine["parameters/conditions/attack_1"] = false
 	
 	hp -= damage
+	hpBar.set_value_no_signal(hp)
 	print("Samurai HP: ")
 	print(hp)
 	if hp <= 0 and not dead:

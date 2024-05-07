@@ -16,6 +16,7 @@ func _ready():
 	speed = 200
 	player = get_parent().get_node("Character")
 	targetDistanceToPlayer = 500
+	super()
 	
 func _process(delta):
 	if state == State.ATTACKING:
@@ -62,6 +63,8 @@ func takeDamage(damage):
 	animStateMachine["parameters/conditions/get_hit"] = true
 
 	hp -= damage
+	hpBar.set_value_no_signal(hp)
+
 	print("Archer HP: ")
 	print(hp)
 	if hp <= 0 and not dead:

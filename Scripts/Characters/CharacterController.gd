@@ -28,6 +28,7 @@ signal fireSkillActivated(isActive)
 signal windSkillActivated(isActive)
 signal healthChanged(newHp)
 signal skillChanged(skill)
+signal dashed(cooldown:float)
 
 var isKatanaFlying = false
 
@@ -38,6 +39,7 @@ func _ready():
 	var hud:HUDManager = get_node("../Hud")
 	healthChanged.connect(hud.updateHpBar)
 	skillChanged.connect(hud.updateSelectedSkill)
+	dashed.connect(hud.showDashSkillCooldown)
 	
 # Called every frame. 'delta' is the elapsed time since the previous fram
 func _physics_process(delta):
@@ -105,6 +107,7 @@ func get_input():
 		
 	if Input.is_action_just_pressed("dash"):
 		dash.startDash(dashDuration)
+		dashed.emit(dashDuration)
 	
 	if dash.isDashing():
 		speed = speed * dashSpeedScalar

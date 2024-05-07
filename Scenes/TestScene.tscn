@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmkjgrji3jlhm"]
+[gd_scene load_steps=6 format=3 uid="uid://cmkjgrji3jlhm"]
 
 [ext_resource type="PackedScene" uid="uid://bfqn2oultoebp" path="res://Scenes/Characters/Character.tscn" id="1_ys7vr"]
 [ext_resource type="PackedScene" uid="uid://dl6872cjh5s8t" path="res://Scenes/UI/HUD.tscn" id="3_5mmv1"]
 [ext_resource type="PackedScene" uid="uid://bjgpjcifjpir6" path="res://Scenes/Characters/Enemies/Hanzo.tscn" id="4_2x6x2"]
+[ext_resource type="PackedScene" uid="uid://dspxogw1evlal" path="res://Scenes/Characters/Enemies/Samurai.tscn" id="4_s8y18"]
+[ext_resource type="PackedScene" uid="uid://c75i24vr2giyw" path="res://Scenes/Characters/Enemies/Musketeer.tscn" id="5_310xe"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -17,3 +19,11 @@ offset_left = 588.0
 offset_top = 321.0
 offset_right = 588.0
 offset_bottom = 321.0
+
+[node name="Enemy" parent="." instance=ExtResource("4_s8y18")]
+position = Vector2(205, 4)
+hp = 100
+testName = ""
+
+[node name="Enemy2" parent="." instance=ExtResource("5_310xe")]
+position = Vector2(349, 39)

@@ -239,7 +239,8 @@ graph_offset = Vector2(-93, -21)
 
 [node name="Enemy" instance=ExtResource("1_xmg01")]
 script = ExtResource("2_xn46e")
-testName = "Animal"
+hp = 100
+testName = ""
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 1, 1, 1)
@@ -276,6 +277,10 @@ parameters/conditions/died = false
 parameters/conditions/get_hit = false
 parameters/conditions/idle = false
 parameters/conditions/running = false
+
+[node name="CharacterHealthBar" parent="." index="9"]
+offset_top = -19.0
+offset_bottom = -11.0
 
 [connection signal="timeout" from="SpecialAttackCooldown" to="." method="_on_special_attack_cooldown_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

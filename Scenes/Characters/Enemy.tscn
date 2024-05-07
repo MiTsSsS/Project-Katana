@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2n31u0ok34hi"]
+[gd_scene load_steps=7 format=3 uid="uid://d2n31u0ok34hi"]
 
 [ext_resource type="Texture2D" uid="uid://cwh75kco5ltva" path="res://icon.svg" id="1_uru0m"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy.gd" id="1_yk0ot"]
@@ -9,8 +9,24 @@ size = Vector2(61, 61)
 [sub_resource type="CircleShape2D" id="CircleShape2D_pykit"]
 radius = 150.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npwoq"]
+bg_color = Color(1, 0.333333, 0.352941, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7631a"]
+bg_color = Color(0, 0.721569, 0.290196, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [node name="Enemy" type="CharacterBody2D" groups=["mobs"]]
 script = ExtResource("1_yk0ot")
+hp = null
+testName = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
@@ -36,3 +52,17 @@ max_results = 2
 
 [node name="SpecialAttackCooldown" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="CharacterHealthBar" type="ProgressBar" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -45.0
+offset_right = 25.0
+offset_bottom = -37.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_npwoq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7631a")
+value = 50.0
+show_percentage = false
