@@ -13,7 +13,8 @@ enum State {
 @onready var sprite = $Sprite2D
 @onready var targetDistanceToPlayer = 0
 @onready var state = State.CHASING
-@onready var fireMaterial:ShaderMaterial = $Sprite2D.material
+
+@onready var hitFlash:ShaderMaterial = $Sprite2D.material
 @onready var hpBar:ProgressBar = $CharacterHealthBar
 
 @export var hp:int = 100
@@ -44,6 +45,7 @@ func takeDamage(damage):
 	
 	if hp <= 0:
 		queue_free()
+
 		
 func setIsOnFire(hasFire):
 	isOnFire = hasFire
@@ -61,3 +63,7 @@ func spreadFire():
 			else:
 				print("Not one condition is satisfied")
 
+func takeDamageHitFlash():
+	hitFlash.set_shader_parameter("active", true)
+	await get_tree().create_timer(.1).timeout
+	hitFlash.set_shader_parameter("active", false)

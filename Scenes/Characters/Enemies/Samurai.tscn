@@ -1,8 +1,14 @@
-[gd_scene load_steps=35 format=3 uid="uid://dspxogw1evlal"]
+[gd_scene load_steps=37 format=3 uid="uid://dspxogw1evlal"]
 
 [ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="1_drbhh"]
 [ext_resource type="Script" path="res://Scripts/Characters/Samurai.gd" id="2_60oex"]
 [ext_resource type="Texture2D" uid="uid://c7r48nvnwma8k" path="res://Art/Characters/Samurai/spritesheet.png" id="3_2ehet"]
+[ext_resource type="Shader" path="res://Art/VFX/Shaders/WhiteHitFlash.gdshader" id="3_qyfyu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tx15v"]
+resource_local_to_scene = true
+shader = ExtResource("3_qyfyu")
+shader_parameter/active = false
 
 [sub_resource type="Animation" id="Animation_dsprl"]
 length = 0.001
@@ -284,9 +290,12 @@ graph_offset = Vector2(-28, -5)
 
 [node name="Enemy" instance=ExtResource("1_drbhh")]
 script = ExtResource("2_60oex")
+hp = null
+testName = null
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 1, 1, 1)
+material = SubResource("ShaderMaterial_tx15v")
 scale = Vector2(1, 1)
 texture = ExtResource("3_2ehet")
 hframes = 36
@@ -334,6 +343,7 @@ libraries = {
 [node name="CharacterHealthBar" parent="." index="9"]
 offset_top = -19.0
 offset_bottom = -11.0
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="body_entered" from="FlipMarker/FirstAttack" to="." method="_on_first_attack_body_entered"]
