@@ -22,10 +22,10 @@ offset_bottom = 321.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_s8y18")]
 position = Vector2(205, 4)
-hp = null
-testName = null
+hp = 100
+testName = ""
 
 [node name="Enemy2" parent="." instance=ExtResource("5_310xe")]
 position = Vector2(349, 39)
-hp = null
-testName = null
+hp = 100
+testName = ""

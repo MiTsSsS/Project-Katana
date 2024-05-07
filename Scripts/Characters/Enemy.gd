@@ -46,6 +46,7 @@ func takeDamage(damage):
 	if hp <= 0:
 		queue_free()
 
+	takeDamageHitFlash()
 		
 func setIsOnFire(hasFire):
 	isOnFire = hasFire
@@ -65,5 +66,5 @@ func spreadFire():
 
 func takeDamageHitFlash():
 	hitFlash.set_shader_parameter("active", true)
-	await get_tree().create_timer(.1).timeout
+	await get_tree().create_timer(0.1).timeout
 	hitFlash.set_shader_parameter("active", false)

@@ -19,6 +19,8 @@ const baseSpeed = 500
 @onready var FlipMarker:Marker2D = $FlipMarker
 @onready var projectileSpawnPoint = $FlipMarker/ProjectileSpawnPoint
 
+@onready var hitFlash:ShaderMaterial = $FlipMarker/Sprite2D.material
+
 @onready var hp = 100
 var katanaObj:Katana
 var canPerformNextAttack = true
@@ -122,6 +124,10 @@ func takeDamage(value):
 
 	if(hp <= 0):
 		queue_free()
+
+	hitFlash.set_shader_parameter("active", true)
+	await get_tree().create_timer(.1).timeout
+	hitFlash.set_shader_parameter("active", false)
 
 func _on_first_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
