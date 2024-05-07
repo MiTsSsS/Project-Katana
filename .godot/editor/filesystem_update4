@@ -15,4 +15,4 @@ res://Scenes/Characters/Enemy.tscn
 res://Scenes/UI/HUD.tscn
 res://Scenes/Characters/Dash.tscn
 res://Scripts/Characters/Enemy.gd
-res://Scripts/Characters/Hanzo.gd
+res://Scripts/Items/Weapons/BoomerangKatana.gd

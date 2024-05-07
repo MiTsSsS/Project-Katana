@@ -1,3 +1,6 @@
+AnimationPlayer
+Sprite2D
+AnimatedSprite2D
 ProgressBar
 ColorRect
 Panel
@@ -9,6 +12,3 @@ CanvasLayer
 Control
 CollisionShape2D
 CollisionPolygon2D
-Area2D
-Marker2D
-AnimationPlayer
