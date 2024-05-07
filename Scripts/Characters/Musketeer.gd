@@ -71,6 +71,8 @@ func takeDamage(damage):
 		dead = true
 		animStateMachine["parameters/conditions/died"] = true
 
+	takeDamageHitFlash()
+
 func specialAttack():
 	if not dead:
 		musket.specialAttack(specialAttackCooldownTimer)

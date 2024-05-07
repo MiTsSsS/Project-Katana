@@ -56,6 +56,8 @@ func takeDamage(damage):
 		dead = true
 		animStateMachine["parameters/conditions/died"] = true
 
+	takeDamageHitFlash()
+
 func _on_attack_cooldown_timeout():
 	attackCooldownTimer.wait_time = attackCooldown
 	 

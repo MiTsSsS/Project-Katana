@@ -1,7 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2n31u0ok34hi"]
+[gd_scene load_steps=9 format=3 uid="uid://d2n31u0ok34hi"]
 
 [ext_resource type="Texture2D" uid="uid://cwh75kco5ltva" path="res://icon.svg" id="1_uru0m"]
 [ext_resource type="Script" path="res://Scripts/Characters/Enemy.gd" id="1_yk0ot"]
+[ext_resource type="Shader" path="res://Art/VFX/Shaders/WhiteHitFlash.gdshader" id="2_257on"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1fqa"]
+resource_local_to_scene = true
+shader = ExtResource("2_257on")
+shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5rqb"]
 size = Vector2(61, 61)
@@ -25,11 +31,10 @@ corner_radius_bottom_left = 12
 
 [node name="Enemy" type="CharacterBody2D" groups=["mobs"]]
 script = ExtResource("1_yk0ot")
-hp = null
-testName = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(1, 0.988235, 0.988235, 1)
+material = SubResource("ShaderMaterial_h1fqa")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_uru0m")
 

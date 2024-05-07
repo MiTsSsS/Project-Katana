@@ -27,3 +27,5 @@ testName = ""
 
 [node name="Enemy2" parent="." instance=ExtResource("5_310xe")]
 position = Vector2(349, 39)
+hp = 100
+testName = ""

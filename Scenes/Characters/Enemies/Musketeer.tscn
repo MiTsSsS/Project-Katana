@@ -1,9 +1,19 @@
-[gd_scene load_steps=34 format=3 uid="uid://c75i24vr2giyw"]
+[gd_scene load_steps=37 format=3 uid="uid://c75i24vr2giyw"]
 
 [ext_resource type="PackedScene" uid="uid://d2n31u0ok34hi" path="res://Scenes/Characters/Enemy.tscn" id="1_xmg01"]
 [ext_resource type="Script" path="res://Scripts/Characters/Musketeer.gd" id="2_xn46e"]
 [ext_resource type="PackedScene" uid="uid://4ku04kd1tfuv" path="res://Scenes/Items/Weapons/Gun.tscn" id="3_04xem"]
+[ext_resource type="Shader" path="res://Art/VFX/Shaders/WhiteHitFlash.gdshader" id="3_cn1pv"]
 [ext_resource type="Texture2D" uid="uid://dlshhfr4ebvqs" path="res://Art/Characters/Musketeer/spritesheet.png" id="3_e8521"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6isbh"]
+shader = ExtResource("3_cn1pv")
+shader_parameter/active = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ouuci"]
+resource_local_to_scene = true
+shader = ExtResource("3_cn1pv")
+shader_parameter/active = false
 
 [sub_resource type="Animation" id="Animation_gklsw"]
 length = 0.001
@@ -238,12 +248,12 @@ transitions = ["die", "End", SubResource("AnimationNodeStateMachineTransition_t2
 graph_offset = Vector2(-93, -21)
 
 [node name="Enemy" instance=ExtResource("1_xmg01")]
+material = SubResource("ShaderMaterial_6isbh")
 script = ExtResource("2_xn46e")
-hp = 100
-testName = ""
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 1, 1, 1)
+material = SubResource("ShaderMaterial_ouuci")
 scale = Vector2(1, 1)
 texture = ExtResource("3_e8521")
 hframes = 39

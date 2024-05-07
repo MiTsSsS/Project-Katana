@@ -1,8 +1,14 @@
-[gd_scene load_steps=32 format=3 uid="uid://bfqn2oultoebp"]
+[gd_scene load_steps=34 format=3 uid="uid://bfqn2oultoebp"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterController.gd" id="1_rklxv"]
+[ext_resource type="Shader" path="res://Art/VFX/Shaders/WhiteHitFlash.gdshader" id="2_6fy6e"]
 [ext_resource type="PackedScene" uid="uid://bjs7m4djnqfah" path="res://Scenes/Characters/Dash.tscn" id="3_u8yht"]
 [ext_resource type="Texture2D" uid="uid://oonch1a3umqc" path="res://Art/Characters/Player/spritesheet.png" id="11_ngfvv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5xi88"]
+resource_local_to_scene = true
+shader = ExtResource("2_6fy6e")
+shader_parameter/active = false
 
 [sub_resource type="Animation" id="Animation_3k6ev"]
 length = 0.001
@@ -227,11 +233,13 @@ graph_offset = Vector2(-344, -40)
 size = Vector2(48, 102)
 
 [node name="Character" type="CharacterBody2D" groups=["player"]]
+position = Vector2(0, 1)
 script = ExtResource("1_rklxv")
 
 [node name="FlipMarker" type="Marker2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="FlipMarker"]
+material = SubResource("ShaderMaterial_5xi88")
 texture = ExtResource("11_ngfvv")
 hframes = 32
 
