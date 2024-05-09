@@ -13,6 +13,8 @@ enum State {
 @onready var sprite = $Sprite2D
 @onready var targetDistanceToPlayer = 0
 @onready var state = State.CHASING
+@onready var floatingDamageSpawnRangeMin = -30
+@onready var floatingDamageSpawnRangeMax = 30
 
 @onready var hitFlash:ShaderMaterial = $Sprite2D.material
 @onready var hpBar:ProgressBar = $CharacterHealthBar
@@ -23,6 +25,7 @@ enum State {
 var fireNode:Fire
 
 const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
+const FLOATINGDAMAGE = preload("res://Scenes/UI/FloatingText.tscn")
 
 func _ready():
 	hpBar.set_value_no_signal(hp)
@@ -46,7 +49,7 @@ func takeDamage(damage):
 	if hp <= 0:
 		queue_free()
 
-	takeDamageHitFlash()
+	takeDamageVisuals(damage)
 		
 func setIsOnFire(hasFire):
 	isOnFire = hasFire
@@ -64,7 +67,11 @@ func spreadFire():
 			else:
 				print("Not one condition is satisfied")
 
-func takeDamageHitFlash():
+func takeDamageVisuals(damageValue:int):
 	hitFlash.set_shader_parameter("active", true)
 	await get_tree().create_timer(0.1).timeout
 	hitFlash.set_shader_parameter("active", false)
+	var fd = FLOATINGDAMAGE.instantiate()
+	fd.position.x = randf_range(floatingDamageSpawnRangeMin, floatingDamageSpawnRangeMax)
+	add_child(fd)
+	fd.updateValue(damageValue)

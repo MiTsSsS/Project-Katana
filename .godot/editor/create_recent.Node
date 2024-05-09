@@ -1,14 +1,14 @@
 AnimationPlayer
+HBoxContainer
+Label
 Sprite2D
 AnimatedSprite2D
 ProgressBar
 ColorRect
 Panel
 TextureRect
-HBoxContainer
 VBoxContainer
 TextureProgressBar
 CanvasLayer
 Control
 CollisionShape2D
-CollisionPolygon2D
