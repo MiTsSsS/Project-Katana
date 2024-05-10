@@ -5,6 +5,9 @@ class_name Player
 const BULLET = preload("res://Scenes/Items/Bullet.tscn")
 const KATANA = preload("res://Scripts/Items/Weapons/Katana.gd")
 const KATANABOOMERANG = preload("res://Scenes/Items/Weapons/BoomerangKatana.tscn")
+const FLOATINGDAMAGE = preload("res://Scenes/UI/FloatingText.tscn")
+const floatingDamageSpawnRangeMin = -30
+const floatingDamageSpawnRangeMax = 30
 
 const baseSpeed = 500
 @export var speed = 500
@@ -24,6 +27,7 @@ const baseSpeed = 500
 @onready var hp = 100
 var katanaObj:Katana
 var canPerformNextAttack = true
+
 
 signal positionChanged(newPos)
 signal fireSkillActivated(isActive)
@@ -128,6 +132,10 @@ func takeDamage(value):
 	hitFlash.set_shader_parameter("active", true)
 	await get_tree().create_timer(.1).timeout
 	hitFlash.set_shader_parameter("active", false)
+	var fd = FLOATINGDAMAGE.instantiate()
+	fd.position.x = randf_range(floatingDamageSpawnRangeMin, floatingDamageSpawnRangeMax)
+	add_child(fd)
+	fd.updateValue(value)
 
 func _on_first_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
