@@ -71,7 +71,7 @@ func takeDamage(damage):
 		dead = true
 		animStateMachine["parameters/conditions/died"] = true
 
-	takeDamageHitFlash()
+	takeDamageVisuals(damage)
 
 func specialAttack():
 	if not dead:
