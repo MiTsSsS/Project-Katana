@@ -6,8 +6,10 @@ const BULLET = preload("res://Scenes/Items/Bullet.tscn")
 const KATANA = preload("res://Scripts/Items/Weapons/Katana.gd")
 const KATANABOOMERANG = preload("res://Scenes/Items/Weapons/BoomerangKatana.tscn")
 const FLOATINGDAMAGE = preload("res://Scenes/UI/FloatingText.tscn")
+const DASHGHOST = preload("res://Scenes/Characters/CharacterGhost.tscn")
 const floatingDamageSpawnRangeMin = -30
 const floatingDamageSpawnRangeMax = 30
+const MAXHP = 100
 
 const baseSpeed = 500
 @export var speed = 500
@@ -28,7 +30,6 @@ const baseSpeed = 500
 var katanaObj:Katana
 var canPerformNextAttack = true
 
-
 signal positionChanged(newPos)
 signal fireSkillActivated(isActive)
 signal windSkillActivated(isActive)
@@ -46,6 +47,7 @@ func _ready():
 	healthChanged.connect(hud.updateHpBar)
 	skillChanged.connect(hud.updateSelectedSkill)
 	dashed.connect(hud.showDashSkillCooldown)
+	hud.startingHp = hp
 	
 # Called every frame. 'delta' is the elapsed time since the previous fram
 func _physics_process(delta):
@@ -116,6 +118,14 @@ func get_input():
 		dashed.emit(dashDuration)
 	
 	if dash.isDashing():
+			
+		var ghost = DASHGHOST.instantiate()
+		ghost.position = position
+
+		if(direction.x < 0):
+			ghost.get_node("Sprite2D").flip_h = true
+		
+		get_parent().add_child(ghost)
 		speed = speed * dashSpeedScalar
 		
 func _on_timer_timeout():
@@ -132,10 +142,12 @@ func takeDamage(value):
 	hitFlash.set_shader_parameter("active", true)
 	await get_tree().create_timer(.1).timeout
 	hitFlash.set_shader_parameter("active", false)
-	var fd = FLOATINGDAMAGE.instantiate()
-	fd.position.x = randf_range(floatingDamageSpawnRangeMin, floatingDamageSpawnRangeMax)
-	add_child(fd)
-	fd.updateValue(value)
+	createFloatingText(value)
+
+func heal(value):
+	var newHp = hp + value
+	hp = clampi(newHp, 0, MAXHP)
+	healthChanged.emit(hp)
 
 func _on_first_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
@@ -159,3 +171,9 @@ func setKatanaArrived():
 func emitSkillActivationSignals(isWindActive, isFireActive):
 	windSkillActivated.emit(isWindActive)
 	fireSkillActivated.emit(isFireActive)
+
+func createFloatingText(value:int):
+	var fd = FLOATINGDAMAGE.instantiate()
+	fd.position.x = randf_range(floatingDamageSpawnRangeMin, floatingDamageSpawnRangeMax)
+	add_child(fd)
+	fd.updateValue(value)

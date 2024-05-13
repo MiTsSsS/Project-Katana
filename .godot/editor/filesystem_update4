@@ -17,3 +17,9 @@ res://Scenes/Characters/Enemy.tscn
 res://Scenes/UI/HUD.tscn
 res://Scenes/Characters/Dash.tscn
 res://Scenes/UI/FloatingText.tscn
+res://Scripts/Characters/Hanzo.gd
+res://Scenes/Characters/CharacterGhost.tscn
+res://Scenes/Items/Pickups/Health.tscn
+res://Scripts/Items/Pickups/Health.gd
+res://Scripts/Characters/Samurai.gd
+res://Scripts/UI/HUDManager.gd

@@ -5,9 +5,14 @@ class_name HUDManager
 @onready var characterHpBar:ProgressBar = $CanvasLayer/CharacterHealthBar
 @onready var selectedSkillsBox:HBoxContainer = $CanvasLayer/SelectedSkills_HB
 var lastSelectedSkill:int = 0 
+var startingHp = 100
+
+func _ready():
+	characterHpBar.set_value_no_signal(startingHp)
 
 func updateHpBar(newHp):
-	characterHpBar.set_value_no_signal(newHp)
+	if(characterHpBar):
+		characterHpBar.set_value_no_signal(newHp)
 
 func updateSelectedSkill(skill:int):
 	var abilityRect = selectedSkillsBox.get_children()
