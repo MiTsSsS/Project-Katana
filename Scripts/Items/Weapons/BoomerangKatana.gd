@@ -3,6 +3,7 @@ extends Area2D
 const speed = 800
 const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
 const WINDSKILL = preload("res://Scenes/Abilities/Wind.tscn")
+const FIRETRAIL = preload("res://Scenes/Abilities/FireTrail.tscn")
 
 @onready var travelTime = $BoomerangTravelTime
 @onready var windCooldown = $WindCooldown
@@ -23,10 +24,16 @@ func  _physics_process(delta):
 		global_position += global_transform.x * speed * delta
 	else: 
 		global_position += global_position.direction_to(playerPosition) * speed * delta
-		
+
 		if global_position.distance_to(playerPosition) < 50:
 			signalArrival.emit()
 			queue_free()
+
+	if applyFire:
+		var fireTrail = FIRETRAIL.instantiate()
+		fireTrail.global_position = global_position
+		get_parent().add_child(fireTrail)
+		
 			
 func updatePlayerPosition(newPos:Vector2):
 	playerPosition = newPos

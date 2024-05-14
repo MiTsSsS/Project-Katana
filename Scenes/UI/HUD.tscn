@@ -1,6 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl6872cjh5s8t"]
+[gd_scene load_steps=10 format=3 uid="uid://dl6872cjh5s8t"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUDManager.gd" id="1_itgql"]
+[ext_resource type="Texture2D" uid="uid://dg7xl6taq7aoh" path="res://Art/VFX/Items/Katana/FireKatanaFrames/tile000.png" id="2_xkrom"]
+[ext_resource type="Texture2D" uid="uid://6i875v247kxf" path="res://Art/VFX/Items/Katana/FireKatanaFrames/tile001.png" id="3_168xw"]
+[ext_resource type="Texture2D" uid="uid://d06b81psjqlij" path="res://Art/VFX/Items/Katana/FireKatanaFrames/tile002.png" id="4_jwteu"]
+[ext_resource type="Texture2D" uid="uid://cwxe4nk3x26ev" path="res://Art/VFX/Items/Katana/FireKatanaFrames/tile003.png" id="5_hyb5m"]
+[ext_resource type="Texture2D" uid="uid://cdedivasit3vk" path="res://Art/VFX/Items/Katana/FireKatanaFrames/tile004.png" id="6_wcq5d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuwsk"]
 bg_color = Color(1, 0.333333, 0.352941, 1)
@@ -15,6 +20,21 @@ corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_2qoh2"]
+resource_local_to_scene = true
+frames = 5
+pause = true
+speed_scale = 15.0
+frame_0/texture = ExtResource("2_xkrom")
+frame_1/texture = ExtResource("3_168xw")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_jwteu")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_hyb5m")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("6_wcq5d")
+frame_4/duration = 1.0
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -41,35 +61,43 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ovne6")
 value = 50.0
 show_percentage = false
 
-[node name="SelectedSkills_HB" type="HBoxContainer" parent="CanvasLayer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 43.0
-offset_top = -116.0
-offset_right = 397.0
+offset_left = 38.0
+offset_top = -130.0
+offset_right = 294.0
 offset_bottom = -66.0
 grow_vertical = 0
+scale = Vector2(1.12, 1)
+
+[node name="SelectedSkills_HB" type="HBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PanelContainer/SelectedSkills_HB"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+[node name="ColorRect2" type="TextureRect" parent="CanvasLayer/PanelContainer/SelectedSkills_HB"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = SubResource("AnimatedTexture_2qoh2")
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/PanelContainer/SelectedSkills_HB"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
-[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/PanelContainer/SelectedSkills_HB"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
-[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-
-[node name="ColorRect5" type="ColorRect" parent="CanvasLayer/SelectedSkills_HB"]
+[node name="ColorRect5" type="ColorRect" parent="CanvasLayer/PanelContainer/SelectedSkills_HB"]
 visible = false
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasLayer/PanelContainer/SelectedSkills_HB")

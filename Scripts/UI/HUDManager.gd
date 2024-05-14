@@ -3,7 +3,7 @@ extends Control
 class_name HUDManager 
 
 @onready var characterHpBar:ProgressBar = $CanvasLayer/CharacterHealthBar
-@onready var selectedSkillsBox:HBoxContainer = $CanvasLayer/SelectedSkills_HB
+@onready var selectedSkillsBox:HBoxContainer = $CanvasLayer/PanelContainer/SelectedSkills_HB
 var lastSelectedSkill:int = 0 
 var startingHp = 100
 
@@ -15,6 +15,12 @@ func updateHpBar(newHp):
 		characterHpBar.set_value_no_signal(newHp)
 
 func updateSelectedSkill(skill:int):
+	if(skill == 1):
+		var animText = selectedSkillsBox.get_children()[1] as TextureRect
+		var anim = animText.get_texture() as AnimatedTexture
+		anim.pause = not anim.pause
+		return
+
 	var abilityRect = selectedSkillsBox.get_children()
 
 	abilityRect[lastSelectedSkill].set_color(Color(1.0, 1.0, 1.0))

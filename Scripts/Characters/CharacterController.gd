@@ -36,6 +36,7 @@ signal windSkillActivated(isActive)
 signal healthChanged(newHp)
 signal skillChanged(skill)
 signal dashed(cooldown:float)
+signal dead
 
 var isKatanaFlying = false
 
@@ -137,7 +138,7 @@ func takeDamage(value):
 	healthChanged.emit(hp)
 
 	if(hp <= 0):
-		queue_free()
+		dead.emit()
 
 	hitFlash.set_shader_parameter("active", true)
 	await get_tree().create_timer(.1).timeout
