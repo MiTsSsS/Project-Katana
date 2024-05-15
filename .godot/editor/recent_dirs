@@ -1,3 +1,5 @@
+res://Art/Characters/Hanzo
+res://Scripts
 res://Scripts/Items/Pickups
 res://Art
 res://Art/VFX/Shaders
@@ -5,7 +7,6 @@ M:/Applications/Programming/Neovim/bin
 M:/Applications/Programming/Sublime Text
 res://Art/Characters/Player
 res://Art/Animations
-res://Scripts
 res://Scripts/Characters
 res://Scenes/Characters/Enemies
 res://Scripts/Abilities

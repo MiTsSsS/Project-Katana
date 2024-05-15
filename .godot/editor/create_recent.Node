@@ -1,14 +1,14 @@
+GPUParticles2D
+Timer
+ShapeCast2D
 AnimationPlayer
 Sprite2D
 AnimatedSprite2D
 PanelContainer
 TextureRect
-GPUParticles2D
 Area2D
 CollisionShape2D
 HBoxContainer
 Label
 ProgressBar
 ColorRect
-Panel
-VBoxContainer

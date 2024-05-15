@@ -44,11 +44,16 @@ func _ready():
 	var durationTimer = dash.get_node("DurationTimer")
 	durationTimer.timeout.connect(_on_timer_timeout)
 	katanaObj = KATANA.new()
+
+	#HUD setup
 	var hud:HUDManager = get_node("../Hud")
 	healthChanged.connect(hud.updateHpBar)
 	skillChanged.connect(hud.updateSelectedSkill)
 	dashed.connect(hud.showDashSkillCooldown)
 	hud.startingHp = hp
+	
+	#Game State
+	dead.connect(GameManager.endGame)
 	
 # Called every frame. 'delta' is the elapsed time since the previous fram
 func _physics_process(delta):

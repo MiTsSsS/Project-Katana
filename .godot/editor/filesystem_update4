@@ -15,6 +15,11 @@ res://Scenes/Items/Weapons/BoomerangKatana.tscn
 res://Scenes/Characters/Enemy.tscn
 res://Scenes/UI/HUD.tscn
 res://Scenes/Characters/Dash.tscn
-res://Scripts/UI/HUDManager.gd
 res://Scenes/Abilities/FireTrail.tscn
-res://Scripts/GameManager.gd
+res://Scripts/Characters/Hanzo.gd
+res://Scripts/Globals.gd
+res://Scenes/Abilities/ExplodingLog.tscn
+res://Scenes/Abilities/ExplodingLog.gd
+res://Scripts/Abilities/Fire.gd
+res://Scripts/Items/Weapons/Katana.gd
+res://Scripts/Characters/Enemy.gd
