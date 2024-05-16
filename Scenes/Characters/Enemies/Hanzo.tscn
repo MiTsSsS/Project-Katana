@@ -302,6 +302,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="SpecialAttackCooldown" parent="." index="5"]
+wait_time = 2.0
 one_shot = true
 
 [node name="TeleportCooldown" type="Timer" parent="." index="6"]

@@ -1,8 +1,12 @@
-res://Scenes/TestScene.tscn
+res://Scripts/GameManager.gd
+res://Scenes/Abilities/ExplodingLog.tscn
 res://Scripts/UI/FloatingText.gd
 res://Scripts/Characters/CharacterController.gd
 res://Scripts/Items/Weapons/BoomerangKatana.gd
 res://Art/VFX/Shaders/Fire.gdshader
+res://Scenes/Characters/Enemies/EnemySpawner.tscn
+res://Scripts/World/EnemySpawner.gd
+res://Scenes/TestScene.tscn
 res://Scenes/Characters/Character.tscn
 res://Scenes/Items/Weapons/Katana.tscn
 res://Scenes/Items/Weapons/Gun.tscn
@@ -16,6 +20,7 @@ res://Scenes/Characters/Enemy.tscn
 res://Scenes/UI/HUD.tscn
 res://Scenes/Characters/Dash.tscn
 res://Scenes/Abilities/FireTrail.tscn
-res://Scenes/Abilities/ExplodingLog.tscn
-res://Scripts/Abilities/Fire.gd
-res://Scripts/Items/Weapons/Katana.gd
+res://Scripts/Characters/Hanzo.gd
+res://Scenes/Items/Weapons/Shuriken.tscn
+res://Scripts/Items/Weapons/Shuriken.gd
+res://Scripts/Items/Weapons/Bullet.gd

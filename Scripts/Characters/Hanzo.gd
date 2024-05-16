@@ -23,7 +23,7 @@ const EXPLODINGLOG = preload("res://Scenes/Abilities/ExplodingLog.tscn")
 #Shuriken Throw Properties
 @onready var shurikenThrowTimer = $SpecialAttackCooldown
 const shurikenThrowCooldown = 10
-const SHURIKEN = preload("res://Scenes/Items/Bullet.tscn")
+const SHURIKEN = preload("res://Scenes/Items/Weapons/Shuriken.tscn")
 
 #Clones Ability Properties
 @onready var clonesTimer:Timer = $ClonesCooldown

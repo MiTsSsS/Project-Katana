@@ -1,13 +1,13 @@
+Timer
+Area2D
+CollisionShape2D
 AnimatedSprite2D
 GPUParticles2D
-Timer
 ShapeCast2D
 AnimationPlayer
 Sprite2D
 PanelContainer
 TextureRect
-Area2D
-CollisionShape2D
 HBoxContainer
 Label
 ProgressBar

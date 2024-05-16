@@ -2,16 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://bfqn2oultoebp" path="res://Scenes/Characters/Character.tscn" id="1_ys7vr"]
 [ext_resource type="PackedScene" uid="uid://dl6872cjh5s8t" path="res://Scenes/UI/HUD.tscn" id="3_5mmv1"]
-[ext_resource type="PackedScene" uid="uid://bjgpjcifjpir6" path="res://Scenes/Characters/Enemies/Hanzo.tscn" id="4_2x6x2"]
+[ext_resource type="PackedScene" uid="uid://dq544wmnya8xl" path="res://Scenes/Characters/Enemies/EnemySpawner.tscn" id="4_8m8mk"]
 [ext_resource type="PackedScene" uid="uid://bpecjakbgg7oa" path="res://Scenes/Items/Pickups/Health.tscn" id="6_j3mwg"]
 
 [node name="TestScene" type="Node2D"]
 
 [node name="Character" parent="." instance=ExtResource("1_ys7vr")]
 position = Vector2(183, 221)
-
-[node name="Enemy3" parent="." instance=ExtResource("4_2x6x2")]
-position = Vector2(94, 75)
 
 [node name="Hud" parent="." instance=ExtResource("3_5mmv1")]
 offset_left = 588.0
@@ -27,3 +24,6 @@ position = Vector2(616, 294)
 
 [node name="Health3" parent="." instance=ExtResource("6_j3mwg")]
 position = Vector2(416, 291)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_8m8mk")]
+position = Vector2(259, -26)

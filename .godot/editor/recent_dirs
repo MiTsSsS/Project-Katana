@@ -1,4 +1,6 @@
+res://Scripts/Items/Weapons
 res://Art/Characters/Hanzo
+res://Scripts/World
 res://Scripts
 res://Scripts/Items/Pickups
 res://Art
@@ -12,7 +14,6 @@ res://Scenes/Characters/Enemies
 res://Scripts/Abilities
 res://Art/VFX/Items/Katana/Slashes/SingleSlash
 res://Scenes/Items/Weapons
-res://Scripts/Items/Weapons
 res://Scripts/Mechanics
 res://Scenes/Characters
 res://
