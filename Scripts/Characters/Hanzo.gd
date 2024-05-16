@@ -91,6 +91,7 @@ func teleport():
 	var explodeLog = EXPLODINGLOG.instantiate()
 	explodeLog.global_position = prevGlobalPosition
 	get_parent().add_child(explodeLog)
+	explodeLog.modulateIfClone(isClone)
 
 	global_position.x = randPosX
 	global_position.y = randPosY
