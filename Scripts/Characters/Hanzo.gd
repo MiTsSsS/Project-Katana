@@ -16,8 +16,9 @@ var isClone = false
 
 #Teleport Properties
 @onready var teleportTimer = $TeleportCooldown
-const teleportRadius = 80
-const teleportTimerCooldown = 15
+const teleportRadius = 300
+const teleportTimerCooldown = 2
+const EXPLODINGLOG = preload("res://Scenes/Abilities/ExplodingLog.tscn")
 
 #Shuriken Throw Properties
 @onready var shurikenThrowTimer = $SpecialAttackCooldown
@@ -79,13 +80,20 @@ func attack():
 #Teleport
 func teleport():
 	teleportTimer.start()
-	var newRandPos = position + Vector2(randi_range(-teleportRadius, teleportRadius), randi_range(-teleportRadius, teleportRadius))
-
-	if newRandPos.x > Globals.WORLD_X or newRandPos.x < Globals.WORLD_X or newRandPos.y > Globals.WORLD_Y or newRandPos.y < Globals.WORLD_Y:
+	var prevGlobalPosition = global_position
+	var randPosX = randf_range(position.x - teleportRadius, position.x + teleportRadius)
+	var randPosY = randf_range(position.y - teleportRadius, position.y + teleportRadius)
+	
+	if randPosX < Globals.NEGATIVEWORLD_X or randPosX > Globals.WORLD_X or randPosY > Globals.WORLD_Y or randPosY < Globals.NEGATIVEWORLD_Y:
 		teleportTimer.wait_time = teleportTimerCooldown
 		return
-		
-	position = newRandPos
+	
+	var explodeLog = EXPLODINGLOG.instantiate()
+	explodeLog.global_position = prevGlobalPosition
+	get_parent().add_child(explodeLog)
+
+	global_position.x = randPosX
+	global_position.y = randPosY
 
 func _on_teleport_timeout():
 	teleportTimer.wait_time = teleportTimerCooldown
