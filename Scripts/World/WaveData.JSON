@@ -1,0 +1,20 @@
+{
+	"waves": 3,
+	"enemyTypePerWave": {
+		"wave1": {
+			"Samurai": 3,
+			"Archer": 2,
+			"Hanzo": 1
+		},
+		"wave2": {
+			"Samurai": 3,
+			"Archer": 4,
+			"Hanzo": 2
+		},
+		"wave3": {
+			"Samurai": 5,
+			"Archer": 2,
+			"Hanzo": 1
+		}
+	}
+}

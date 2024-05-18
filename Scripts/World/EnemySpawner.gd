@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name EnemySpawner
+
 const SAMURAI = preload("res://Scenes/Characters/Enemies/Samurai.tscn")
 const ARCHER = preload("res://Scenes/Characters/Enemies/Samurai.tscn")
 const HANZO = preload("res://Scenes/Characters/Enemies/Hanzo.tscn")
@@ -13,9 +15,6 @@ func _ready():
 	GameManager.spawnEnemy.connect(spawnEnemy)
 	await get_tree().create_timer(1).timeout
 	spawnEnemy(Enemy_Type.SAMURAI)
-
-func _process(delta):
-	print(spawnIntervalTimer.time_left)
 
 func spawnEnemy(type:Enemy_Type):
 	var enemy

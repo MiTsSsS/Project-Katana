@@ -10,7 +10,6 @@ func modulateIfClone(clone:bool):
 	print(clone)
 	isClone = clone
 	if(isClone):
-		print("modulating")
 		logSprite.modulate.a = 0.5
 		explosionRadiusSprite.modulate.a = 0.5
 
