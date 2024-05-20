@@ -1,13 +1,10 @@
 extends Node
 
-const waveManagerScript = preload("res://Scripts/World/WaveManager.gd")
-var waveManager:WaveManager
+const WAVEMANAGER = preload("res://Scenes/World/WaveManager.tscn")
 
 signal spawnEnemy
 
-func _ready():
-	waveManager = waveManagerScript.new()
-	waveManager.createSpawner()
+var waveManager:WaveManager
 
 func endGame():
 	get_tree().paused = true

@@ -5,38 +5,47 @@ class_name WaveManager
 const ENEMYSPAWNER = preload("res://Scenes/Characters/Enemies/EnemySpawner.tscn") 
 
 var waveNumber = 0
-var enemiesToDefeat = 5
+var completedWaves = 1
+var enemiesToDefeat = 0
 var samuraiAmountToSpawn:int
 var archerAmountToSpawn:int
 var hanzoAmountToSpawn:int
-var enemySpawner:EnemySpawner
-var wave1Data
+@onready var enemySpawner:EnemySpawner = $EnemySpawner
+var jsonDict
 
-func _init():
+func _ready():
 	parseWaveDataFromJson()
+	GameManager.waveManager = self
+	startWave()
 
 func parseWaveDataFromJson():
 	var waveData = "res://Scripts/World/WaveData.JSON"
 	var json_as_text = FileAccess.get_file_as_string(waveData)
-	var jsonDict = JSON.parse_string(json_as_text)
+	jsonDict = JSON.parse_string(json_as_text)
 	if jsonDict:
 		waveNumber = jsonDict["waves"]
-		wave1Data = [jsonDict["enemyTypePerWave"]["wave1"]["Samurai"],jsonDict["enemyTypePerWave"]["wave1"]["Archer"], jsonDict["enemyTypePerWave"]["wave1"]["Hanzo"]]
-		samuraiAmountToSpawn = wave1Data[0]
-		archerAmountToSpawn = wave1Data[1]
-		hanzoAmountToSpawn = wave1Data[2]
 
-func createSpawner():
-	var spawner = ENEMYSPAWNER.instantiate()
-	spawner.global_position = Vector2(0, 0)
-	get_tree().add_child(spawner)
-	enemySpawner = spawner
+func startWave():
+	var waveData = getWaveData(completedWaves)
+	enemiesToDefeat = waveData[1] + waveData[2] + waveData[3]
+	enemySpawner.getParsedEnemyInfo(waveData[1], waveData[2], waveData[3])
 
-	for n in samuraiAmountToSpawn:
-		enemySpawner.spawnEnemy(EnemySpawner.Enemy_Type.SAMURAI)
+func getWaveData(compWaves):	
+	var currentWave = "wave" 
+	currentWave += str(compWaves)
+	print(currentWave)
+	var data = [jsonDict["enemyTypePerWave"][currentWave]["Timer"], jsonDict["enemyTypePerWave"][currentWave]["Samurai"],jsonDict["enemyTypePerWave"][currentWave]["Archer"], jsonDict["enemyTypePerWave"][currentWave]["Hanzo"]]
+	print(data)
+
+	return data
 
 func decrementEnemiesToDefeat():
 	enemiesToDefeat -= 1
 
 	if enemiesToDefeat == 0:
-		get_tree().paused = true
+		completedWaves += 1
+
+		if completedWaves > waveNumber:
+			get_tree().pause = true
+
+		startWave()

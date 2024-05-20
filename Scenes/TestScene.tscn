@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmkjgrji3jlhm"]
+[gd_scene load_steps=6 format=3 uid="uid://cmkjgrji3jlhm"]
 
 [ext_resource type="PackedScene" uid="uid://bfqn2oultoebp" path="res://Scenes/Characters/Character.tscn" id="1_ys7vr"]
 [ext_resource type="PackedScene" uid="uid://dl6872cjh5s8t" path="res://Scenes/UI/HUD.tscn" id="3_5mmv1"]
+[ext_resource type="PackedScene" uid="uid://cvhknhey5lepp" path="res://Scenes/World/WaveManager.tscn" id="4_vq11u"]
+[ext_resource type="PackedScene" uid="uid://dq544wmnya8xl" path="res://Scenes/Characters/Enemies/EnemySpawner.tscn" id="5_uhiae"]
 [ext_resource type="PackedScene" uid="uid://bpecjakbgg7oa" path="res://Scenes/Items/Pickups/Health.tscn" id="6_j3mwg"]
 
 [node name="TestScene" type="Node2D"]
+scale = Vector2(0.981984, 0.99497)
 
 [node name="Character" parent="." instance=ExtResource("1_ys7vr")]
 position = Vector2(0, 0)
@@ -23,3 +26,8 @@ position = Vector2(616, 294)
 
 [node name="Health3" parent="." instance=ExtResource("6_j3mwg")]
 position = Vector2(416, 291)
+
+[node name="WaveManager" parent="." instance=ExtResource("4_vq11u")]
+position = Vector2(-187, -15)
+
+[node name="EnemySpawner" parent="WaveManager" instance=ExtResource("5_uhiae")]

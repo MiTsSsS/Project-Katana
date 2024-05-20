@@ -3,7 +3,7 @@ extends Node2D
 class_name EnemySpawner
 
 const SAMURAI = preload("res://Scenes/Characters/Enemies/Samurai.tscn")
-const ARCHER = preload("res://Scenes/Characters/Enemies/Samurai.tscn")
+const ARCHER = preload("res://Scenes/Characters/Enemies/Musketeer.tscn")
 const HANZO = preload("res://Scenes/Characters/Enemies/Hanzo.tscn")
 
 enum Enemy_Type {SAMURAI, ARCHER, HANZO} 
@@ -13,8 +13,16 @@ enum Enemy_Type {SAMURAI, ARCHER, HANZO}
 
 func _ready():
 	GameManager.spawnEnemy.connect(spawnEnemy)
-	await get_tree().create_timer(1).timeout
-	spawnEnemy(Enemy_Type.SAMURAI)
+
+func getParsedEnemyInfo(samuraiAmountToSpawn, archerAmountToSpawn, hanzoAmountToSpawn):
+	for n in samuraiAmountToSpawn:
+		spawnEnemy(Enemy_Type.SAMURAI)
+
+	for n in hanzoAmountToSpawn:
+		spawnEnemy(Enemy_Type.HANZO)
+
+	for n in archerAmountToSpawn:
+		spawnEnemy(Enemy_Type.ARCHER)
 
 func spawnEnemy(type:Enemy_Type):
 	var enemy
@@ -27,10 +35,13 @@ func spawnEnemy(type:Enemy_Type):
 		enemy = ARCHER
 	
 	var spawnedEnemy = enemy.instantiate()
-	spawnedEnemy.global_position = global_position
-	get_parent().add_child(spawnedEnemy)
-	spawnIntervalTimer.start()
+	var randPosX = randf_range(Globals.WORLD_X, Globals.NEGATIVEWORLD_X)
+	var randPosY = randf_range(Globals.WORLD_Y, Globals.NEGATIVEWORLD_Y)
+	spawnedEnemy.global_position.x = randPosX
+	spawnedEnemy.global_position.y = randPosY
+	get_parent().get_parent().add_child.call_deferred(spawnedEnemy)
+	#spawnIntervalTimer.start()
 
-func _on_timer_timeout():
-	spawnIntervalTimer.wait_time = spawnInterval
-	spawnEnemy(Enemy_Type.HANZO)
+	#func _on_timer_timeout():
+	#spawnIntervalTimer.wait_time = spawnInterval
+	#spawnEnemy(Enemy_Type.HANZO)
