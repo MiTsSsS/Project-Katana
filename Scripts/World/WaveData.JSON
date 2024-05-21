@@ -3,20 +3,20 @@
 	"enemyTypePerWave": {
 		"wave1": {
 			"Timer": 60,
-			"Samurai": 0,
-			"Archer": 0,
+			"Samurai": 2,
+			"Archer": 1,
 			"Hanzo": 1
 		},
 		"wave2": {
 			"Timer": 60,
-			"Samurai": 0,
-			"Archer": 0,
+			"Samurai": 4,
+			"Archer": 2,
 			"Hanzo": 1
 		},
 		"wave3": {
 			"Timer": 60,
-			"Samurai": 0,
-			"Archer": 0,
+			"Samurai": 6,
+			"Archer": 3,
 			"Hanzo": 1
 		}
 	}

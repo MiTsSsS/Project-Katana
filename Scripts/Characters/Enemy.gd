@@ -49,11 +49,14 @@ func takeDamage(damage):
 	print(hp)
 	
 	if hp <= 0:
-		enemyDied.emit()
+		onDeath()
 		queue_free()
 
 	takeDamageVisuals(damage)
 		
+func onDeath():
+	enemyDied.emit()
+
 func setIsOnFire(hasFire):
 	isOnFire = hasFire
 

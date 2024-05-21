@@ -50,9 +50,8 @@ func takeDamage(damage):
 	
 	hp -= damage
 	hpBar.set_value_no_signal(hp)
-	print("Samurai HP: ")
-	print(hp)
 	if hp <= 0 and not dead:
+		onDeath()
 		dead = true
 		animStateMachine["parameters/conditions/died"] = true
 
@@ -67,12 +66,12 @@ func destroySamurai():
 func _on_first_attack_body_entered(body):
 	if body.is_in_group("player"):
 		var hitObj := body as Player
-		hitObj.takeDamage(15)
+		hitObj.takeDamage(5)
 
 func _on_second_attack_body_entered(body):
 	if body.is_in_group("player"):
 		var hitObj := body as Player
-		hitObj.takeDamage(15)
+		hitObj.takeDamage(8)
 
 func attackAnimationEnded():
 	animStateMachine["parameters/conditions/attack_1"] = false

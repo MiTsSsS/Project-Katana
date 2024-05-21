@@ -13,16 +13,11 @@ var hanzoAmountToSpawn:int
 @onready var enemySpawner:EnemySpawner = $EnemySpawner
 var jsonDict
 
-signal enemyAmntDecremented
-signal waveCompleted
+signal waveStarted
 
 func _ready():
 	parseWaveDataFromJson()
 	GameManager.waveManager = self
-	enemyAmntDecremented.connect(GameManager.hudManager.updateRemainingEnemies)
-	waveCompleted.connect(GameManager.hudManager.updateWavesNumber)
-	GameManager.hudManager.setMaxWave(waveNumber)
-	print("wave manager is ready")
 	startWave()
 
 func parseWaveDataFromJson():
@@ -33,13 +28,9 @@ func parseWaveDataFromJson():
 		waveNumber = jsonDict["waves"]
 
 func startWave():
-	GameManager.hudManager.startCountdownTimer()
-	await get_tree().create_timer(4).timeout 
-
 	var waveData = getWaveData(completedWaves)
 	enemiesToDefeat = waveData[1] + waveData[2] + waveData[3]
 	enemySpawner.getParsedEnemyInfo(waveData[1], waveData[2], waveData[3])
-	enemyAmntDecremented.emit(enemiesToDefeat)
 
 func getWaveData(compWaves):	
 	var currentWave = "wave" 
@@ -52,13 +43,13 @@ func getWaveData(compWaves):
 
 func decrementEnemiesToDefeat():
 	enemiesToDefeat -= 1
-	enemyAmntDecremented.emit(enemiesToDefeat)
 
 	if enemiesToDefeat == 0:
-		waveCompleted.emit()
 		completedWaves += 1
 
 		if completedWaves > waveNumber:
 			get_tree().pause = true
 
+		print("completed waves is ")
+		print(completedWaves)
 		startWave()

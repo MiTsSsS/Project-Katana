@@ -99,6 +99,12 @@ func teleport():
 func _on_teleport_timeout():
 	teleportTimer.wait_time = teleportTimerCooldown
 	
+func onDeath():
+	if(isClone):
+		return
+
+	enemyDied.emit()
+
 #Shuriken
 func throwShuriken():
 	shurikenThrowTimer.start()
