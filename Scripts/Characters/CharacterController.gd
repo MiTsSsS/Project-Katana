@@ -169,7 +169,7 @@ func _on_first_strike_area_body_entered(body):
 func _on_second_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		hitObj.takeDamage(15)
+		hitObj.takeDamage(1000)
 		
 func setKatanaArrived():
 	isKatanaFlying = false

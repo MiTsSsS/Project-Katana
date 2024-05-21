@@ -27,12 +27,14 @@ var fireNode:Fire
 const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
 const FLOATINGDAMAGE = preload("res://Scenes/UI/FloatingText.tscn")
 
+signal enemyDied
+
 func _ready():
 	hpBar.set_value_no_signal(hp)
+	enemyDied.connect(GameManager.waveManager.decrementEnemiesToDefeat)
 
 func _physics_process(delta):
 	pass
-	#look_at(get_node("/root/TestScene/Character").get_position())
 	
 func setHp(value):
 	hp = value
@@ -47,10 +49,14 @@ func takeDamage(damage):
 	print(hp)
 	
 	if hp <= 0:
+		onDeath()
 		queue_free()
 
 	takeDamageVisuals(damage)
 		
+func onDeath():
+	enemyDied.emit()
+
 func setIsOnFire(hasFire):
 	isOnFire = hasFire
 

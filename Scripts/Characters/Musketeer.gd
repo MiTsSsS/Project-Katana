@@ -65,10 +65,9 @@ func takeDamage(damage):
 	hp -= damage
 	hpBar.set_value_no_signal(hp)
 
-	print("Archer HP: ")
-	print(hp)
 	if hp <= 0 and not dead:
 		dead = true
+		onDeath()
 		animStateMachine["parameters/conditions/died"] = true
 
 	takeDamageVisuals(damage)

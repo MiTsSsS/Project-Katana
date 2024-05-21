@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2tdboei61yih"
-path="res://.godot/imported/KatanaFireIconIguess.png-cd90dc3624c887cd583adfebf1c13941.ctex"
+uid="uid://dong4i5du1w4n"
+path="res://.godot/imported/tile005.png-d7fe6dcd8afb8b0272f44ffc30b45b3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/VFX/Items/Katana/KatanaFireIconIguess.png"
-dest_files=["res://.godot/imported/KatanaFireIconIguess.png-cd90dc3624c887cd583adfebf1c13941.ctex"]
+source_file="res://Art/VFX/Items/Katana/FireKatanaFrames/tile005.png"
+dest_files=["res://.godot/imported/tile005.png-d7fe6dcd8afb8b0272f44ffc30b45b3b.ctex"]
 
 [params]
 
