@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyntbariyoa38"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Menus/MainMenu.gd" id="1_ylea7"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ylea7")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -40.0
+offset_right = 100.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons_VB" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="StartGame_BTN" type="Button" parent="PanelContainer/Buttons_VB"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Start Game
+"
+
+[node name="Quit_BTN" type="Button" parent="PanelContainer/Buttons_VB"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit
+"
+
+[connection signal="button_down" from="PanelContainer/Buttons_VB/StartGame_BTN" to="." method="_on_start_game_btn_button_down"]
+[connection signal="button_down" from="PanelContainer/Buttons_VB/Quit_BTN" to="." method="_on_quit_btn_button_down"]

@@ -6,6 +6,8 @@ var speed = 200
 var player
 var isClone = false
 
+const HANZO = preload("res://Scenes//Characters//Enemies//Hanzo.tscn")
+
 #Attack
 @onready var attackCooldownTimer:Timer = $AttackCooldown
 @onready var attackCooldown:float = 1.1
@@ -142,14 +144,16 @@ func createClones():
 		
 		clonesTimer.start()
 		
-		var clone = duplicate(8)
+		var clone = HANZO.instantiate()
 		clone.isClone = true
 		clone.setHp(5)
 		clone.modulate.a = 0.5
+		clone.global_position = global_position
 		
 		get_parent().add_child(clone)
 		
 		state = State.CHASING
+
 
 func _on_clones_cooldown_timeout():
 	clonesTimer.wait_time = clonesCooldown

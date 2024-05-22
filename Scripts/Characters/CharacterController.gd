@@ -124,7 +124,6 @@ func get_input():
 		dashed.emit(dashDuration)
 	
 	if dash.isDashing():
-			
 		var ghost = DASHGHOST.instantiate()
 		ghost.position = position
 

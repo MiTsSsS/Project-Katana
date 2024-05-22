@@ -1,3 +1,9 @@
+AnimationPlayer
+ColorRect
+PanelContainer
+Container
+Button
+VBoxContainer
 HBoxContainer
 Timer
 Label
@@ -6,9 +12,3 @@ CollisionShape2D
 AnimatedSprite2D
 GPUParticles2D
 ShapeCast2D
-AnimationPlayer
-Sprite2D
-PanelContainer
-TextureRect
-ProgressBar
-ColorRect
