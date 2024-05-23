@@ -15,7 +15,7 @@ gravity = Vector3(0, 0, 0)
 linear_accel_min = 100.0
 linear_accel_max = 100.0
 
-[node name="Health" type="Area2D"]
+[node name="Health" type="Area2D" groups=["minimap_icon"]]
 script = ExtResource("1_w0f2l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

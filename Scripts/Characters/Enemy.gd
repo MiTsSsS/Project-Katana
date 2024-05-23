@@ -8,6 +8,7 @@ enum State {
 	ATTACKING,
 }
 
+@onready var minimapIcon = "enemy"
 @onready var isOnFire = false
 @onready var fireSpreadRadius = $FireSpreadShapeCast2D
 @onready var sprite = $Sprite2D
@@ -28,10 +29,12 @@ const FIRESKILL = preload("res://Scripts/Abilities/Fire.gd")
 const FLOATINGDAMAGE = preload("res://Scenes/UI/FloatingText.tscn")
 
 signal enemyDied
+signal removed(object)
 
 func _ready():
 	hpBar.set_value_no_signal(hp)
 	enemyDied.connect(GameManager.waveManager.decrementEnemiesToDefeat)
+	removed.connect(GameManager.hudManager.minimap.onObjectRemoved)
 
 func _physics_process(delta):
 	pass
@@ -56,6 +59,7 @@ func takeDamage(damage):
 		
 func onDeath():
 	enemyDied.emit()
+	removed.emit(self)
 
 func setIsOnFire(hasFire):
 	isOnFire = hasFire

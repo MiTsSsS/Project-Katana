@@ -235,7 +235,7 @@ graph_offset = Vector2(-116, -53)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gl6aa"]
 size = Vector2(48, 102)
 
-[node name="Character" type="CharacterBody2D" groups=["player"]]
+[node name="Character" type="CharacterBody2D" groups=["minimap_icon", "player"]]
 position = Vector2(0, 1)
 script = ExtResource("1_rklxv")
 

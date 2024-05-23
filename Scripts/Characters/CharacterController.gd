@@ -39,6 +39,7 @@ signal dashed(cooldown:float)
 signal dead
 
 var isKatanaFlying = false
+var minimapIcon = "player"
 
 func _ready():
 	var durationTimer = dash.get_node("DurationTimer")
@@ -51,6 +52,8 @@ func _ready():
 	skillChanged.connect(hud.updateSelectedSkill)
 	dashed.connect(hud.showDashSkillCooldown)
 	hud.startingHp = hp
+	await get_tree().process_frame
+	hud.minimap.player = self
 	
 	#Game State
 	dead.connect(GameManager.endGame)

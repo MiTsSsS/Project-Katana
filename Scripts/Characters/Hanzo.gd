@@ -106,6 +106,7 @@ func onDeath():
 		return
 
 	enemyDied.emit()
+	removed.emit(self)
 
 #Shuriken
 func throwShuriken():

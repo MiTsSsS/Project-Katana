@@ -16,6 +16,9 @@ class_name HUDManager
 @onready var countdownTime:Label = $CanvasLayer/WaveCountdown_HB/WaveCountdown
 @onready var countdownTimer:Timer = $WaveCountdown
 
+#Minimap
+@onready var minimap = $CanvasLayer/Minimap
+
 var currWaveAmnt:int = 1
 var lastSelectedSkill:int = 0 
 var startingHp = 100

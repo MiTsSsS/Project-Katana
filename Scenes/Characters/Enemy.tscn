@@ -29,7 +29,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[node name="Enemy" type="CharacterBody2D" groups=["mobs"]]
+[node name="Enemy" type="CharacterBody2D" groups=["minimap_icon", "mobs"]]
 script = ExtResource("1_yk0ot")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
