@@ -40,8 +40,3 @@ func spawnEnemy(type:Enemy_Type):
 	spawnedEnemy.global_position.x = randPosX
 	spawnedEnemy.global_position.y = randPosY
 	get_parent().get_parent().add_child.call_deferred(spawnedEnemy)
-	#spawnIntervalTimer.start()
-
-	#func _on_timer_timeout():
-	#spawnIntervalTimer.wait_time = spawnInterval
-	#spawnEnemy(Enemy_Type.HANZO)

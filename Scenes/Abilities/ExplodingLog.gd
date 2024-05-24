@@ -7,7 +7,6 @@ extends Node2D
 var isClone:bool = false
 
 func modulateIfClone(clone:bool):
-	print(clone)
 	isClone = clone
 	if(isClone):
 		logSprite.modulate.a = 0.5

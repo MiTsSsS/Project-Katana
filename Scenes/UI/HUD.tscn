@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dl6872cjh5s8t"]
+[gd_scene load_steps=18 format=3 uid="uid://dl6872cjh5s8t"]
 
 [ext_resource type="Script" path="res://Scripts/UI/HUDManager.gd" id="1_itgql"]
 [ext_resource type="Texture2D" uid="uid://dg7xl6taq7aoh" path="res://Art/VFX/Items/Katana/FireKatanaFrames/tile000.png" id="2_xkrom"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://d06b81psjqlij" path="res://Art/VFX/Items/Katana/FireKatanaFrames/tile002.png" id="4_jwteu"]
 [ext_resource type="Texture2D" uid="uid://cwxe4nk3x26ev" path="res://Art/VFX/Items/Katana/FireKatanaFrames/tile003.png" id="5_hyb5m"]
 [ext_resource type="Texture2D" uid="uid://cdedivasit3vk" path="res://Art/VFX/Items/Katana/FireKatanaFrames/tile004.png" id="6_wcq5d"]
+[ext_resource type="Texture2D" uid="uid://id1e28naifs" path="res://Art/UI/Minimap/426-4264308_minimapborder-minimap-border-png-3383847319.png" id="7_2jt7v"]
+[ext_resource type="Script" path="res://Scripts/UI/Minimap.gd" id="7_3q8yb"]
+[ext_resource type="Texture2D" uid="uid://dlwf0oxd153yq" path="res://Art/UI/Minimap/minimapIcon_arrowA.png" id="8_nlfw4"]
+[ext_resource type="Texture2D" uid="uid://bdokllimtrdms" path="res://Art/UI/Minimap/pattern_blueprintPaper.png" id="8_wpk3b"]
+[ext_resource type="Texture2D" uid="uid://bejeir73n4vjw" path="res://Art/UI/Minimap/minimapIcon_jewelRed.png" id="9_xv8rk"]
+[ext_resource type="Texture2D" uid="uid://dn5g4hnaskg6j" path="res://Art/UI/Minimap/hud_heartFull.png" id="11_fthjb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuwsk"]
 bg_color = Color(1, 0.333333, 0.352941, 1)
@@ -194,6 +200,46 @@ text = "0000
 "
 label_settings = SubResource("LabelSettings_hq250")
 horizontal_alignment = 1
+
+[node name="Minimap" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 250.0
+offset_bottom = 250.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("7_3q8yb")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Minimap"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Grid" type="TextureRect" parent="CanvasLayer/Minimap/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("8_wpk3b")
+stretch_mode = 1
+
+[node name="PlayerMarker" type="Sprite2D" parent="CanvasLayer/Minimap/MarginContainer/Grid"]
+position = Vector2(115, 115)
+texture = ExtResource("8_nlfw4")
+
+[node name="EnemyMarker" type="Sprite2D" parent="CanvasLayer/Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2(115, 115)
+texture = ExtResource("9_xv8rk")
+
+[node name="HealthMarker" type="Sprite2D" parent="CanvasLayer/Minimap/MarginContainer/Grid"]
+visible = false
+position = Vector2(76, 74)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_fthjb")
+
+[node name="Frame" type="NinePatchRect" parent="CanvasLayer/Minimap"]
+layout_mode = 2
+texture = ExtResource("7_2jt7v")
 
 [node name="WaveCountdown" type="Timer" parent="."]
 wait_time = 4.0

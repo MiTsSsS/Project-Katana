@@ -285,6 +285,8 @@ size = Vector2(38.5, 13)
 
 [node name="Enemy" instance=ExtResource("1_ivv2j")]
 script = ExtResource("2_pbc4f")
+hp = null
+testName = null
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 1, 1, 1)
@@ -347,7 +349,6 @@ disabled = true
 [node name="CharacterHealthBar" parent="." index="11"]
 offset_top = -29.0
 offset_bottom = -21.0
-metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="SpecialAttackCooldown" to="." method="_on_special_attack_cooldown_timeout"]

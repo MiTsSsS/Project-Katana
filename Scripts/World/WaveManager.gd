@@ -15,6 +15,7 @@ var jsonDict
 
 signal enemyAmntDecremented
 signal waveCompleted
+signal waveStarted #Used to refresh minimap
 
 func _ready():
 	parseWaveDataFromJson()
@@ -22,7 +23,7 @@ func _ready():
 	enemyAmntDecremented.connect(GameManager.hudManager.updateRemainingEnemies)
 	waveCompleted.connect(GameManager.hudManager.updateWavesNumber)
 	GameManager.hudManager.setMaxWave(waveNumber)
-	print("wave manager is ready")
+	waveStarted.connect(GameManager.hudManager.minimap.updateMinimapMarkers)
 	startWave()
 
 func parseWaveDataFromJson():
@@ -40,6 +41,8 @@ func startWave():
 	enemiesToDefeat = waveData[1] + waveData[2] + waveData[3]
 	enemySpawner.getParsedEnemyInfo(waveData[1], waveData[2], waveData[3])
 	enemyAmntDecremented.emit(enemiesToDefeat)
+	await get_tree().process_frame
+	waveStarted.emit()
 
 func getWaveData(compWaves):	
 	var currentWave = "wave" 
