@@ -15,6 +15,7 @@ func restartGame():
 
 	var gameScenePath = load("res://Scenes/TestScene.tscn")
 	var gameScenePacked = gameScenePath.instantiate()
+	get_tree().paused = false
 	get_node("/root").add_child(gameScenePacked)
 	
 func transitionToScene(scenePath):

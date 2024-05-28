@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
+@onready var defeatScreen = $DefeatScreen
+
 const BULLET = preload("res://Scenes/Items/Bullet.tscn")
 const KATANA = preload("res://Scripts/Items/Weapons/Katana.gd")
 const KATANABOOMERANG = preload("res://Scenes/Items/Weapons/BoomerangKatana.tscn")
@@ -146,6 +148,7 @@ func takeDamage(value):
 
 	if(hp <= 0):
 		dead.emit()
+		defeatScreen.show()
 
 	hitFlash.set_shader_parameter("active", true)
 	await get_tree().create_timer(.1, false).timeout

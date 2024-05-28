@@ -27,3 +27,7 @@ res://Scenes/UI/Transitions/SceneTransition.tscn
 res://Scenes/Items/Pickups/Health.tscn
 res://Scenes/UI/Menus/PauseMenu.tscn
 res://Scripts/UI/Menus/MainMenu.gd
+res://Scenes/UI/Screens/DefeatScreen.tscn
+res://Scripts/UI/Screens/DefeatScreen.gd
+res://Scripts/Characters/CharacterController.gd
+res://Scripts/GameManager.gd

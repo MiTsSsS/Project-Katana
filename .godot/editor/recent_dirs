@@ -1,3 +1,4 @@
+res://Scripts/UI/Screens
 res://Scripts/UI/Transitions
 res://Scenes/UI/Transitions
 res://Scripts/UI/Menus
@@ -19,4 +20,3 @@ res://Scripts/Abilities
 res://Art/VFX/Items/Katana/Slashes/SingleSlash
 res://Scenes/Items/Weapons
 res://Scripts/Mechanics
-res://Scenes/Characters

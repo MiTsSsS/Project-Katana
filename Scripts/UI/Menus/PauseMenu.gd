@@ -16,7 +16,6 @@ func _on_resume_game_btn_button_down():
 
 func _on_restart_game_btn_button_down():
 	hide()
-	get_tree().paused = false
 	SceneTransitioner.restartGame()
 
 func _on_quit_to_main_menu_btn_button_down():
