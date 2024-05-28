@@ -16,6 +16,6 @@ func specialAttack(specialAttackTimer):
 			var bullet = BULLET.instantiate()
 			get_parent().get_parent().add_child(bullet)
 			bullet.transform = $Muzzle.global_transform
-			await get_tree().create_timer(0.2).timeout
+			await get_tree().create_timer(0.2, false).timeout
 	else:
 		pass

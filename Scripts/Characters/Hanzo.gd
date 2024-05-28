@@ -116,7 +116,7 @@ func throwShuriken():
 	#WARN: Create new state for special attacks, using idle state temporarily to make this work
 	state = State.IDLE
 
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.2, false).timeout
 
 func launchProjectiles():
 	var shuriken1 = SHURIKEN.instantiate()

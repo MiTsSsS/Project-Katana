@@ -148,7 +148,7 @@ func takeDamage(value):
 		dead.emit()
 
 	hitFlash.set_shader_parameter("active", true)
-	await get_tree().create_timer(.1).timeout
+	await get_tree().create_timer(.1, false).timeout
 	hitFlash.set_shader_parameter("active", false)
 	createFloatingText(value)
 

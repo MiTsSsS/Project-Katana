@@ -35,7 +35,7 @@ func parseWaveDataFromJson():
 
 func startWave():
 	GameManager.hudManager.startCountdownTimer()
-	await get_tree().create_timer(4).timeout 
+	await get_tree().create_timer(4, false).timeout 
 
 	var waveData = getWaveData(completedWaves)
 	enemiesToDefeat = waveData[1] + waveData[2] + waveData[3]

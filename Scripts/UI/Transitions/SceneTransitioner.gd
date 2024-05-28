@@ -7,6 +7,10 @@ func transitionToScene(scenePath):
 	add_child(transition)
 	await transition.animPlayer.animation_finished
 	transition.queue_free()
-	var newScenePacked = load(scenePath)
-	var newScene = newScenePacked.instantiate()
-	add_child(newScene)
+
+	if not ResourceLoader.exists(scenePath):
+		var newScenePacked = load(scenePath)
+		var newScene = newScenePacked.instantiate()
+		add_child(newScene)
+	else:
+		get_tree().change_scene_to_file(scenePath)
