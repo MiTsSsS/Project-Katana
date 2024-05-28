@@ -10,4 +10,5 @@ func _on_start_game_btn_button_down():
 	panelContainer.visible = false
 	
 func _on_quit_btn_button_down():
-	get_tree().quit()
+	hide()
+	SceneTransitioner.quitGame()
