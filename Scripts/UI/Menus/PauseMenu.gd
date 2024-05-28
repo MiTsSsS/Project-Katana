@@ -15,10 +15,15 @@ func _on_resume_game_btn_button_down():
 	GameManager.pauseMenuToggle()
 
 func _on_restart_game_btn_button_down():
-	pass
+	hide()
+	get_tree().paused = false
+	SceneTransitioner.restartGame()
 
 func _on_quit_to_main_menu_btn_button_down():
-	pass
+	hide()
+	get_tree().paused = false
+	SceneTransitioner.transitionFromGameplayToMainMenu()
 
 func _on_quit_game_btn_button_down():
-	get_tree().quit()
+	hide()
+	SceneTransitioner.quitGame()

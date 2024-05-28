@@ -35,9 +35,6 @@ func _ready():
 	hpBar.set_value_no_signal(hp)
 	enemyDied.connect(GameManager.waveManager.decrementEnemiesToDefeat)
 	removed.connect(GameManager.hudManager.minimap.onObjectRemoved)
-
-func _physics_process(delta):
-	pass
 	
 func setHp(value):
 	hp = value
@@ -67,6 +64,8 @@ func setIsOnFire(hasFire):
 func spreadFire():
 	for hitObj in fireSpreadRadius.collision_result:
 		var enemy = hitObj.collider
+		if not enemy:
+			return
 		if enemy.is_in_group("mobs"):
 			if isOnFire and enemy.isOnFire:
 				fireNode.resetBurnDuration()
@@ -79,7 +78,7 @@ func spreadFire():
 
 func takeDamageVisuals(damageValue:int):
 	hitFlash.set_shader_parameter("active", true)
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.1, false).timeout
 	hitFlash.set_shader_parameter("active", false)
 	var fd = FLOATINGDAMAGE.instantiate()
 	fd.position.x = randf_range(floatingDamageSpawnRangeMin, floatingDamageSpawnRangeMax)
