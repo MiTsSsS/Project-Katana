@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4aj7empb1vhh"]
+[gd_scene load_steps=6 format=3 uid="uid://b4aj7empb1vhh"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Screens/DefeatScreen.gd" id="1_0obc8"]
+[ext_resource type="Script" path="res://Scripts/UI/Screens/EndGameScreen.gd" id="1_jpnsh"]
 
 [sub_resource type="Animation" id="Animation_davt7"]
 resource_name = "glow"
@@ -15,12 +15,29 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.443137, 0, 0, 1), Color(0, 0, 0, 1)]
+"values": [Color(0.427451, 0, 0, 0.490196), Color(0, 0, 0, 0.490196)]
+}
+
+[sub_resource type="Animation" id="Animation_eulwq"]
+resource_name = "glow_victory"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0.427451, 0, 0.490196), Color(0, 0, 0, 0.490196)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7e2k2"]
 _data = {
-"glow": SubResource("Animation_davt7")
+"glow": SubResource("Animation_davt7"),
+"glow_victory": SubResource("Animation_eulwq")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_4wowt"]
@@ -37,7 +54,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.996127)
-script = ExtResource("1_0obc8")
+script = ExtResource("1_jpnsh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -47,7 +64,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.00388)
-color = Color(0.253591, 0, 0, 1)
+color = Color(0.427451, 0, 0, 0.490196)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 process_mode = 3
@@ -77,9 +94,24 @@ text = "YOU DIED!
 label_settings = SubResource("LabelSettings_4wowt")
 horizontal_alignment = 1
 
-[node name="Restart_BTN" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Restart_BTN" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(157, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Restart
 "
 
-[connection signal="button_down" from="VBoxContainer/Restart_BTN" to="." method="_on_restart_btn_button_down"]
+[node name="BackToMainMenu_BTN" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back to Main Menu
+"
+
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/Restart_BTN" to="." method="_on_restart_btn_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/BackToMainMenu_BTN" to="." method="_on_back_to_main_menu_btn_button_down"]

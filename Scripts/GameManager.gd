@@ -3,6 +3,7 @@ extends Node
 const WAVEMANAGER = preload("res://Scenes/World/WaveManager.tscn")
 
 signal spawnEnemy
+signal gameEnded
 
 var waveManager:WaveManager
 var hudManager:HUDManager
@@ -20,6 +21,3 @@ func _input(event : InputEvent):
 func pauseMenuToggle():
 	get_tree().paused = not get_tree().paused
 	gamePaused.emit(get_tree().paused)
-
-func endGame():
-	get_tree().paused = true

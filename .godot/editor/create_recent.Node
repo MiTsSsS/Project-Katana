@@ -1,6 +1,7 @@
+HBoxContainer
+Button
 Control
 VBoxContainer
-Button
 Label
 AnimationPlayer
 AnimationTree
@@ -11,4 +12,3 @@ MarginContainer
 NinePatchRect
 PanelContainer
 Container
-HBoxContainer
