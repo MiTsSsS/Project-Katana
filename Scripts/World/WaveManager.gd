@@ -62,6 +62,6 @@ func decrementEnemiesToDefeat():
 		completedWaves += 1
 
 		if completedWaves > waveNumber:
-			get_tree().pause = true
+			GameManager.gameEnded.emit(true)
 
 		startWave()

@@ -6,6 +6,7 @@ func transitionFromGameplayToMainMenu():
 	var mainMenuPath = load("res://Scenes/UI/Menus/MainMenu.tscn")
 	get_node("/root/TestScene").free()
 	await transitionFade()
+	get_tree().paused = false
 	var mainPacked = mainMenuPath.instantiate()
 	add_child(mainPacked)
 
@@ -15,6 +16,7 @@ func restartGame():
 
 	var gameScenePath = load("res://Scenes/TestScene.tscn")
 	var gameScenePacked = gameScenePath.instantiate()
+	get_tree().paused = false
 	get_node("/root").add_child(gameScenePacked)
 	
 func transitionToScene(scenePath):

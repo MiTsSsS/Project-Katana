@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
+@onready var defeatScreen = $DefeatScreen
+
 const BULLET = preload("res://Scenes/Items/Bullet.tscn")
 const KATANA = preload("res://Scripts/Items/Weapons/Katana.gd")
 const KATANABOOMERANG = preload("res://Scenes/Items/Weapons/BoomerangKatana.tscn")
@@ -36,7 +38,6 @@ signal windSkillActivated(isActive)
 signal healthChanged(newHp)
 signal skillChanged(skill)
 signal dashed(cooldown:float)
-signal dead
 
 var isKatanaFlying = false
 var minimapIcon = "player"
@@ -54,9 +55,6 @@ func _ready():
 	hud.startingHp = hp
 	await get_tree().process_frame
 	hud.minimap.player = self
-	
-	#Game State
-	dead.connect(GameManager.endGame)
 	
 # Called every frame. 'delta' is the elapsed time since the previous fram
 func _physics_process(delta):
@@ -145,7 +143,7 @@ func takeDamage(value):
 	healthChanged.emit(hp)
 
 	if(hp <= 0):
-		dead.emit()
+		GameManager.gameEnded.emit(false)
 
 	hitFlash.set_shader_parameter("active", true)
 	await get_tree().create_timer(.1, false).timeout
