@@ -1,12 +1,13 @@
-res://Scenes/TestScene.tscn
+res://Scenes/UI/Menus/MainMenu.tscn
 res://Art/VFX/Shaders/WhiteHitFlash.gdshader
 res://Scripts/UI/Minimap.gd
 res://Art/VFX/Shaders/Fire.gdshader
 res://Scenes/Characters/Character.tscn
-res://Scripts/GameManager.gd
-res://Scripts/Characters/CharacterController.gd
-res://Scenes/UI/Menus/MainMenu.tscn
 res://Scenes/UI/HUD.tscn
 res://Scenes/UI/Screens/EndGameScreen.tscn
 res://Scenes/UI/Transitions/SceneTransition.tscn
+res://Scenes/TestScene.tscn
 res://Scenes/Items/Pickups/Health.tscn
+res://Scripts/Characters/CharacterController.gd
+res://Scripts/UI/Menus/PauseMenu.gd
+res://Scripts/GameManager.gd
