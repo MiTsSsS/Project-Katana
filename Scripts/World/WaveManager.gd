@@ -34,7 +34,6 @@ func parseWaveDataFromJson():
 		waveNumber = jsonDict["waves"]
 
 func startWave():
-	return
 	GameManager.hudManager.startCountdownTimer()
 	await get_tree().create_timer(4, false).timeout 
 
