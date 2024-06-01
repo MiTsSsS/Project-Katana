@@ -58,6 +58,7 @@ grow_vertical = 2
 script = ExtResource("1_itgql")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="CharacterHealthBar" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 2

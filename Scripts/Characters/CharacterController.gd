@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
-@onready var defeatScreen = $DefeatScreen
+@onready var yoooo = $AudioStreamPlayer2D
+
 
 const BULLET = preload("res://Scenes/Items/Bullet.tscn")
 const KATANA = preload("res://Scripts/Items/Weapons/Katana.gd")
@@ -143,6 +144,7 @@ func takeDamage(value):
 	healthChanged.emit(hp)
 
 	if(hp <= 0):
+		yoooo.play()
 		GameManager.gameEnded.emit(false)
 
 	hitFlash.set_shader_parameter("active", true)
