@@ -8,6 +8,5 @@ res://Scenes/UI/HUD.tscn
 res://Scenes/UI/Screens/EndGameScreen.tscn
 res://Scenes/UI/Transitions/SceneTransition.tscn
 res://Scenes/Items/Pickups/Health.tscn
-res://Scripts/World/WaveManager.gd
-res://Scripts/Items/Weapons/Bullet.gd
+res://Scenes/Items/Weapons/Shuriken.tscn
 res://Scripts/Characters/CharacterController.gd
