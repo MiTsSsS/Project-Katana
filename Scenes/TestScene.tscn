@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmkjgrji3jlhm"]
+[gd_scene load_steps=10 format=3 uid="uid://cmkjgrji3jlhm"]
 
 [ext_resource type="PackedScene" uid="uid://bfqn2oultoebp" path="res://Scenes/Characters/Character.tscn" id="1_ys7vr"]
 [ext_resource type="PackedScene" uid="uid://dl6872cjh5s8t" path="res://Scenes/UI/HUD.tscn" id="3_5mmv1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dq544wmnya8xl" path="res://Scenes/Characters/Enemies/EnemySpawner.tscn" id="5_uhiae"]
 [ext_resource type="Texture2D" uid="uid://cre213wta25li" path="res://Art/Environment/Tilemaps/Tilemap.png" id="6_2td6r"]
 [ext_resource type="PackedScene" uid="uid://bpecjakbgg7oa" path="res://Scenes/Items/Pickups/Health.tscn" id="6_j3mwg"]
+[ext_resource type="PackedScene" uid="uid://4a0634cr6rd" path="res://Scenes/Items/Pickups/GoldCoin.tscn" id="7_x6wl6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ioou5"]
 texture = ExtResource("6_2td6r")
@@ -4716,3 +4717,12 @@ layer_4/tile_data = PackedInt32Array(-1114172, 1900544, 17, -1114171, 1966080, 1
 layer_5/name = "birbs"
 layer_5/z_index = 2
 layer_5/tile_data = PackedInt32Array(-1179710, 2097152, 0, -1114174, 2097152, 1, -1179709, 2162688, 0, -1179689, 2228224, 0, -1114153, 2228224, 1, -1179688, 2293760, 0, -1114152, 2293760, 1, -2359335, 2359296, 0, -2359334, 2424832, 0, -2293798, 2424832, 1, -2031670, 2097152, 0, -1966134, 2097152, 1, -2031669, 2162688, 0, -2228272, 2228224, 0, -2162736, 2228224, 1, -2228271, 2293760, 0, -2162735, 2293760, 1, -1572915, 2359296, 0, -1572914, 2424832, 0, -1507378, 2424832, 1, -1900606, 2359296, 0, -1900605, 2424832, 0, -1835069, 2424832, 1, -1376316, 2097152, 0, -1310780, 2097152, 1, -1376315, 2162688, 0)
+
+[node name="GoldCoin" parent="." instance=ExtResource("7_x6wl6")]
+position = Vector2(1362.55, 565.846)
+
+[node name="GoldCoin2" parent="." instance=ExtResource("7_x6wl6")]
+position = Vector2(1599.82, 589.968)
+
+[node name="GoldCoin3" parent="." instance=ExtResource("7_x6wl6")]
+position = Vector2(1457.25, 712.584)
