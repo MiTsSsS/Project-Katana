@@ -1,3 +1,4 @@
+res://Scripts/World
 res://Art/Pickups
 res://Scripts/Items/Pickups
 res://Scripts/UI/Screens
@@ -5,7 +6,6 @@ res://Scripts/UI/Transitions
 res://Scenes/UI/Transitions
 res://Scripts/UI/Menus
 res://Scripts/UI
-res://Scripts/World
 res://Scripts/Items/Weapons
 res://Art/Characters/Hanzo
 res://Scripts

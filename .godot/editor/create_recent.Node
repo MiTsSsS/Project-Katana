@@ -1,9 +1,11 @@
+Label
+CanvasLayer
+CollisionShape2D
+Area2D
 PointLight2D
 Sprite2D
 AnimationPlayer
 AnimatedSprite2D
-Area2D
-CollisionShape2D
 PinJoint2D
 RigidBody2D
 CharacterBody2D
@@ -11,4 +13,3 @@ TileMap
 AudioStreamPlayer2D
 HBoxContainer
 Button
-Control

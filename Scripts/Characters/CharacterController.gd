@@ -35,6 +35,11 @@ var canPerformNextAttack = true
 #Collectibles
 @onready var gold:int = 0
 
+#Interact
+@onready var interactLabel:Label = $FToInteract
+@onready var canInteract:bool = false
+@onready var interactableObject:Interactable = null
+
 signal positionChanged(newPos)
 signal fireSkillActivated(isActive)
 signal windSkillActivated(isActive)
@@ -53,13 +58,14 @@ func _ready():
 
 	#HUD setup
 	var hud:HUDManager = get_node("../Hud")
-	healthChanged.connect(hud.updateHpBar)
-	skillChanged.connect(hud.updateSelectedSkill)
-	dashed.connect(hud.showDashSkillCooldown)
-	goldModified.connect(hud.updateGoldValue)
-	hud.startingHp = hp
-	await get_tree().process_frame
-	hud.minimap.player = self
+	if hud:
+		healthChanged.connect(hud.updateHpBar)
+		skillChanged.connect(hud.updateSelectedSkill)
+		dashed.connect(hud.showDashSkillCooldown)
+		goldModified.connect(hud.updateGoldValue)
+		hud.startingHp = hp
+		await get_tree().process_frame
+		hud.minimap.player = self
 	
 # Called every frame. 'delta' is the elapsed time since the previous fram
 func _physics_process(delta):
@@ -138,6 +144,9 @@ func get_input():
 		
 		get_parent().add_child(ghost)
 		speed = speed * dashSpeedScalar
+
+	if Input.is_action_just_pressed("interact") and canInteract:
+		interactableObject.interactedWith()
 		
 func _on_timer_timeout():
 	speed = baseSpeed
@@ -195,3 +204,8 @@ func createFloatingText(value:int, color:Color):
 	fd.position.x = randf_range(floatingDamageSpawnRangeMin, floatingDamageSpawnRangeMax)
 	add_child(fd)
 	fd.updateValue(value, color)
+
+#Interact
+func setupInteractionProperties():
+	interactLabel.visible = not interactLabel.visible
+	canInteract = not canInteract
