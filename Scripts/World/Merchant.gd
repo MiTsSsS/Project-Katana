@@ -1,5 +1,7 @@
 extends Interactable
 
+@onready var shopUI = $CanvasLayer/PanelContainer
+
 func _on_interact_body_entered(body:Node2D):
 	if body.is_in_group("player"):
 		var player:Player = body as Player
@@ -11,8 +13,7 @@ func _on_interact_body_exited(body:Node2D):
 		var player:Player = body as Player
 		player.setupInteractionProperties()
 		player.interactableObject = null
+		shopUI.visible = false
 
 func interactedWith():
-	#open shop UI	
-	print("player interacted with")
-	pass
+	shopUI.visible = true

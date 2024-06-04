@@ -1,11 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://wo253m2kdqfh"]
+[gd_scene load_steps=9 format=3 uid="uid://wo253m2kdqfh"]
 
 [ext_resource type="Texture2D" uid="uid://c7r48nvnwma8k" path="res://Art/Characters/Samurai/spritesheet.png" id="1_iskwg"]
 [ext_resource type="Script" path="res://Scripts/World/Merchant.gd" id="1_xsebj"]
 [ext_resource type="PackedScene" uid="uid://bfqn2oultoebp" path="res://Scenes/Characters/Character.tscn" id="3_n7moa"]
+[ext_resource type="PackedScene" uid="uid://dl6872cjh5s8t" path="res://Scenes/UI/HUD.tscn" id="4_s6gkx"]
+[ext_resource type="Texture2D" uid="uid://dlld57s67v4w" path="res://Art/Environment/InteractionBox.png" id="5_501y6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmjqw"]
 size = Vector2(128, 62.5)
+
+[sub_resource type="Animation" id="Animation_0rof5"]
+resource_name = "interaction_glow"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.745098), Color(1, 1, 1, 0.196078)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fik4q"]
+_data = {
+"interaction_glow": SubResource("Animation_0rof5")
+}
 
 [node name="Merchant" type="Node2D"]
 script = ExtResource("1_xsebj")
@@ -23,6 +46,122 @@ shape = SubResource("RectangleShape2D_gmjqw")
 
 [node name="Character" parent="." instance=ExtResource("3_n7moa")]
 position = Vector2(315, 216)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = 46.0
+offset_right = 229.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShopItems_HB" type="HBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Item1_VB" type="VBoxContainer" parent="CanvasLayer/PanelContainer/ShopItems_HB"]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item1_VB"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Item#1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemPrice" type="Label" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item1_VB"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "999
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item1_VB"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy
+"
+
+[node name="Item2_VB" type="VBoxContainer" parent="CanvasLayer/PanelContainer/ShopItems_HB"]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item2_VB"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Item#2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemPrice" type="Label" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item2_VB"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "999
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item2_VB"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy
+"
+
+[node name="Item3_VB" type="VBoxContainer" parent="CanvasLayer/PanelContainer/ShopItems_HB"]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item3_VB"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Item#3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemPrice" type="Label" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item3_VB"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+text = "999
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item3_VB"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy
+"
+
+[node name="Hud" parent="." instance=ExtResource("4_s6gkx")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.244613)
+position = Vector2(327, 115)
+scale = Vector2(1.016, 0.65)
+texture = ExtResource("5_501y6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fik4q")
+}
+autoplay = "interaction_glow"
 
 [connection signal="body_entered" from="Interact" to="." method="_on_interact_body_entered"]
 [connection signal="body_exited" from="Interact" to="." method="_on_interact_body_exited"]
