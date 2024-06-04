@@ -9,7 +9,8 @@ res://Scenes/UI/Transitions/SceneTransition.tscn
 res://Scenes/TestScene.tscn
 res://Scenes/UI/FloatingText.tscn
 res://Scenes/World/Merchant.tscn
-res://Scripts/World/Merchant.gd
-res://Scripts/Characters/CharacterController.gd
 res://Scenes/Characters/Enemies/Samurai.tscn
-res://Scripts/World/Interactables/Interactable.gd
+res://Scripts/Characters/CharacterController.gd
+res://Scripts/World/Merchant.gd
+res://Scripts/UI/Menus/PauseMenu.gd
+res://Scripts/GameManager.gd
