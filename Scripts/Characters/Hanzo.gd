@@ -106,6 +106,7 @@ func onDeath():
 		return
 
 	enemyDied.emit()
+	dropablesOnDeath.call_deferred()
 	removed.emit(self)
 
 #Shuriken

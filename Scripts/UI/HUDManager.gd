@@ -16,6 +16,9 @@ class_name HUDManager
 @onready var countdownTime:Label = $CanvasLayer/WaveCountdown_HB/WaveCountdown
 @onready var countdownTimer:Timer = $WaveCountdown
 
+#Gold
+@onready var goldAmnt:Label = $CanvasLayer/GoldCoinCount_HB/GoldAmount_LBL
+
 #Minimap
 @onready var minimap = $CanvasLayer/Minimap
 
@@ -72,6 +75,9 @@ func showDashSkillCooldown(cooldown:float):
 	timer.start()
 	selectedSkillsBox.get_children()[4].visible = true
 	timer.timeout.connect(_on_timer_timeout)
+
+func updateGoldValue(newValue:int):
+	goldAmnt.text = str(newValue)
 
 func _on_timer_timeout():
 	selectedSkillsBox.get_children()[4].visible = false

@@ -4,7 +4,6 @@ class_name Player
 
 @onready var yoooo = $AudioStreamPlayer2D
 
-
 const BULLET = preload("res://Scenes/Items/Bullet.tscn")
 const KATANA = preload("res://Scripts/Items/Weapons/Katana.gd")
 const KATANABOOMERANG = preload("res://Scenes/Items/Weapons/BoomerangKatana.tscn")
@@ -33,12 +32,21 @@ const baseSpeed = 500
 var katanaObj:Katana
 var canPerformNextAttack = true
 
+#Collectibles
+@onready var gold:int = 0
+
+#Interact
+@onready var interactLabel:Label = $FToInteract
+@onready var canInteract:bool = false
+@onready var interactableObject:Interactable = null
+
 signal positionChanged(newPos)
 signal fireSkillActivated(isActive)
 signal windSkillActivated(isActive)
 signal healthChanged(newHp)
 signal skillChanged(skill)
 signal dashed(cooldown:float)
+signal goldModified(newValue:int)
 
 var isKatanaFlying = false
 var minimapIcon = "player"
@@ -50,12 +58,14 @@ func _ready():
 
 	#HUD setup
 	var hud:HUDManager = get_node("../Hud")
-	healthChanged.connect(hud.updateHpBar)
-	skillChanged.connect(hud.updateSelectedSkill)
-	dashed.connect(hud.showDashSkillCooldown)
-	hud.startingHp = hp
-	await get_tree().process_frame
-	hud.minimap.player = self
+	if hud:
+		healthChanged.connect(hud.updateHpBar)
+		skillChanged.connect(hud.updateSelectedSkill)
+		dashed.connect(hud.showDashSkillCooldown)
+		goldModified.connect(hud.updateGoldValue)
+		hud.startingHp = hp
+		await get_tree().process_frame
+		hud.minimap.player = self
 	
 # Called every frame. 'delta' is the elapsed time since the previous fram
 func _physics_process(delta):
@@ -134,6 +144,9 @@ func get_input():
 		
 		get_parent().add_child(ghost)
 		speed = speed * dashSpeedScalar
+
+	if Input.is_action_just_pressed("interact") and canInteract:
+		interactableObject.interactedWith()
 		
 func _on_timer_timeout():
 	speed = baseSpeed
@@ -150,7 +163,7 @@ func takeDamage(value):
 	hitFlash.set_shader_parameter("active", true)
 	await get_tree().create_timer(.1, false).timeout
 	hitFlash.set_shader_parameter("active", false)
-	createFloatingText(value)
+	createFloatingText(value, Color.RED)
 
 func heal(value):
 	var newHp = hp + value
@@ -176,12 +189,23 @@ func _on_second_strike_area_body_entered(body):
 func setKatanaArrived():
 	isKatanaFlying = false
 	
+func modifyGold(value):
+	gold += value
+	clampi(gold, 0, 999)
+	goldModified.emit(gold)
+	createFloatingText(value, Color.YELLOW)
+
 func emitSkillActivationSignals(isWindActive, isFireActive):
 	windSkillActivated.emit(isWindActive)
 	fireSkillActivated.emit(isFireActive)
 
-func createFloatingText(value:int):
+func createFloatingText(value:int, color:Color):
 	var fd = FLOATINGDAMAGE.instantiate()
 	fd.position.x = randf_range(floatingDamageSpawnRangeMin, floatingDamageSpawnRangeMax)
 	add_child(fd)
-	fd.updateValue(value)
+	fd.updateValue(value, color)
+
+#Interact
+func setupInteractionProperties():
+	interactLabel.visible = not interactLabel.visible
+	canInteract = not canInteract

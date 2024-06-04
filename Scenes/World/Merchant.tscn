@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://wo253m2kdqfh"]
+
+[ext_resource type="Texture2D" uid="uid://c7r48nvnwma8k" path="res://Art/Characters/Samurai/spritesheet.png" id="1_iskwg"]
+[ext_resource type="Script" path="res://Scripts/World/Merchant.gd" id="1_xsebj"]
+[ext_resource type="PackedScene" uid="uid://bfqn2oultoebp" path="res://Scenes/Characters/Character.tscn" id="3_n7moa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmjqw"]
+size = Vector2(128, 62.5)
+
+[node name="Merchant" type="Node2D"]
+script = ExtResource("1_xsebj")
+
+[node name="Spritesheet" type="Sprite2D" parent="."]
+position = Vector2(327, 17)
+texture = ExtResource("1_iskwg")
+hframes = 36
+
+[node name="Interact" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
+position = Vector2(327, 114.75)
+shape = SubResource("RectangleShape2D_gmjqw")
+
+[node name="Character" parent="." instance=ExtResource("3_n7moa")]
+position = Vector2(315, 216)
+
+[connection signal="body_entered" from="Interact" to="." method="_on_interact_body_entered"]
+[connection signal="body_exited" from="Interact" to="." method="_on_interact_body_exited"]

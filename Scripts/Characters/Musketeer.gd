@@ -70,7 +70,7 @@ func takeDamage(damage):
 		onDeath()
 		animStateMachine["parameters/conditions/died"] = true
 
-	takeDamageVisuals(damage)
+	takeDamageVisuals(damage, Color.RED)
 
 func specialAttack():
 	if not dead:

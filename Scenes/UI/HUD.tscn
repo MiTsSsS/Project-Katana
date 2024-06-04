@@ -58,7 +58,6 @@ grow_vertical = 2
 script = ExtResource("1_itgql")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="CharacterHealthBar" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 2
@@ -198,6 +197,29 @@ horizontal_alignment = 1
 [node name="WaveCountdown" type="Label" parent="CanvasLayer/WaveCountdown_HB"]
 layout_mode = 2
 text = "0000
+"
+label_settings = SubResource("LabelSettings_hq250")
+horizontal_alignment = 1
+
+[node name="GoldCoinCount_HB" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -19.5
+offset_right = 122.0
+offset_bottom = 19.5
+grow_vertical = 2
+
+[node name="Gold_LBL" type="Label" parent="CanvasLayer/GoldCoinCount_HB"]
+layout_mode = 2
+text = "Gold:
+"
+label_settings = SubResource("LabelSettings_hq250")
+horizontal_alignment = 1
+
+[node name="GoldAmount_LBL" type="Label" parent="CanvasLayer/GoldCoinCount_HB"]
+layout_mode = 2
+text = "0
 "
 label_settings = SubResource("LabelSettings_hq250")
 horizontal_alignment = 1

@@ -53,11 +53,11 @@ func takeDamage(damage):
 		onDeath()
 		queue_free()
 
-	takeDamageVisuals(damage, Color.RED)
+	takeDamageVisuals(damage)
 		
 func onDeath():
 	enemyDied.emit()
-	dropablesOnDeath.call_deferred()
+	dropablesOnDeath()
 	removed.emit(self)
 
 func setIsOnFire(hasFire):
@@ -78,16 +78,14 @@ func spreadFire():
 			else:
 				print("Not one condition is satisfied")
 
-func takeDamageVisuals(damageValue:int, floatingTextColor:Color):
+func takeDamageVisuals(damageValue:int):
 	hitFlash.set_shader_parameter("active", true)
 	await get_tree().create_timer(0.1, false).timeout
 	hitFlash.set_shader_parameter("active", false)
 	var fd = FLOATINGDAMAGE.instantiate()
 	fd.position.x = randf_range(floatingDamageSpawnRangeMin, floatingDamageSpawnRangeMax)
 	add_child(fd)
-	fd.updateValue(damageValue, floatingTextColor)
+	fd.updateValue(damageValue)
 
 func dropablesOnDeath():
-	var goldCoin = GOLDCOIN.instantiate()
-	goldCoin.global_transform = global_transform
-	get_parent().add_child(goldCoin)
+	
