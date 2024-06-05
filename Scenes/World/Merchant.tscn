@@ -152,7 +152,7 @@ text = "Buy
 [node name="Hud" parent="." instance=ExtResource("4_s6gkx")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.244613)
+modulate = Color(1, 1, 1, 0.632854)
 position = Vector2(327, 115)
 scale = Vector2(1.016, 0.65)
 texture = ExtResource("5_501y6")

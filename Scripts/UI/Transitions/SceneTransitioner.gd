@@ -38,6 +38,15 @@ func quitGame():
 
 func transitionFade():
 	var transition = SCENETRANSITION.instantiate()
-	add_child(transition)
+
+	var player = get_node("/root/TestScene/Character")
+	if player:
+		transition.size = Vector2(1920, 1080)
+		transition.position = Vector2(-960, -540)
+		transition.z_index = 3
+		player.add_child(transition)
+	else:
+		add_child(transition)
+
 	await transition.animPlayer.animation_finished
 	transition.queue_free()

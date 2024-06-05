@@ -11,12 +11,15 @@ const FLOATINGDAMAGE = preload("res://Scenes/UI/FloatingText.tscn")
 const DASHGHOST = preload("res://Scenes/Characters/CharacterGhost.tscn")
 const floatingDamageSpawnRangeMin = -30
 const floatingDamageSpawnRangeMax = 30
-const MAXHP = 100
 
-const baseSpeed = 500
-@export var speed = 500
-@export var dashSpeedScalar = 1.2
+#Stats and currency
+@onready var hp = 100
+@onready var maxHp:int = 100
+@onready var gold:int = 0
+@onready var baseSpeed:int = 500
+@onready var speed:int = 500
 @export var dashDuration = 0.2
+@export var dashSpeedScalar = 1.2
 
 @onready var animations = $AnimationPlayer
 @onready var attackTimer = $AttackCooldown
@@ -28,12 +31,8 @@ const baseSpeed = 500
 
 @onready var hitFlash:ShaderMaterial = $FlipMarker/Sprite2D.material
 
-@onready var hp = 100
 var katanaObj:Katana
 var canPerformNextAttack = true
-
-#Collectibles
-@onready var gold:int = 0
 
 #Interact
 @onready var interactLabel:Label = $FToInteract
@@ -52,6 +51,15 @@ var isKatanaFlying = false
 var minimapIcon = "player"
 
 func _ready():
+	#Stats and currency setup
+	hp = Globals.hp
+	maxHp = Globals.maxHp
+	gold = Globals.gold
+	baseSpeed = Globals.baseSpeed
+	speed = Globals.speed
+	dashDuration = Globals.dashDuration
+	dashSpeedScalar = Globals.dashSpeedScalar
+
 	var durationTimer = dash.get_node("DurationTimer")
 	durationTimer.timeout.connect(_on_timer_timeout)
 	katanaObj = KATANA.new()
@@ -167,7 +175,7 @@ func takeDamage(value):
 
 func heal(value):
 	var newHp = hp + value
-	hp = clampi(newHp, 0, MAXHP)
+	hp = clampi(newHp, 0, maxHp)
 	healthChanged.emit(hp)
 
 func _on_first_strike_area_body_entered(body):
