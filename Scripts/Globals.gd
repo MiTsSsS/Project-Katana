@@ -9,8 +9,8 @@ const WORLD_Y = 800
 var hp:int = 100
 var maxHp:int = 100
 var gold:int = 0
-var baseSpeed:int = 1000
-var speed:int = 1000
+var baseSpeed:int = 500
+var speed:int = 500
 var dashDuration:float = 0.2
 var dashSpeedScalar:float = 1.2
 
