@@ -1,3 +1,4 @@
+Label
 AudioStreamPlayer
 AnimationPlayer
 AnimationTree
@@ -7,9 +8,7 @@ CanvasLayer
 PanelContainer
 Control
 Container
-Label
 Button
 VBoxContainer
 HBoxContainer
 CollisionShape2D
-Area2D

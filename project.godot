@@ -27,6 +27,10 @@ window/size/viewport_width=720
 window/size/viewport_height=360
 window/size/mode=3
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/datatable_godot/plugin.cfg")
+
 [input]
 
 up={

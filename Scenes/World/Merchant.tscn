@@ -50,7 +50,6 @@ position = Vector2(315, 216)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-visible = false
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -80,20 +79,17 @@ text = "Item#1
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemPrice" type="Label" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item1_VB"]
-custom_minimum_size = Vector2(150, 0)
+[node name="ItemDescription" type="Label" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item1_VB"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "999
-"
+text = "Increase by 999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item1_VB"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-size_flags_vertical = 3
-text = "Buy
-"
+text = "Buy"
 
 [node name="Item2_VB" type="VBoxContainer" parent="CanvasLayer/PanelContainer/ShopItems_HB"]
 layout_mode = 2
@@ -107,18 +103,16 @@ text = "Item#2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemPrice" type="Label" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item2_VB"]
-custom_minimum_size = Vector2(150, 0)
+[node name="ItemDescription" type="Label" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item2_VB"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "999
-"
+text = "Increase by 999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item2_VB"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-size_flags_vertical = 3
 text = "Buy
 "
 
@@ -134,18 +128,16 @@ text = "Item#3
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemPrice" type="Label" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item3_VB"]
-custom_minimum_size = Vector2(150, 0)
+[node name="ItemDescription" type="Label" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item3_VB"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "999
-"
+text = "Increase by 999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/PanelContainer/ShopItems_HB/Item3_VB"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-size_flags_vertical = 3
 text = "Buy
 "
 
