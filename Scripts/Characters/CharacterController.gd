@@ -15,9 +15,10 @@ const floatingDamageSpawnRangeMax = 30
 #Stats and currency
 @onready var hp = 100
 @onready var maxHp:int = 100
-@onready var gold:int = 0
+@onready var gold:int = 100
 @onready var baseSpeed:int = 500
 @onready var speed:int = 500
+@onready var damage = 10
 @export var dashDuration = 0.2
 @export var dashSpeedScalar = 1.2
 
@@ -51,6 +52,7 @@ var isKatanaFlying = false
 var minimapIcon = "player"
 
 func _ready():
+	Globals.player = self
 	#Stats and currency setup
 	hp = Globals.hp
 	maxHp = Globals.maxHp
@@ -59,6 +61,7 @@ func _ready():
 	speed = Globals.speed
 	dashDuration = Globals.dashDuration
 	dashSpeedScalar = Globals.dashSpeedScalar
+	damage = Globals.damage
 
 	var durationTimer = dash.get_node("DurationTimer")
 	durationTimer.timeout.connect(_on_timer_timeout)
@@ -74,6 +77,8 @@ func _ready():
 		hud.startingHp = hp
 		await get_tree().process_frame
 		hud.minimap.player = self
+	
+	goldModified.emit(gold)
 	
 # Called every frame. 'delta' is the elapsed time since the previous fram
 func _physics_process(delta):
@@ -181,7 +186,7 @@ func heal(value):
 func _on_first_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		hitObj.takeDamage(15)
+		hitObj.takeDamage(damage)
 		#TODO: Move following code to a function in Katana script
 		if katanaObj.appliedSkill == katanaObj.AppliedSkill.FIRE:
 			var fs = katanaObj.FIRESKILL.new(hitObj)
@@ -192,7 +197,7 @@ func _on_first_strike_area_body_entered(body):
 func _on_second_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		hitObj.takeDamage(1000)
+		hitObj.takeDamage(damage)
 		
 func setKatanaArrived():
 	isKatanaFlying = false
@@ -202,6 +207,7 @@ func modifyGold(value):
 	clampi(gold, 0, 999)
 	goldModified.emit(gold)
 	createFloatingText(value, Color.YELLOW)
+	Globals.updateGold(value)
 
 func emitSkillActivationSignals(isWindActive, isFireActive):
 	windSkillActivated.emit(isWindActive)

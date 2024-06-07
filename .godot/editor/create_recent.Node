@@ -1,3 +1,4 @@
+Button
 Label
 AudioStreamPlayer
 AnimationPlayer
@@ -8,7 +9,6 @@ CanvasLayer
 PanelContainer
 Control
 Container
-Button
 VBoxContainer
 HBoxContainer
 CollisionShape2D
