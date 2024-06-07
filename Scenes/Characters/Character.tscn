@@ -313,6 +313,7 @@ debug_color = Color(0, 0.603922, 0.682353, 0.419608)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("7_c1l63")
+volume_db = -10.0
 
 [node name="FToInteract" type="Label" parent="."]
 visible = false

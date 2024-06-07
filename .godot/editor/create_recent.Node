@@ -1,3 +1,6 @@
+Button
+Label
+AudioStreamPlayer
 AnimationPlayer
 AnimationTree
 Sprite2D
@@ -6,10 +9,6 @@ CanvasLayer
 PanelContainer
 Control
 Container
-Label
-Button
 VBoxContainer
 HBoxContainer
 CollisionShape2D
-Area2D
-PointLight2D

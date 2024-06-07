@@ -11,12 +11,16 @@ const FLOATINGDAMAGE = preload("res://Scenes/UI/FloatingText.tscn")
 const DASHGHOST = preload("res://Scenes/Characters/CharacterGhost.tscn")
 const floatingDamageSpawnRangeMin = -30
 const floatingDamageSpawnRangeMax = 30
-const MAXHP = 100
 
-const baseSpeed = 500
-@export var speed = 500
-@export var dashSpeedScalar = 1.2
+#Stats and currency
+@onready var hp = 100
+@onready var maxHp:int = 100
+@onready var gold:int = 100
+@onready var baseSpeed:int = 500
+@onready var speed:int = 500
+@onready var damage = 10
 @export var dashDuration = 0.2
+@export var dashSpeedScalar = 1.2
 
 @onready var animations = $AnimationPlayer
 @onready var attackTimer = $AttackCooldown
@@ -28,12 +32,8 @@ const baseSpeed = 500
 
 @onready var hitFlash:ShaderMaterial = $FlipMarker/Sprite2D.material
 
-@onready var hp = 100
 var katanaObj:Katana
 var canPerformNextAttack = true
-
-#Collectibles
-@onready var gold:int = 0
 
 #Interact
 @onready var interactLabel:Label = $FToInteract
@@ -52,6 +52,17 @@ var isKatanaFlying = false
 var minimapIcon = "player"
 
 func _ready():
+	Globals.player = self
+	#Stats and currency setup
+	hp = Globals.hp
+	maxHp = Globals.maxHp
+	gold = Globals.gold
+	baseSpeed = Globals.baseSpeed
+	speed = Globals.speed
+	dashDuration = Globals.dashDuration
+	dashSpeedScalar = Globals.dashSpeedScalar
+	damage = Globals.damage
+
 	var durationTimer = dash.get_node("DurationTimer")
 	durationTimer.timeout.connect(_on_timer_timeout)
 	katanaObj = KATANA.new()
@@ -66,6 +77,8 @@ func _ready():
 		hud.startingHp = hp
 		await get_tree().process_frame
 		hud.minimap.player = self
+	
+	goldModified.emit(gold)
 	
 # Called every frame. 'delta' is the elapsed time since the previous fram
 func _physics_process(delta):
@@ -167,13 +180,13 @@ func takeDamage(value):
 
 func heal(value):
 	var newHp = hp + value
-	hp = clampi(newHp, 0, MAXHP)
+	hp = clampi(newHp, 0, maxHp)
 	healthChanged.emit(hp)
 
 func _on_first_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		hitObj.takeDamage(15)
+		hitObj.takeDamage(damage)
 		#TODO: Move following code to a function in Katana script
 		if katanaObj.appliedSkill == katanaObj.AppliedSkill.FIRE:
 			var fs = katanaObj.FIRESKILL.new(hitObj)
@@ -184,7 +197,7 @@ func _on_first_strike_area_body_entered(body):
 func _on_second_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		hitObj.takeDamage(1000)
+		hitObj.takeDamage(damage)
 		
 func setKatanaArrived():
 	isKatanaFlying = false
@@ -194,6 +207,7 @@ func modifyGold(value):
 	clampi(gold, 0, 999)
 	goldModified.emit(gold)
 	createFloatingText(value, Color.YELLOW)
+	Globals.updateGold(value)
 
 func emitSkillActivationSignals(isWindActive, isFireActive):
 	windSkillActivated.emit(isWindActive)

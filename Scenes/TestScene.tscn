@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmkjgrji3jlhm"]
+[gd_scene load_steps=15 format=3 uid="uid://cmkjgrji3jlhm"]
 
 [ext_resource type="PackedScene" uid="uid://bfqn2oultoebp" path="res://Scenes/Characters/Character.tscn" id="1_ys7vr"]
 [ext_resource type="PackedScene" uid="uid://dl6872cjh5s8t" path="res://Scenes/UI/HUD.tscn" id="3_5mmv1"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cre213wta25li" path="res://Art/Environment/Tilemaps/Tilemap.png" id="6_2td6r"]
 [ext_resource type="PackedScene" uid="uid://bpecjakbgg7oa" path="res://Scenes/Items/Pickups/Health.tscn" id="6_j3mwg"]
 [ext_resource type="PackedScene" uid="uid://4a0634cr6rd" path="res://Scenes/Items/Pickups/GoldCoin.tscn" id="7_x6wl6"]
+[ext_resource type="Script" path="res://Scripts/World/Interactables/MerchantEstateInteract.gd" id="8_43q1w"]
+[ext_resource type="Texture2D" uid="uid://dlld57s67v4w" path="res://Art/Environment/InteractionBox.png" id="8_axoj4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ioou5"]
 texture = ExtResource("6_2td6r")
@@ -4670,6 +4672,30 @@ texture = ExtResource("6_2td6r")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ioou5")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vf1me"]
+size = Vector2(128, 62.5)
+
+[sub_resource type="Animation" id="Animation_0rof5"]
+resource_name = "interaction_glow"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MerchantEstateInteract/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.745098), Color(1, 1, 1, 0.196078)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fik4q"]
+_data = {
+"interaction_glow": SubResource("Animation_0rof5")
+}
+
 [node name="TestScene" type="Node2D"]
 scale = Vector2(0.981984, 0.99497)
 
@@ -4726,3 +4752,26 @@ position = Vector2(1599.82, 589.968)
 
 [node name="GoldCoin3" parent="." instance=ExtResource("7_x6wl6")]
 position = Vector2(1457.25, 712.584)
+
+[node name="MerchantEstateInteract" type="Area2D" parent="."]
+position = Vector2(-797.516, -203.634)
+script = ExtResource("8_43q1w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MerchantEstateInteract"]
+shape = SubResource("RectangleShape2D_vf1me")
+
+[node name="Sprite2D" type="Sprite2D" parent="MerchantEstateInteract"]
+modulate = Color(1, 1, 1, 0.745098)
+position = Vector2(0.000976563, 0)
+scale = Vector2(1.016, 0.65)
+texture = ExtResource("8_axoj4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MerchantEstateInteract"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_fik4q")
+}
+autoplay = "interaction_glow"
+
+[connection signal="body_entered" from="MerchantEstateInteract" to="MerchantEstateInteract" method="_on_body_entered"]
+[connection signal="body_exited" from="MerchantEstateInteract" to="MerchantEstateInteract" method="_on_body_exited"]
