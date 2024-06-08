@@ -7,9 +7,14 @@ class_name HUDManager
 @onready var selectedSkillsBox:HBoxContainer = $CanvasLayer/PanelContainer/SelectedSkills_HB
 
 #Wave info
+@onready var wavesRemainingHB:HBoxContainer = $CanvasLayer/WavesRemaining_HB
+@onready var enemiesRemainingHB:HBoxContainer = $CanvasLayer/EnemiesRemaining_HB
+@onready var waveCountdownHB:HBoxContainer = $CanvasLayer/WaveCountdown_HB
+
 @onready var enemiesRemaining:Label = $CanvasLayer/EnemiesRemaining_HB/EnemiesRemaining
 @onready var wavesRemaining:Label = $CanvasLayer/WavesRemaining_HB/WavesRemaining
 @onready var maxWaves:Label = $CanvasLayer/WavesRemaining_HB/TotalWaves
+
 
 #Wave Countdown
 @onready var countdownTimerBox = $CanvasLayer/WaveCountdown_HB
@@ -30,6 +35,7 @@ func _ready():
 	GameManager.hudManager = self
 	characterHpBar.set_value_no_signal(startingHp)
 	wavesRemaining.text = str(currWaveAmnt)
+	toggleWaveRelatedUi()
 
 func _process(delta):
 	if not countdownTimer.is_stopped():
@@ -84,4 +90,14 @@ func _on_timer_timeout():
 
 func _on_wave_countdown_timeout():
 	countdownTimerBox.visible = false
-	countdownTimer.wait_time = 4
+	countdownTimer.wait_time = 60
+
+func toggleWaveRelatedUi():
+	if Globals.shouldShowWaveRelatedUi:
+		wavesRemainingHB.show()
+		enemiesRemainingHB.show()
+		waveCountdownHB.show()
+	else:
+		wavesRemainingHB.hide()
+		enemiesRemainingHB.hide()
+		waveCountdownHB.hide()
