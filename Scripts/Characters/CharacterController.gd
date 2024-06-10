@@ -188,7 +188,7 @@ func heal(value):
 func _on_first_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		hitObj.takeDamage(damage)
+		hitObj.takeDamage(5)
 		#TODO: Move following code to a function in Katana script
 		if katanaObj.appliedSkill == katanaObj.AppliedSkill.FIRE:
 			var fs = katanaObj.FIRESKILL.new(hitObj)
@@ -199,7 +199,7 @@ func _on_first_strike_area_body_entered(body):
 func _on_second_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		hitObj.takeDamage(damage)
+		hitObj.takeDamage(50)
 		
 func setKatanaArrived():
 	isKatanaFlying = false
