@@ -166,11 +166,13 @@ func _on_timer_timeout():
 
 func takeDamage(value):
 	hp -= value
+	Globals.updateHp(-value)
 	animStateMachine.travel("get_hit")
 	healthChanged.emit(hp)
 
 	if(hp <= 0):
 		yoooo.play()
+		Globals.resetDefaults()
 		GameManager.gameEnded.emit(false)
 
 	hitFlash.set_shader_parameter("active", true)

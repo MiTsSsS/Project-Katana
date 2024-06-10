@@ -2,6 +2,9 @@ extends Interactable
 
 @onready var shopUI = $CanvasLayer/PanelContainer
 
+#Interactibility
+@onready var isLeaving:bool = false
+
 #Shop Functionatily
 var randomizedItems
 
@@ -33,21 +36,37 @@ func _ready():
 
 #Merchant Interact
 func _on_interact_body_entered(body:Node2D):
-	if body.is_in_group("player"):
-		var player:Player = body as Player
-		player.setupInteractionProperties()
-		player.interactableObject = self
+	interactionProperties(body, false)
 
 func _on_interact_body_exited(body:Node2D):
+	interactionProperties(body, true)
+	shopUI.visible = false
+
+func _on_leave_interact_body_entered(body):
+	interactionProperties(body, false)
+	isLeaving = true
+
+func _on_leave_interact_body_exited(body):
+	interactionProperties(body, true)
+	isLeaving = false
+
+func interactedWith():
+	print(isLeaving)
+	if not isLeaving:
+		shopUI.visible = true
+	else:
+		Globals.setShouldShowWaveRelatedUi(true)
+		SceneTransitioner.transitionToScene("res://Scenes/TestScene.tscn")
+
+func interactionProperties(body, exiting):
 	if body.is_in_group("player"):
 		var player:Player = body as Player
 		player.setupInteractionProperties()
-		player.interactableObject = null
-		shopUI.visible = false
-
-func interactedWith():
-	shopUI.visible = true
-
+		if exiting:
+			player.interactableObject = null
+		else:
+			player.interactableObject = self
+	
 func initItemsUi():
 	var itemsHolder:HBoxContainer = $CanvasLayer/PanelContainer/ShopItems_HB
 
@@ -62,6 +81,7 @@ func onButtonClick(chosenItemPos:int):
 	var itemId:String = randomizedItems[chosenItemPos]["id"]
 	var itemCost:int = randomizedItems[chosenItemPos]["cost"]
 	Globals.updateGold(-itemCost)
+	checkPurchasableItems()
 	
 	match itemId:
 		"MH":
@@ -75,6 +95,12 @@ func onButtonClick(chosenItemPos:int):
 		"DA":
 			Globals.updateDamage(1000)
 
+func checkPurchasableItems():
+	var itemsHolder:HBoxContainer = $CanvasLayer/PanelContainer/ShopItems_HB
+	for n in 3:
+		var shopItemUi = itemsHolder.get_children()[n]
+		shopItemUi.get_node("Button").disabled =  randomizedItems[n]["cost"] > Globals.gold
+
 func _on_first_item_button_down():
 	onButtonClick(0)
 	
@@ -83,3 +109,4 @@ func _on_second_item_button_down():
 	
 func _on_third_item_button_down():
 	onButtonClick(2)
+

@@ -4758,7 +4758,9 @@ position = Vector2(-797.516, -203.634)
 script = ExtResource("8_43q1w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MerchantEstateInteract"]
+position = Vector2(0.150664, -0.392247)
 shape = SubResource("RectangleShape2D_vf1me")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="MerchantEstateInteract"]
 modulate = Color(1, 1, 1, 0.745098)
