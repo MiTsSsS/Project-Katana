@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bduj6bmgjr767"]
 
-[ext_resource type="Texture2D" uid="uid://oonch1a3umqc" path="res://Art/Characters/Player/spritesheet.png" id="1_at2kw"]
+[ext_resource type="Texture2D" uid="uid://dt2nhmp7hvc3l" path="res://Art/Characters/Player/Player_Running_Animation.png" id="1_q3oc3"]
 
 [sub_resource type="Animation" id="Animation_bxa8x"]
 resource_name = "fade_out"
@@ -26,9 +26,9 @@ _data = {
 [node name="CharacterGhost" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_at2kw")
-hframes = 32
-frame = 11
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_q3oc3")
+hframes = 8
 
 [node name="FadeOut" type="AnimationPlayer" parent="."]
 libraries = {
