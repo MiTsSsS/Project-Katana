@@ -63,8 +63,8 @@ func decrementEnemiesToDefeat():
 	enemyAmntDecremented.emit(enemiesToDefeat)
 
 	if enemiesToDefeat == 0:
-		waveCompleted.emit()
 		completedWaves += 1
+		waveCompleted.emit()
 
 		if completedWaves > waveNumber:
 			GameManager.gameEnded.emit(true)
