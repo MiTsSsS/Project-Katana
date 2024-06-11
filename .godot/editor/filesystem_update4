@@ -1,11 +1,11 @@
-res://Scenes/Characters/Character.tscn
+res://Scenes/TestScene.tscn
 res://Art/VFX/Shaders/WhiteHitFlash.gdshader
 res://addons/datatable_godot/escape_shortcut.tres
 res://Scripts/UI/Minimap.gd
 res://Art/VFX/Shaders/Fire.gdshader
-res://Scenes/TestScene.tscn
 res://Scenes/World/Merchant.tscn
 res://Scenes/UI/HUD.tscn
+res://Scenes/Characters/Character.tscn
 res://Scenes/Characters/Dash.tscn
 res://Scenes/Characters/CharacterGhost.tscn
 res://Scripts/Characters/CharacterController.gd

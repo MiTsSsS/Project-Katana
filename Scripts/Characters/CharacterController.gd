@@ -84,6 +84,7 @@ func _ready():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
+	print(animStateMachine.get_current_node())
 
 func get_input():
 	if not isKatanaFlying:
@@ -140,7 +141,8 @@ func get_input():
 	positionChanged.emit(global_position)
 	
 	if velocity == Vector2.ZERO:
-		animStateMachine.travel("idle")
+		if not animStateMachine.get_current_node() == "idle_loop":
+			animStateMachine.travel("idle")
 	elif velocity != Vector2.ZERO:
 		animStateMachine.travel("run")
 		
