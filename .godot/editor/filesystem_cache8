@@ -1,13 +1,24 @@
 ea4bc82a6ad023ab7ee23ee620429895
+<<<<<<< HEAD
 ::res://::1718144379
+=======
+::res://::1718140476
+>>>>>>> main
 export_presets.cfg::TextFile::-1::1713010169::0::1::::<><>::
 icon.svg::CompressedTexture2D::6333443618286758030::1691869436::1691869452::1::::<><>::
 README.md::TextFile::-1::1700348151::0::1::::<><>::
 ::res://addons/::1717710116
+<<<<<<< HEAD
 ::res://addons/datatable_godot/::1718144298
 datatable.gd::GDScript::-1::1718055555::0::1::::<>EditorPlugin<>::
 datatable.tscn::PackedScene::8143668292794686629::1718055555::0::1::::<><>::res://addons/datatable_godot/ui/datatable_ui.gd<>res://addons/datatable_godot/ui/buttons/main/b_newTable.gd<>res://addons/datatable_godot/common/signals.gd<>res://addons/datatable_godot/ui/buttons/main/b_manageTableType.gd<>uid://dwb1kfrq35nuy::::res://addons/datatable_godot/icons/Load.png<>res://addons/datatable_godot/ui/buttons/main/mb_manageCollection.gd<>uid://bck1i8evwspny::::res://addons/datatable_godot/icons/Save.png<>res://addons/datatable_godot/ui/buttons/main/txt_version_status.gd<>res://addons/datatable_godot/ui/buttons/newTable/b_closeWindow.gd<>res://addons/datatable_godot/ui/bg/bg_newTable.gd<>res://addons/datatable_godot/ui/link handler project mainscreen.gd<>uid://canf3frmvnvfd::::res://addons/datatable_godot/escape_shortcut.tres<>res://addons/datatable_godot/ui/inputs/new_table/in_tableTitle.gd<>res://addons/datatable_godot/ui/inputs/new_table/OB_tableType.gd<>res://addons/datatable_godot/ui/inputs/new_table/in_itemTableName.gd<>res://addons/datatable_godot/ui/inputs/new_table/b_addItemTable.gd<>res://addons/datatable_godot/ui/schema/new_table/schema_table.gd<>res://addons/datatable_godot/ui/buttons/newTable/txt_table_name.gd<>res://addons/datatable_godot/ui/buttons/newTable/b_createTable.gd<>res://addons/datatable_godot/ui/schema/new_table/tableItemSchema.gd<>res://addons/datatable_godot/ui/buttons/newTable/in_tableItemName.gd<>res://addons/datatable_godot/ui/buttons/newTable/b_deleteTable.gd<>uid://bh4utwbo8c1th::::res://addons/datatable_godot/icons/String.svg<>uid://bpl61j5iclrvd::::res://addons/datatable_godot/icons/int.svg<>res://addons/datatable_godot/ui/inputs/new_table/param_block.gd<>uid://hmlxro3byyk4::::res://addons/datatable_godot/icons/float.svg<>uid://cw3pqcha6hash::::res://addons/datatable_godot/icons/Color.svg<>uid://cep60026oa02c::::res://addons/datatable_godot/icons/Vector2.svg<>uid://kpudoq60xvhi::::res://addons/datatable_godot/icons/Close.svg<>res://addons/datatable_godot/ui/schema/new_table/VBC_itemTableDataList.gd<>uid://cjj2fecod00cv::::res://addons/datatable_godot/icons/Vector3.svg<>uid://dpah1oqjdvr7u::::res://addons/datatable_godot/icons/Vector4.svg<>uid://d4af0scr4f3ea::::res://addons/datatable_godot/icons/Add.svg<>uid://blh822uvyrgg1::::res://addons/datatable_godot/icons/Remove.svg<>res://addons/datatable_godot/ui/buttons/manageType/b_closeWindow.gd<>res://addons/datatable_godot/ui/bg/bg_manageType.gd<>res://addons/datatable_godot/ui/buttons/manageType/type_title.gd<>res://addons/datatable_godot/ui/buttons/manageType/b_addType.gd<>res://addons/datatable_godot/ui/inputs/manage_type/in_newTypeName.gd<>res://addons/datatable_godot/ui/buttons/manageType/b_deleteType.gd<>res://addons/datatable_godot/ui/inputs/manage_type/in_new_param_name.gd<>res://addons/datatable_godot/ui/buttons/manageType/b_add_param.gd<>res://addons/datatable_godot/ui/buttons/manageType/b_delete_param.gd<>uid://cw3yfy2wnj7sr::::res://addons/datatable_godot/icons/single_value.png<>uid://b2tja7u6nyfd8::::res://addons/datatable_godot/icons/array_value.png<>uid://boigovej7l3ld::::res://addons/datatable_godot/icons/bool.png<>uid://cudqdqhvvyvvd::::res://addons/datatable_godot/icons/Ressource.png<>uid://dwa4hgxufiht2::::res://addons/datatable_godot/icons/Quaternion.png<>uid://deeletsgtujsc::::res://addons/datatable_godot/icons/Rect2.png<>uid://xg222ueyxka0::::res://addons/datatable_godot/icons/HTTPRequest.png<>res://addons/datatable_godot/ui/bg/bg_autoupdate.gd<>uid://b1sf25ugxyjr2::::res://addons/datatable_godot/icons/Plane.png<>uid://b78syqljkqgw0::::res://addons/datatable_godot/icons/Transform2D.png<>uid://l42684mvyre3::::res://addons/datatable_godot/icons/Transform3D.png<>uid://dhrostg6qnf3u::::res://addons/datatable_godot/icons/AABB.png<>uid://cw7yrghswx3pg::::res://addons/datatable_godot/icons/Basis.png<>uid://7810wjrwyh4k::::res://addons/datatable_godot/icons/Projection.png
 escape_shortcut.tres::Shortcut::4800032154834397945::1718144298::0::1::::<><>::
+=======
+::res://addons/datatable_godot/::1718140488
+datatable.gd::GDScript::-1::1718055555::0::1::::<>EditorPlugin<>::
+datatable.tscn::PackedScene::8143668292794686629::1718055555::0::1::::<><>::res://addons/datatable_godot/ui/datatable_ui.gd<>res://addons/datatable_godot/ui/buttons/main/b_newTable.gd<>res://addons/datatable_godot/common/signals.gd<>res://addons/datatable_godot/ui/buttons/main/b_manageTableType.gd<>uid://dwb1kfrq35nuy::::res://addons/datatable_godot/icons/Load.png<>res://addons/datatable_godot/ui/buttons/main/mb_manageCollection.gd<>uid://bck1i8evwspny::::res://addons/datatable_godot/icons/Save.png<>res://addons/datatable_godot/ui/buttons/main/txt_version_status.gd<>res://addons/datatable_godot/ui/buttons/newTable/b_closeWindow.gd<>res://addons/datatable_godot/ui/bg/bg_newTable.gd<>res://addons/datatable_godot/ui/link handler project mainscreen.gd<>uid://canf3frmvnvfd::::res://addons/datatable_godot/escape_shortcut.tres<>res://addons/datatable_godot/ui/inputs/new_table/in_tableTitle.gd<>res://addons/datatable_godot/ui/inputs/new_table/OB_tableType.gd<>res://addons/datatable_godot/ui/inputs/new_table/in_itemTableName.gd<>res://addons/datatable_godot/ui/inputs/new_table/b_addItemTable.gd<>res://addons/datatable_godot/ui/schema/new_table/schema_table.gd<>res://addons/datatable_godot/ui/buttons/newTable/txt_table_name.gd<>res://addons/datatable_godot/ui/buttons/newTable/b_createTable.gd<>res://addons/datatable_godot/ui/schema/new_table/tableItemSchema.gd<>res://addons/datatable_godot/ui/buttons/newTable/in_tableItemName.gd<>res://addons/datatable_godot/ui/buttons/newTable/b_deleteTable.gd<>uid://bh4utwbo8c1th::::res://addons/datatable_godot/icons/String.svg<>uid://bpl61j5iclrvd::::res://addons/datatable_godot/icons/int.svg<>res://addons/datatable_godot/ui/inputs/new_table/param_block.gd<>uid://hmlxro3byyk4::::res://addons/datatable_godot/icons/float.svg<>uid://cw3pqcha6hash::::res://addons/datatable_godot/icons/Color.svg<>uid://cep60026oa02c::::res://addons/datatable_godot/icons/Vector2.svg<>uid://kpudoq60xvhi::::res://addons/datatable_godot/icons/Close.svg<>res://addons/datatable_godot/ui/schema/new_table/VBC_itemTableDataList.gd<>uid://cjj2fecod00cv::::res://addons/datatable_godot/icons/Vector3.svg<>uid://dpah1oqjdvr7u::::res://addons/datatable_godot/icons/Vector4.svg<>uid://d4af0scr4f3ea::::res://addons/datatable_godot/icons/Add.svg<>uid://blh822uvyrgg1::::res://addons/datatable_godot/icons/Remove.svg<>res://addons/datatable_godot/ui/buttons/manageType/b_closeWindow.gd<>res://addons/datatable_godot/ui/bg/bg_manageType.gd<>res://addons/datatable_godot/ui/buttons/manageType/type_title.gd<>res://addons/datatable_godot/ui/buttons/manageType/b_addType.gd<>res://addons/datatable_godot/ui/inputs/manage_type/in_newTypeName.gd<>res://addons/datatable_godot/ui/buttons/manageType/b_deleteType.gd<>res://addons/datatable_godot/ui/inputs/manage_type/in_new_param_name.gd<>res://addons/datatable_godot/ui/buttons/manageType/b_add_param.gd<>res://addons/datatable_godot/ui/buttons/manageType/b_delete_param.gd<>uid://cw3yfy2wnj7sr::::res://addons/datatable_godot/icons/single_value.png<>uid://b2tja7u6nyfd8::::res://addons/datatable_godot/icons/array_value.png<>uid://boigovej7l3ld::::res://addons/datatable_godot/icons/bool.png<>uid://cudqdqhvvyvvd::::res://addons/datatable_godot/icons/Ressource.png<>uid://dwa4hgxufiht2::::res://addons/datatable_godot/icons/Quaternion.png<>uid://deeletsgtujsc::::res://addons/datatable_godot/icons/Rect2.png<>uid://xg222ueyxka0::::res://addons/datatable_godot/icons/HTTPRequest.png<>res://addons/datatable_godot/ui/bg/bg_autoupdate.gd<>uid://b1sf25ugxyjr2::::res://addons/datatable_godot/icons/Plane.png<>uid://b78syqljkqgw0::::res://addons/datatable_godot/icons/Transform2D.png<>uid://l42684mvyre3::::res://addons/datatable_godot/icons/Transform3D.png<>uid://dhrostg6qnf3u::::res://addons/datatable_godot/icons/AABB.png<>uid://cw7yrghswx3pg::::res://addons/datatable_godot/icons/Basis.png<>uid://7810wjrwyh4k::::res://addons/datatable_godot/icons/Projection.png
+escape_shortcut.tres::Shortcut::4800032154834397945::1718140488::0::1::::<><>::
+>>>>>>> main
 plugin.cfg::TextFile::-1::1718055556::0::1::::<><>::
 README.md::TextFile::-1::1718055555::0::1::::<><>::
 ::res://addons/datatable_godot/class/::1718055555
@@ -183,8 +194,15 @@ spritesheet.png::CompressedTexture2D::3403497951848553653::1713111746::171311174
 MerchantIdleCombined.png::CompressedTexture2D::7391804412480211022::1718055555::1718055555::1::::<><>::
 ::res://Art/Characters/Musketeer/::1711572728
 spritesheet.png::CompressedTexture2D::7968935940378897454::1711572679::1711572728::1::::<><>::
+<<<<<<< HEAD
 ::res://Art/Characters/Player/::1718144365
 spritesheet.png::CompressedTexture2D::1012338399849647794::1718144358::1718144365::1::::<><>::
+=======
+::res://Art/Characters/Player/::1718140462
+Player_Running_Animation.png::CompressedTexture2D::8549390755941215267::1718140458::1718140458::1::::<><>::
+RunningStrike.png::CompressedTexture2D::1325773499948301773::1718140458::1718140458::1::::<><>::
+spritesheet.png::CompressedTexture2D::1012338399849647794::1718140571::1718140573::1::::<><>::
+>>>>>>> main
 ::res://Art/Characters/Samurai/::1711574644
 spritesheet.png::CompressedTexture2D::7055799225476320908::1711574644::1711574161::1::::<><>::
 ::res://Art/Environment/::1718055555
@@ -233,9 +251,15 @@ File5.png::CompressedTexture2D::1363776563165224392::1704237659::1715536787::1::
 File6.png::CompressedTexture2D::1278252164748473779::1704237659::1715536787::1::::<><>::
 ::res://Art/VFX/LightShapes/::1717538476
 PointLightCircle.png::CompressedTexture2D::1162368777071873321::1717538476::1717538476::1::::<><>::
+<<<<<<< HEAD
 ::res://Art/VFX/Shaders/::1718144370
 Fire.gdshader::Shader::-1::1718144370::0::1::::<><>::
 WhiteHitFlash.gdshader::Shader::-1::1718144370::0::1::::<><>::
+=======
+::res://Art/VFX/Shaders/::1718140489
+Fire.gdshader::Shader::-1::1718140489::0::1::::<><>::
+WhiteHitFlash.gdshader::Shader::-1::1718140489::0::1::::<><>::
+>>>>>>> main
 ::res://Audio/::1717283221
 ::res://Audio/SFX/::1717283221
 Yoooooo.wav::AudioStreamWAV::3743718956980102032::1717283221::1717283221::1::::<><>::
@@ -243,17 +267,29 @@ Yoooooo.wav::AudioStreamWAV::3743718956980102032::1717283221::1717283221::1::::<
 ShopItems_backup1.tableCollection.res::PackedDataContainer::5379536958424799862::1718055557::0::1::::<><>::
 ShopItems_backup2.tableCollection.res::PackedDataContainer::7301349567470904360::1718055557::0::1::::<><>::
 ShopItems_backup3.tableCollection.res::PackedDataContainer::5899682987499545233::1718055557::0::1::::<><>::
+<<<<<<< HEAD
 ::res://Scenes/::1718144298
 TestScene.tscn::PackedScene::5636309343482975726::1718144298::0::1::::<><>::uid://bfqn2oultoebp::::res://Scenes/Characters/Character.tscn<>uid://dl6872cjh5s8t::::res://Scenes/UI/HUD.tscn<>uid://cvhknhey5lepp::::res://Scenes/World/WaveManager.tscn<>uid://dq544wmnya8xl::::res://Scenes/Characters/Enemies/EnemySpawner.tscn<>uid://cre213wta25li::::res://Art/Environment/Tilemaps/Tilemap.png<>uid://bpecjakbgg7oa::::res://Scenes/Items/Pickups/Health.tscn<>uid://4a0634cr6rd::::res://Scenes/Items/Pickups/GoldCoin.tscn<>res://Scripts/World/Interactables/MerchantEstateInteract.gd<>uid://dlld57s67v4w::::res://Art/Environment/InteractionBox.png
+=======
+::res://Scenes/::1718140488
+TestScene.tscn::PackedScene::5636309343482975726::1718140487::0::1::::<><>::uid://bfqn2oultoebp::::res://Scenes/Characters/Character.tscn<>uid://dl6872cjh5s8t::::res://Scenes/UI/HUD.tscn<>uid://cvhknhey5lepp::::res://Scenes/World/WaveManager.tscn<>uid://dq544wmnya8xl::::res://Scenes/Characters/Enemies/EnemySpawner.tscn<>uid://cre213wta25li::::res://Art/Environment/Tilemaps/Tilemap.png<>uid://bpecjakbgg7oa::::res://Scenes/Items/Pickups/Health.tscn<>uid://4a0634cr6rd::::res://Scenes/Items/Pickups/GoldCoin.tscn<>res://Scripts/World/Interactables/MerchantEstateInteract.gd<>uid://dlld57s67v4w::::res://Art/Environment/InteractionBox.png
+>>>>>>> main
 ::res://Scenes/Abilities/::1716935199
 ExplodingLog.gd::GDScript::-1::1716585153::0::1::::<>Node2D<>::
 ExplodingLog.tscn::PackedScene::7406563113089946134::1716935199::0::1::::<><>::res://Scenes/Abilities/ExplodingLog.gd<>uid://bjv5ivhakyp40::::res://Art/Characters/Hanzo/Exploding_Log-sheet.png<>uid://b270y57jmu1lp::::res://Art/Characters/Hanzo/RedCircle.png
 FireTrail.tscn::PackedScene::114355301314933503::1716935199::0::1::::<><>::uid://cmjm0py1rr6qx::::res://Art/VFX/Items/Katana/FireKatanaFrames/fuego_normal_101x293.png
 Wind.tscn::PackedScene::8620742941455762111::1716935199::0::1::::<><>::uid://bkdr58i2rw6vw::::res://Art/VFX/Items/Katana/Slashes/SingleSlash/White/File1.png<>res://Scripts/Abilities/Wind.gd<>uid://c0sccvy38ojrx::::res://Art/VFX/Items/Katana/Slashes/SingleSlash/White/File2.png<>uid://726goq7fgpfx::::res://Art/VFX/Items/Katana/Slashes/SingleSlash/White/File3.png<>uid://co62fx177ecke::::res://Art/VFX/Items/Katana/Slashes/SingleSlash/White/File4.png
+<<<<<<< HEAD
 ::res://Scenes/Characters/::1718144358
 Character.tscn::PackedScene::2771233250038340929::1718144358::0::1::::<><>::res://Scripts/Characters/CharacterController.gd<>res://Art/VFX/Shaders/WhiteHitFlash.gdshader<>uid://b4aj7empb1vhh::::res://Scenes/UI/Screens/EndGameScreen.tscn<>uid://bjs7m4djnqfah::::res://Scenes/Characters/Dash.tscn<>uid://ddf0mchcyene6::::res://Scenes/UI/Menus/PauseMenu.tscn<>uid://btlqre6lfg641::::res://Audio/SFX/Yoooooo.wav<>uid://oonch1a3umqc::::res://Art/Characters/Player/spritesheet.png
 CharacterGhost.tscn::PackedScene::2638876653580692630::1718144358::0::1::::<><>::uid://oonch1a3umqc::::res://Art/Characters/Player/spritesheet.png
 Dash.tscn::PackedScene::3057244977542347339::1718144299::0::1::::<><>::res://Scripts/Mechanics/Dash.gd
+=======
+::res://Scenes/Characters/::1718140489
+Character.tscn::PackedScene::2771233250038340929::1718140489::0::1::::<><>::res://Scripts/Characters/CharacterController.gd<>res://Art/VFX/Shaders/WhiteHitFlash.gdshader<>uid://b4aj7empb1vhh::::res://Scenes/UI/Screens/EndGameScreen.tscn<>uid://bjs7m4djnqfah::::res://Scenes/Characters/Dash.tscn<>uid://ddf0mchcyene6::::res://Scenes/UI/Menus/PauseMenu.tscn<>uid://btlqre6lfg641::::res://Audio/SFX/Yoooooo.wav<>uid://oonch1a3umqc::::res://Art/Characters/Player/spritesheet.png
+CharacterGhost.tscn::PackedScene::2638876653580692630::1718140489::0::1::::<><>::uid://dt2nhmp7hvc3l::::res://Art/Characters/Player/Player_Running_Animation.png
+Dash.tscn::PackedScene::3057244977542347339::1718140489::0::1::::<><>::res://Scripts/Mechanics/Dash.gd
+>>>>>>> main
 Enemy.tscn::PackedScene::9082945336285649770::1716935199::0::1::::<><>::uid://cwh75kco5ltva::::res://icon.svg<>res://Scripts/Characters/Enemy.gd<>res://Art/VFX/Shaders/WhiteHitFlash.gdshader
 ::res://Scenes/Characters/Enemies/::1717631196
 EnemySpawner.tscn::PackedScene::8346028637397211709::1716935199::0::1::::<><>::res://Scripts/World/EnemySpawner.gd
@@ -270,9 +306,15 @@ BoomerangKatana.tscn::PackedScene::4791330329829872790::1716935199::0::1::::<><>
 Gun.tscn::PackedScene::2057380766543491177::1716935199::0::1::::<><>::res://Scripts/Items/Weapons/Gun.gd
 Katana.tscn::PackedScene::6699241163727913008::1716935199::0::1::::<><>::res://Scripts/Items/Weapons/Katana.gd<>uid://cwh75kco5ltva::::res://icon.svg<>uid://cs3is78bo2d2s::::res://Art/VFX/Items/Katana/Slashes/SingleSlash/File1.png<>uid://cmehxr71uwbmm::::res://Art/VFX/Items/Katana/Slashes/SingleSlash/File2.png<>uid://c6put4v83fr17::::res://Art/VFX/Items/Katana/Slashes/SingleSlash/File3.png<>uid://g15toi58ocj7::::res://Art/VFX/Items/Katana/Slashes/SingleSlash/File4.png<>uid://b15ge8td7gugl::::res://Art/VFX/Items/Katana/Slashes/SingleSlash/File5.png<>uid://t4io6pv7ney0::::res://Art/VFX/Items/Katana/Slashes/SingleSlash/File6.png
 Shuriken.tscn::PackedScene::363127826766180972::1717455826::0::1::::<><>::res://Scripts/Items/Weapons/Bullet.gd<>uid://dmt13baxsuvc7::::res://Art/Characters/Hanzo/Shuriken.png
+<<<<<<< HEAD
 ::res://Scenes/UI/::1718144299
 FloatingText.tscn::PackedScene::6682648886819265444::1717631195::0::1::::<><>::res://Scripts/UI/FloatingText.gd
 HUD.tscn::PackedScene::7997397269279299389::1718144299::0::1::::<><>::res://Scripts/UI/HUDManager.gd<>uid://dg7xl6taq7aoh::::res://Art/VFX/Items/Katana/FireKatanaFrames/tile000.png<>uid://6i875v247kxf::::res://Art/VFX/Items/Katana/FireKatanaFrames/tile001.png<>uid://d06b81psjqlij::::res://Art/VFX/Items/Katana/FireKatanaFrames/tile002.png<>uid://cwxe4nk3x26ev::::res://Art/VFX/Items/Katana/FireKatanaFrames/tile003.png<>uid://cdedivasit3vk::::res://Art/VFX/Items/Katana/FireKatanaFrames/tile004.png<>uid://id1e28naifs::::res://Art/UI/Minimap/426-4264308_minimapborder-minimap-border-png-3383847319.png<>res://Scripts/UI/Minimap.gd<>uid://dlwf0oxd153yq::::res://Art/UI/Minimap/minimapIcon_arrowA.png<>uid://bdokllimtrdms::::res://Art/UI/Minimap/pattern_blueprintPaper.png<>uid://bejeir73n4vjw::::res://Art/UI/Minimap/minimapIcon_jewelRed.png<>uid://dn5g4hnaskg6j::::res://Art/UI/Minimap/hud_heartFull.png
+=======
+::res://Scenes/UI/::1718140488
+FloatingText.tscn::PackedScene::6682648886819265444::1717631195::0::1::::<><>::res://Scripts/UI/FloatingText.gd
+HUD.tscn::PackedScene::7997397269279299389::1718140488::0::1::::<><>::res://Scripts/UI/HUDManager.gd<>uid://dg7xl6taq7aoh::::res://Art/VFX/Items/Katana/FireKatanaFrames/tile000.png<>uid://6i875v247kxf::::res://Art/VFX/Items/Katana/FireKatanaFrames/tile001.png<>uid://d06b81psjqlij::::res://Art/VFX/Items/Katana/FireKatanaFrames/tile002.png<>uid://cwxe4nk3x26ev::::res://Art/VFX/Items/Katana/FireKatanaFrames/tile003.png<>uid://cdedivasit3vk::::res://Art/VFX/Items/Katana/FireKatanaFrames/tile004.png<>uid://id1e28naifs::::res://Art/UI/Minimap/426-4264308_minimapborder-minimap-border-png-3383847319.png<>res://Scripts/UI/Minimap.gd<>uid://dlwf0oxd153yq::::res://Art/UI/Minimap/minimapIcon_arrowA.png<>uid://bdokllimtrdms::::res://Art/UI/Minimap/pattern_blueprintPaper.png<>uid://bejeir73n4vjw::::res://Art/UI/Minimap/minimapIcon_jewelRed.png<>uid://dn5g4hnaskg6j::::res://Art/UI/Minimap/hud_heartFull.png
+>>>>>>> main
 ::res://Scenes/UI/Menus/::1717631194
 MainMenu.tscn::PackedScene::6485365960816005897::1717631194::0::1::::<><>::res://Scripts/UI/Menus/MainMenu.gd
 PauseMenu.tscn::PackedScene::7381689941093166075::1716935201::0::1::::<><>::res://Scripts/UI/Menus/PauseMenu.gd
@@ -281,8 +323,13 @@ EndGameScreen.tscn::PackedScene::4422500976850862729::1717631194::0::1::::<><>::
 ::res://Scenes/UI/Transitions/::1717631194
 SceneTransition.tscn::PackedScene::890183802496180494::1717631194::0::1::::<><>::res://Scripts/UI/Transitions/SceneTransition.gd
 ::res://Scenes/UI/Widgets/::1717806415
+<<<<<<< HEAD
 ::res://Scenes/World/::1718144299
 Merchant.tscn::PackedScene::1574750271647104137::1718144298::0::1::::<><>::res://Scripts/World/Merchant.gd<>uid://ddkv66fl4qomo::::res://Art/Characters/Merchant/MerchantIdleCombined.png<>uid://bfqn2oultoebp::::res://Scenes/Characters/Character.tscn<>uid://dl6872cjh5s8t::::res://Scenes/UI/HUD.tscn<>uid://dlld57s67v4w::::res://Art/Environment/InteractionBox.png
+=======
+::res://Scenes/World/::1718140488
+Merchant.tscn::PackedScene::1574750271647104137::1718140488::0::1::::<><>::res://Scripts/World/Merchant.gd<>uid://ddkv66fl4qomo::::res://Art/Characters/Merchant/MerchantIdleCombined.png<>uid://bfqn2oultoebp::::res://Scenes/Characters/Character.tscn<>uid://dl6872cjh5s8t::::res://Scenes/UI/HUD.tscn<>uid://dlld57s67v4w::::res://Art/Environment/InteractionBox.png
+>>>>>>> main
 WaveManager.tscn::PackedScene::6261888488285375317::1716935200::0::1::::<><>::res://Scripts/World/WaveManager.gd
 ::res://Scripts/::1718055555
 GameManager.gd::GDScript::-1::1717540015::0::1::::<>Node<>::
@@ -290,8 +337,13 @@ Globals.gd::GDScript::-1::1718055555::0::1::::<>Node<>::
 ::res://Scripts/Abilities/::1711993474
 Fire.gd::GDScript::-1::1704237660::0::1::::Fire<>Node<>::
 Wind.gd::GDScript::-1::1711993474::0::1::::<>Area2D<>::
+<<<<<<< HEAD
 ::res://Scripts/Characters/::1718144358
 CharacterController.gd::GDScript::-1::1718144358::0::1::::Player<>CharacterBody2D<>::
+=======
+::res://Scripts/Characters/::1718140458
+CharacterController.gd::GDScript::-1::1718140458::0::1::::Player<>CharacterBody2D<>::
+>>>>>>> main
 Enemy.gd::GDScript::-1::1717538476::0::1::::Enemy<>CharacterBody2D<>::
 EnemyController.gd::GDScript::-1::1704237660::0::1::::<>Node<>::
 Hanzo.gd::GDScript::-1::1717538476::0::1::::Hanzo<>Enemy<>::
@@ -309,10 +361,17 @@ Katana.gd::GDScript::-1::1713114217::0::1::::Katana<>Node2D<>::
 Shuriken.gd::GDScript::-1::1716585153::0::1::::<>Area2D<>::
 ::res://Scripts/Mechanics/::1718057595
 Dash.gd::GDScript::-1::1718057595::0::1::::<>Node2D<>::
+<<<<<<< HEAD
 ::res://Scripts/UI/::1718144298
 FloatingText.gd::GDScript::-1::1717538476::0::1::::<>Node2D<>::
 HUDManager.gd::GDScript::-1::1718055555::0::1::::HUDManager<>Control<>::
 Minimap.gd::GDScript::-1::1718144298::0::1::::Minimap<>MarginContainer<>::
+=======
+::res://Scripts/UI/::1718140488
+FloatingText.gd::GDScript::-1::1717538476::0::1::::<>Node2D<>::
+HUDManager.gd::GDScript::-1::1718055555::0::1::::HUDManager<>Control<>::
+Minimap.gd::GDScript::-1::1718140488::0::1::::Minimap<>MarginContainer<>::
+>>>>>>> main
 ::res://Scripts/UI/Menus/::1717022829
 MainMenu.gd::GDScript::-1::1716935090::0::1::::<>Control<>::
 PauseMenu.gd::GDScript::-1::1717022829::0::1::::<>Control<>::
@@ -321,6 +380,7 @@ EndGameScreen.gd::GDScript::-1::1717022829::0::1::::<>Control<>::
 ::res://Scripts/UI/Transitions/::1718055555
 SceneTransition.gd::GDScript::-1::1716935090::0::1::::<>Control<>::
 SceneTransitioner.gd::GDScript::-1::1718055555::0::1::::<>Node<>::
+<<<<<<< HEAD
 ::res://Scripts/World/::1718144358
 EnemySpawner.gd::GDScript::-1::1716585153::0::1::::EnemySpawner<>Node2D<>::
 Merchant.gd::GDScript::-1::1718055555::0::1::::<>Interactable<>::
@@ -329,5 +389,15 @@ WaveManager.gd::GDScript::-1::1718144358::0::1::::WaveManager<>Node<>::
 ::res://Scripts/World/Interactables/::1718144358
 Interactable.gd::GDScript::-1::1717538476::0::1::::Interactable<>Node2D<>::
 MerchantEstateInteract.gd::GDScript::-1::1718144358::0::1::::<>Interactable<>::
+=======
+::res://Scripts/World/::1718140458
+EnemySpawner.gd::GDScript::-1::1716585153::0::1::::EnemySpawner<>Node2D<>::
+Merchant.gd::GDScript::-1::1718055555::0::1::::<>Interactable<>::
+WaveData.JSON::JSON::-1::1716585153::0::1::::<><>::
+WaveManager.gd::GDScript::-1::1718140458::0::1::::WaveManager<>Node<>::
+::res://Scripts/World/Interactables/::1718140458
+Interactable.gd::GDScript::-1::1717538476::0::1::::Interactable<>Node2D<>::
+MerchantEstateInteract.gd::GDScript::-1::1718140458::0::1::::<>Interactable<>::
+>>>>>>> main
 ::res://Tables/::1718055555
 ShopItems.tableCollection.res::PackedDataContainer::7634752188430417031::1718055555::0::1::::<><>::
