@@ -66,6 +66,9 @@ func updateWavesNumber():
 	currWaveAmnt += 1
 	wavesRemaining.text = str(currWaveAmnt)
 	
+func setWavesNumber(waveNumb):
+	wavesRemaining.text = str(waveNumb)
+
 func setMaxWave(maxWaveAmnt):
 	maxWaves.text = str(maxWaveAmnt)
 

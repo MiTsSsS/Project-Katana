@@ -23,6 +23,8 @@ func _ready():
 	enemyAmntDecremented.connect(GameManager.hudManager.updateRemainingEnemies)
 	waveCompleted.connect(GameManager.hudManager.updateWavesNumber)
 	GameManager.hudManager.setMaxWave(waveNumber)
+	completedWaves = Globals.completedWaves
+	GameManager.hudManager.setWavesNumber(completedWaves)
 	waveStarted.connect(GameManager.hudManager.minimap.updateMinimapMarkers)
 	startWave()
 
@@ -42,7 +44,7 @@ func startWave():
 		countdownTimer = 60
 	await get_tree().create_timer(countdownTimer, false).timeout 
 
-	var waveData = getWaveData(completedWaves)
+	var waveData = getWaveData(Globals.lastCompletedWave + 1)
 	enemiesToDefeat = waveData[1] + waveData[2] + waveData[3]
 	enemySpawner.getParsedEnemyInfo(waveData[1], waveData[2], waveData[3])
 	enemyAmntDecremented.emit(enemiesToDefeat)
@@ -64,6 +66,8 @@ func decrementEnemiesToDefeat():
 
 	if enemiesToDefeat == 0:
 		completedWaves += 1
+		Globals.lastCompletedWave += 1
+		Globals.completedWaves += 1
 		waveCompleted.emit()
 
 		if completedWaves > waveNumber:

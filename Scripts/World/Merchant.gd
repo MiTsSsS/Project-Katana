@@ -91,7 +91,7 @@ func onButtonClick(chosenItemPos:int):
 		"DC":
 			Globals.updateDashCooldown(1)
 		"HE":
-			Globals.updateHp(20)
+			Globals.heal(20)
 		"DA":
 			Globals.updateDamage(1000)
 

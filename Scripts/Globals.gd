@@ -15,6 +15,8 @@ var dashDuration:float = 0.2
 var dashSpeedScalar:float = 1.2
 var damage:int = 1000
 var player:Player = null
+var lastCompletedWave = 0
+var completedWaves = 1
 
 #UI persistent properties
 var shouldShowWaveRelatedUi = true
@@ -26,6 +28,10 @@ func updateHp(val):
 func updateMaxHp(val):
 	maxHp += val
 	player.maxHp = maxHp
+
+func heal(val):
+	hp += val
+	player.heal(val)
 
 func updateGold(val):
 	gold += val
