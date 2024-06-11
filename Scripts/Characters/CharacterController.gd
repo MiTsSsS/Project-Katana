@@ -84,6 +84,7 @@ func _ready():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
+	print(animStateMachine.get_current_node())
 
 func get_input():
 	if not isKatanaFlying:
@@ -140,7 +141,8 @@ func get_input():
 	positionChanged.emit(global_position)
 	
 	if velocity == Vector2.ZERO:
-		animStateMachine.travel("idle")
+		if not animStateMachine.get_current_node() == "idle_loop":
+			animStateMachine.travel("idle")
 	elif velocity != Vector2.ZERO:
 		animStateMachine.travel("run")
 		
@@ -188,7 +190,7 @@ func heal(value):
 func _on_first_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		hitObj.takeDamage(damage)
+		hitObj.takeDamage(5)
 		#TODO: Move following code to a function in Katana script
 		if katanaObj.appliedSkill == katanaObj.AppliedSkill.FIRE:
 			var fs = katanaObj.FIRESKILL.new(hitObj)
@@ -199,7 +201,7 @@ func _on_first_strike_area_body_entered(body):
 func _on_second_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		hitObj.takeDamage(damage)
+		hitObj.takeDamage(50)
 		
 func setKatanaArrived():
 	isKatanaFlying = false
