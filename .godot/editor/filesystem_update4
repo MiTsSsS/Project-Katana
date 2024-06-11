@@ -8,4 +8,13 @@ res://Scenes/UI/HUD.tscn
 res://Scenes/Characters/Character.tscn
 res://Scenes/Characters/Dash.tscn
 res://Scenes/Characters/CharacterGhost.tscn
+<<<<<<< HEAD
+res://Scripts/World/WaveManager.gd
+res://Scripts/World/Interactables/MerchantEstateInteract.gd
+res://Scripts/World/Merchant.gd
+res://Scripts/Items/Pickups/Health.gd
 res://Scripts/Characters/CharacterController.gd
+res://Scripts/UI/HUDManager.gd
+=======
+res://Scripts/Characters/CharacterController.gd
+>>>>>>> main

@@ -3,7 +3,8 @@ extends Interactable
 @onready var collision = $CollisionShape2D
 
 func _ready():
-	GameManager.waveManager.waveCompleted.connect(toggleCollision)
+	GameManager.waveManager.waveStarted.connect(disableCollision)
+	GameManager.waveManager.waveCompleted.connect(enableCollision)
 
 func _on_body_entered(body:Node2D):
 	if body.is_in_group("player"):
@@ -21,6 +22,11 @@ func interactedWith():
 	Globals.setShouldShowWaveRelatedUi(false)
 	SceneTransitioner.transitionToScene("res://Scenes/World/Merchant.tscn")
 
-func toggleCollision():
+func disableCollision():
 	await get_tree().process_frame
-	collision.disabled = false
+	collision.disabled = true
+	
+func enableCollision():
+	if not GameManager.waveManager.completedWaves == 1:
+		await get_tree().process_frame
+		collision.disabled = false

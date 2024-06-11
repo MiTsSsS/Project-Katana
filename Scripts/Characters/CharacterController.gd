@@ -186,6 +186,7 @@ func heal(value):
 	var newHp = hp + value
 	hp = clampi(newHp, 0, maxHp)
 	healthChanged.emit(hp)
+	createFloatingText(value, Color.GREEN)
 
 func _on_first_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
