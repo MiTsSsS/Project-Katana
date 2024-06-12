@@ -35,11 +35,13 @@ func _ready():
 	GameManager.hudManager = self
 	characterHpBar.set_value_no_signal(startingHp)
 	wavesRemaining.text = str(currWaveAmnt)
+	countdownTimer.wait_time = Globals.timeUntilNextWave
 	toggleWaveRelatedUi()
 
 func _process(delta):
 	if not countdownTimer.is_stopped():
 		var timeLeft:int = ceili(countdownTimer.time_left)
+		print(timeLeft)
 		countdownTime.text = str(timeLeft)
 
 func updateHpBar(newHp):
@@ -93,7 +95,7 @@ func _on_timer_timeout():
 
 func _on_wave_countdown_timeout():
 	countdownTimerBox.visible = false
-	countdownTimer.wait_time = 60
+	countdownTimer.wait_time = Globals.timeUntilNextWave
 
 func toggleWaveRelatedUi():
 	if Globals.shouldShowWaveRelatedUi:
@@ -104,3 +106,6 @@ func toggleWaveRelatedUi():
 		wavesRemainingHB.hide()
 		enemiesRemainingHB.hide()
 		waveCountdownHB.hide()
+
+func updateCoutdownTimer():
+	countdownTimer.wait_time = Globals.timeUntilNextWave

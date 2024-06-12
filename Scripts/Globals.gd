@@ -16,10 +16,13 @@ var dashSpeedScalar:float = 1.2
 var damage:int = 1000
 var player:Player = null
 var lastCompletedWave = 0
-var completedWaves = 1
+var currentWave = 1
 
 #UI persistent properties
 var shouldShowWaveRelatedUi = true
+
+#Wave persistent properties
+var timeUntilNextWave = 4
 
 func updateHp(val):
 	hp += val
@@ -69,3 +72,6 @@ func resetDefaults():
 
 func setShouldShowWaveRelatedUi(shouldShow:bool):
 	shouldShowWaveRelatedUi = shouldShow
+
+func updateTimeBetweenWaves(newTime:int):
+	timeUntilNextWave = newTime

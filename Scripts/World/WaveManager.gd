@@ -5,7 +5,7 @@ class_name WaveManager
 const ENEMYSPAWNER = preload("res://Scenes/Characters/Enemies/EnemySpawner.tscn") 
 
 var waveNumber = 0
-var completedWaves = 1
+var currentWave = 1
 var enemiesToDefeat = 0
 var samuraiAmountToSpawn:int
 var archerAmountToSpawn:int
@@ -23,8 +23,8 @@ func _ready():
 	enemyAmntDecremented.connect(GameManager.hudManager.updateRemainingEnemies)
 	waveCompleted.connect(GameManager.hudManager.updateWavesNumber)
 	GameManager.hudManager.setMaxWave(waveNumber)
-	completedWaves = Globals.completedWaves
-	GameManager.hudManager.setWavesNumber(completedWaves)
+	currentWave = Globals.currentWave
+	GameManager.hudManager.setWavesNumber(currentWave)
 	waveStarted.connect(GameManager.hudManager.minimap.updateMinimapMarkers)
 	startWave()
 
@@ -37,12 +37,7 @@ func parseWaveDataFromJson():
 
 func startWave():
 	GameManager.hudManager.startCountdownTimer()
-	var countdownTimer
-	if waveNumber == 3:
-		countdownTimer = 4
-	else:
-		countdownTimer = 60
-	await get_tree().create_timer(countdownTimer, false).timeout 
+	await get_tree().create_timer(Globals.timeUntilNextWave, false).timeout 
 
 	var waveData = getWaveData(Globals.lastCompletedWave + 1)
 	enemiesToDefeat = waveData[1] + waveData[2] + waveData[3]
@@ -65,12 +60,14 @@ func decrementEnemiesToDefeat():
 	enemyAmntDecremented.emit(enemiesToDefeat)
 
 	if enemiesToDefeat == 0:
-		completedWaves += 1
+		currentWave += 1
 		Globals.lastCompletedWave += 1
-		Globals.completedWaves += 1
+		Globals.currentWave += 1
+		Globals.updateTimeBetweenWaves(30)
+		GameManager.hudManager.countdownTimer.wait_time = Globals.timeUntilNextWave
 		waveCompleted.emit()
 
-		if completedWaves > waveNumber:
+		if currentWave > waveNumber:
 			GameManager.gameEnded.emit(true)
 
 		startWave()

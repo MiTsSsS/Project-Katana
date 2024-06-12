@@ -45,6 +45,7 @@ func _on_interact_body_exited(body:Node2D):
 func _on_leave_interact_body_entered(body):
 	interactionProperties(body, false)
 	isLeaving = true
+	Globals.updateTimeBetweenWaves(4)
 
 func _on_leave_interact_body_exited(body):
 	interactionProperties(body, true)
