@@ -266,7 +266,7 @@ texture = ExtResource("7_2jt7v")
 
 [node name="WaveCountdown" type="Timer" parent="."]
 process_mode = 1
-wait_time = 4.0
+wait_time = 30.0
 one_shot = true
 
 [connection signal="timeout" from="WaveCountdown" to="." method="_on_wave_countdown_timeout"]

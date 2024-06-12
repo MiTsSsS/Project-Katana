@@ -27,6 +27,6 @@ func disableCollision():
 	collision.disabled = true
 	
 func enableCollision():
-	if not GameManager.waveManager.completedWaves == 1:
+	if not GameManager.waveManager.currentWave == 1:
 		await get_tree().process_frame
 		collision.disabled = false

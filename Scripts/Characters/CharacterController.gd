@@ -18,7 +18,7 @@ const floatingDamageSpawnRangeMax = 30
 @onready var gold:int = 100
 @onready var baseSpeed:int = 500
 @onready var speed:int = 500
-@onready var damage = 10
+@onready var damage = 1000
 @export var dashDuration = 0.2
 @export var dashSpeedScalar = 1.2
 
@@ -84,7 +84,6 @@ func _ready():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
-	print(animStateMachine.get_current_node())
 
 func get_input():
 	if not isKatanaFlying:
@@ -191,7 +190,7 @@ func heal(value):
 func _on_first_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		hitObj.takeDamage(5)
+		hitObj.takeDamage(damage)
 		#TODO: Move following code to a function in Katana script
 		if katanaObj.appliedSkill == katanaObj.AppliedSkill.FIRE:
 			var fs = katanaObj.FIRESKILL.new(hitObj)
@@ -202,7 +201,7 @@ func _on_first_strike_area_body_entered(body):
 func _on_second_strike_area_body_entered(body):
 	if body.is_in_group("mobs"):
 		var hitObj := body as Enemy
-		hitObj.takeDamage(50)
+		hitObj.takeDamage(damage)
 		
 func setKatanaArrived():
 	isKatanaFlying = false
