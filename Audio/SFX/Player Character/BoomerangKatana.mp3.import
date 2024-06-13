@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b5io3ukalscxu"
+path="res://.godot/imported/BoomerangKatana.mp3-01ccafbab03f8ee1df030eac32311f6c.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Player Character/BoomerangKatana.mp3"
+dest_files=["res://.godot/imported/BoomerangKatana.mp3-01ccafbab03f8ee1df030eac32311f6c.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=2.29
+bpm=0.0
+beat_count=0
+bar_beats=4

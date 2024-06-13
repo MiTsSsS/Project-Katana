@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cai7rmfdekmbu"]
+[gd_scene load_steps=9 format=3 uid="uid://cai7rmfdekmbu"]
 
 [ext_resource type="Script" path="res://Scripts/Items/Weapons/BoomerangKatana.gd" id="1_harw5"]
 [ext_resource type="Texture2D" uid="uid://djvrcpboe07aq" path="res://Art/VFX/Items/Katana/KatanaBoomerang.png" id="1_x2o7u"]
+[ext_resource type="AudioStream" uid="uid://b5io3ukalscxu" path="res://Audio/SFX/Player Character/BoomerangKatana.mp3" id="3_k0ras"]
 
 [sub_resource type="Animation" id="Animation_hamo4"]
 length = 0.001
@@ -20,8 +21,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_kiex7"]
 resource_name = "swirl"
-length = 0.8
-loop_mode = 1
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,16 +29,49 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 7]
+"values": [0, 1, 2, 3, 4, 6, 7, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"playBooomerangLoop"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4wr3t"]
+resource_name = "swirl_loop"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4, 5, 6, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7vt2h"]
 _data = {
 "RESET": SubResource("Animation_hamo4"),
-"swirl": SubResource("Animation_kiex7")
+"swirl": SubResource("Animation_kiex7"),
+"swirl_loop": SubResource("Animation_4wr3t")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xtq2o"]
@@ -67,6 +100,9 @@ one_shot = true
 [node name="WindCooldown" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="BoomerangLoop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_k0ras")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="BoomerangTravelTime" to="." method="_on_boomerang_travel_time_timeout"]

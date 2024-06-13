@@ -8,6 +8,10 @@ const FIRETRAIL = preload("res://Scenes/Abilities/FireTrail.tscn")
 @onready var travelTime = $BoomerangTravelTime
 @onready var windCooldown = $WindCooldown
 @onready var shouldBoomerangReturn = false
+@onready var animations = $Sprite2D/AnimationPlayer
+
+#Audio
+@onready var boomerangLoop = $BoomerangLoop
 
 signal signalArrival
 
@@ -21,6 +25,8 @@ func _ready():
 
 func  _physics_process(delta):
 	if not shouldBoomerangReturn:
+		if not boomerangLoop.playing:
+			boomerangLoop.play()
 		global_position += global_transform.x * speed * delta
 	else: 
 		global_position += global_position.direction_to(playerPosition) * speed * delta
@@ -67,3 +73,6 @@ func _on_wind_cooldown_timeout():
 		ws.transform = global_transform
 	
 	windCooldown.start()
+
+func playBooomerangLoop():
+	animations.play("swirl_loop")

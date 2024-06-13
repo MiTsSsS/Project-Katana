@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cs1qfn8k1k21q"
+path="res://.godot/imported/sword-sound-2-36274.mp3-1eced9285ce66c2cb47fde73eb2bfdd7.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/Player Character/sword-sound-2-36274.mp3"
+dest_files=["res://.godot/imported/sword-sound-2-36274.mp3-1eced9285ce66c2cb47fde73eb2bfdd7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

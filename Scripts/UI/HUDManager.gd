@@ -41,7 +41,6 @@ func _ready():
 func _process(delta):
 	if not countdownTimer.is_stopped():
 		var timeLeft:int = ceili(countdownTimer.time_left)
-		print(timeLeft)
 		countdownTime.text = str(timeLeft)
 
 func updateHpBar(newHp):

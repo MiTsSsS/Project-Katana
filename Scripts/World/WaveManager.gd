@@ -47,11 +47,9 @@ func startWave():
 	waveStarted.emit()
 
 func getWaveData(compWaves):	
-	var currentWave = "wave" 
-	currentWave += str(compWaves)
-	print(currentWave)
-	var data = [jsonDict["enemyTypePerWave"][currentWave]["Timer"], jsonDict["enemyTypePerWave"][currentWave]["Samurai"],jsonDict["enemyTypePerWave"][currentWave]["Archer"], jsonDict["enemyTypePerWave"][currentWave]["Hanzo"]]
-	print(data)
+	var upcomingWave = "wave" 
+	upcomingWave += str(compWaves)
+	var data = [jsonDict["enemyTypePerWave"][upcomingWave]["Timer"], jsonDict["enemyTypePerWave"][upcomingWave]["Samurai"],jsonDict["enemyTypePerWave"][upcomingWave]["Archer"], jsonDict["enemyTypePerWave"][upcomingWave]["Hanzo"]]
 
 	return data
 

@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 class_name Player
 
+#Audio
 @onready var yoooo = $AudioStreamPlayer2D
+@onready var runConcrete = $RunConcrete
 
 const BULLET = preload("res://Scenes/Items/Bullet.tscn")
 const KATANA = preload("res://Scripts/Items/Weapons/Katana.gd")
@@ -131,6 +133,9 @@ func get_input():
 
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
+	if not runConcrete.playing:
+		runConcrete.play()
+
 	if not dash.isDashing():
 		if Input.is_action_just_pressed("left"):
 			FlipMarker.scale = Vector2(-1, 1)
@@ -142,6 +147,7 @@ func get_input():
 	if velocity == Vector2.ZERO:
 		if not animStateMachine.get_current_node() == "idle_loop":
 			animStateMachine.travel("idle")
+		runConcrete.stop()
 	elif velocity != Vector2.ZERO:
 		animStateMachine.travel("run")
 		
